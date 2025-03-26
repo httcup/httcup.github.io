@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临时笔记</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>临时笔记</h1>
+    <textarea id="note" placeholder="在这里输入你的笔记内容"></textarea>
+    <button onclick="saveNote()">保存笔记</button>
+    <button onclick="clearNote()">清除笔记</button>
+    <div id="savedNote"></div>
+
+    <script>
+        function saveNote() {
+            const note = document.getElementById('note').value;
+            const savedNoteDiv = document.getElementById('savedNote');
+            savedNoteDiv.innerHTML = `<p>你保存的笔记内容是：${note}</p>`;
+        }
+
+        function clearNote() {
+            document.getElementById('note').value = '';
+            const savedNoteDiv = document.getElementById('savedNote');
+            savedNoteDiv.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>
+    
