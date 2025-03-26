@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>临时笔记</title>
+    <title>临时存储</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,8 +20,9 @@
 </head>
 
 <body>
-    <h1>临时笔记</h1>
+    <h1>临时存储</h1>
     <textarea id="note" placeholder="在这里输入你的笔记内容"></textarea>
+    <button onclick="copyAll()">复制全部</button>
     <button onclick="saveNote()">保存笔记</button>
     <button onclick="clearNote()">清除笔记</button>
     <div id="savedNote"></div>
