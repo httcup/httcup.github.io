@@ -370,6 +370,13 @@
                 "title": "【趣域网】",
                 "icon": "https://logo.clearbit.com/www.quyu.net",
                 "url": "https://www.quyu.net/"
+              },
+              {
+                "type": "link",
+                "addDate": 1744077314128,
+                "title": "福州大学继续教育学院",
+                "icon": "https://logo.clearbit.com/fzu.edu-xl.com",
+                "url": "https://fzu.edu-xl.com/StudentSiteNew/StudentSiteIndexNew/IndexNew"
               }
             ]
           },
@@ -38520,6 +38527,13 @@
             "title": "感情板 | Dcard",
             "icon": "https://logo.clearbit.com/www.dcard.tw",
             "url": "https://www.dcard.tw/f/relationship?tab=latest"
+          },
+          {
+            "type": "link",
+            "addDate": 1742265878526,
+            "title": "首页 - 存一点基金助手",
+            "icon": "https://logo.clearbit.com/cunyd.com",
+            "url": "https://cunyd.com/"
           }
         ]
       },
