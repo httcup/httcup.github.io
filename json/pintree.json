@@ -5,6 +5,34 @@
     "title": "书签栏",
     "children": [
       {
+        "type": "link",
+        "addDate": 1722247088456,
+        "title": "临时记事本",
+        "icon": "https://logo.clearbit.com/",
+        "url": "javascript: (function(){ window.open('https://httcup.github.io/pad/', 'window', 'width=600,height=600'); })()"
+      },
+      {
+        "type": "link",
+        "addDate": 1704095778084,
+        "title": "小胡的书签pro",
+        "icon": "https://logo.clearbit.com/httcup.com",
+        "url": "https://httcup.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1728350932998,
+        "title": "小胡 vip",
+        "icon": "https://logo.clearbit.com/xhxh.vip",
+        "url": "https://xhxh.vip/"
+      },
+      {
+        "type": "link",
+        "addDate": 1718593627986,
+        "title": "小胡书签早期未更新",
+        "icon": "https://logo.clearbit.com/httcup.github.io",
+        "url": "https://httcup.github.io/x/"
+      },
+      {
         "type": "folder",
         "addDate": 1721964599340,
         "title": "我的个人书签",
@@ -38534,6 +38562,41 @@
             "title": "首页 - 存一点基金助手",
             "icon": "https://logo.clearbit.com/cunyd.com",
             "url": "https://cunyd.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1745722235181,
+            "title": "京东5元包邮随身WiFi解锁卡槽，0门槛最全解锁网络连接限制方案_路由器_什么值得买",
+            "icon": "https://logo.clearbit.com/post.smzdm.com",
+            "url": "https://post.smzdm.com/p/agw5dno7/"
+          },
+          {
+            "type": "link",
+            "addDate": 1746493128210,
+            "title": "点金印记",
+            "icon": "https://logo.clearbit.com/www.idjyj.com",
+            "url": "http://www.idjyj.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1747381179696,
+            "title": "电子书导航|数字素养网",
+            "icon": "https://logo.clearbit.com/szsyw.cn",
+            "url": "https://szsyw.cn/book"
+          },
+          {
+            "type": "link",
+            "addDate": 1747639863475,
+            "title": "PayQrcode - 二合一收款码物理合并版",
+            "icon": "https://logo.clearbit.com/pay-qrcode.4ce.cn",
+            "url": "https://pay-qrcode.4ce.cn/?v=0515"
+          },
+          {
+            "type": "link",
+            "addDate": 1747963024834,
+            "title": "9条人生智慧，长大后感触才深",
+            "icon": "https://logo.clearbit.com/mp.weixin.qq.com",
+            "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTE0NzE1NA==&mid=2651129214&idx=4&sn=8335ee46cff386ff6cd7dbee13dc29e9&chksm=8c71b4e46b768ede705b0ded799fe11fafc306712b13a649ebf1acf1596cdd32478255de7aa7&scene=27"
           }
         ]
       },
@@ -38548,6 +38611,13 @@
             "title": "ChatGPT",
             "icon": "https://logo.clearbit.com/chatgpt.com",
             "url": "https://chatgpt.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1738719535354,
+            "title": "deepseek",
+            "icon": "https://logo.clearbit.com/chat.deepseek.com",
+            "url": "https://chat.deepseek.com/"
           },
           {
             "type": "link",
@@ -38687,7 +38757,7 @@
       {
         "type": "folder",
         "addDate": 1734576027365,
-        "title": "班书的收藏",
+        "title": "班叔的收藏",
         "children": [
           {
             "type": "folder",
@@ -39259,27 +39329,6 @@
             "children": []
           }
         ]
-      },
-      {
-        "type": "link",
-        "addDate": 1738719535354,
-        "title": "deepseek",
-        "icon": "https://logo.clearbit.com/chat.deepseek.com",
-        "url": "https://chat.deepseek.com/"
-      },
-      {
-        "type": "link",
-        "addDate": 1739783995481,
-        "title": "豆包",
-        "icon": "https://logo.clearbit.com/www.doubao.com",
-        "url": "https://www.doubao.com/chat/"
-      },
-      {
-        "type": "link",
-        "addDate": 1739947480128,
-        "title": "问小白 - DeepSeek R1 模型上线",
-        "icon": "https://logo.clearbit.com/www.wenxiaobai.com",
-        "url": "https://www.wenxiaobai.com/chat/200006"
       }
     ]
   }
