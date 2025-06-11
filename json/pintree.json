@@ -27,10 +27,10 @@
       },
       {
         "type": "link",
-        "addDate": 1718593627986,
-        "title": "小胡书签早期未更新",
-        "icon": "https://logo.clearbit.com/httcup.github.io",
-        "url": "https://httcup.github.io/x/"
+        "addDate": 1704175820906,
+        "title": "百度",
+        "icon": "https://logo.clearbit.com/www.baidu.com",
+        "url": "https://www.baidu.com/"
       },
       {
         "type": "folder",
@@ -402,9 +402,44 @@
               {
                 "type": "link",
                 "addDate": 1744077314128,
-                "title": "福州大学继续教育学院",
+                "title": "福州大学至诚学院",
                 "icon": "https://logo.clearbit.com/fzu.edu-xl.com",
                 "url": "https://fzu.edu-xl.com/StudentSiteNew/StudentSiteIndexNew/IndexNew"
+              },
+              {
+                "type": "link",
+                "addDate": 1749607859836,
+                "title": "去水印下载的视频",
+                "icon": "https://logo.clearbit.com/touchfish.ltd",
+                "url": "https://touchfish.ltd/"
+              },
+              {
+                "type": "link",
+                "addDate": 1718764679313,
+                "title": "在线图片加水印，canvas加水印,身份证加水印",
+                "icon": "https://logo.clearbit.com/watermark.dxcweb.com",
+                "url": "http://watermark.dxcweb.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1733790868489,
+                "title": "pintree –",
+                "icon": "https://logo.clearbit.com/vercel.com",
+                "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
+              },
+              {
+                "type": "link",
+                "addDate": 1747639863475,
+                "title": "PayQrcode - 二合一收款码物理合并版",
+                "icon": "https://logo.clearbit.com/pay-qrcode.4ce.cn",
+                "url": "https://pay-qrcode.4ce.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1746493128210,
+                "title": "点金印记（实时金价查询）",
+                "icon": "https://logo.clearbit.com/www.idjyj.com",
+                "url": "http://www.idjyj.com/"
               }
             ]
           },
@@ -846,6 +881,97 @@
                 "title": "阿里网盘整理 3",
                 "icon": "https://logo.clearbit.com/docs.qq.com",
                 "url": "https://docs.qq.com/sheet/DVXp5Q2dRTVRXb2VS?tab=oz0lgd"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "addDate": 1749609884678,
+            "title": "AI 办公/图表/数据分析",
+            "children": [
+              {
+                "type": "link",
+                "addDate": 1749610020458,
+                "title": "SPSSPRO（数据分析）",
+                "icon": "https://logo.clearbit.com/www.spsspro.com",
+                "url": "https://www.spsspro.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749609982732,
+                "title": "ChatExcel图表",
+                "icon": "https://logo.clearbit.com/www.chatexcel.com",
+                "url": "https://www.chatexcel.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610002079,
+                "title": "镝数图表",
+                "icon": "https://logo.clearbit.com/dycharts.com",
+                "url": "https://dycharts.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610035490,
+                "title": "小浣熊",
+                "icon": "https://logo.clearbit.com/xiaohuanxiong.com",
+                "url": "https://xiaohuanxiong.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610225323,
+                "title": "iSlide",
+                "icon": "https://logo.clearbit.com/www.islide.cc",
+                "url": "https://www.islide.cc/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610065447,
+                "title": "Meimaid-GitHub",
+                "icon": "https://logo.clearbit.com/github.com",
+                "url": "https://github.com/mermaid-js/mermaid"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610082865,
+                "title": "流程图",
+                "icon": "https://logo.clearbit.com/app.diagrams.net",
+                "url": "https://app.diagrams.net/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610146375,
+                "title": "笔灵AI",
+                "icon": "https://logo.clearbit.com/www.ibiling.cn",
+                "url": "http://www.ibiling.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610159872,
+                "title": "笔墨写作",
+                "icon": "https://logo.clearbit.com/www.bimogongwen.com",
+                "url": "http://www.bimogongwen.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610176768,
+                "title": "讯飞文书",
+                "icon": "https://logo.clearbit.com/gw.iflydocs.com",
+                "url": "https://gw.iflydocs.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610193666,
+                "title": "一字成文",
+                "icon": "https://logo.clearbit.com/www.yizigpt.cn",
+                "url": "https://www.yizigpt.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1749610315674,
+                "title": "通义千悟（音频转笔记）",
+                "icon": "https://logo.clearbit.com/tingwu.aliyun.com",
+                "url": "https://tingwu.aliyun.com/home"
               }
             ]
           },
@@ -38230,13 +38356,6 @@
           },
           {
             "type": "link",
-            "addDate": 1718764679313,
-            "title": "在线图片加水印，canvas加水印,防止身份证复印件被盗",
-            "icon": "https://logo.clearbit.com/watermark.dxcweb.com",
-            "url": "http://watermark.dxcweb.com/"
-          },
-          {
-            "type": "link",
             "addDate": 1718764387495,
             "title": "全国图书馆参考咨询联盟",
             "icon": "https://logo.clearbit.com/www.ucdrs.superlib.net",
@@ -38425,13 +38544,6 @@
           },
           {
             "type": "link",
-            "addDate": 1729839806032,
-            "title": "Kimi.ai - 帮你看更大的世界",
-            "icon": "https://logo.clearbit.com/kimi.moonshot.cn",
-            "url": "https://kimi.moonshot.cn/chat/csdk55s4aveu4kg9m1og"
-          },
-          {
-            "type": "link",
             "addDate": 1730419665328,
             "title": "留痕 微信聊天记录备份| MemoTrace",
             "icon": "https://logo.clearbit.com/memotrace.cn",
@@ -38440,7 +38552,7 @@
           {
             "type": "link",
             "addDate": 1730508440079,
-            "title": "小红书引导微信图生成器 | 抱走大柠檬",
+            "title": "小红书引导加微信图生成器 | 抱走大柠檬",
             "icon": "https://logo.clearbit.com/www.huglemon.com",
             "url": "https://www.huglemon.com/tools/xhs"
           },
@@ -38478,13 +38590,6 @@
             "title": "章鱼日报",
             "icon": "https://logo.clearbit.com/report.chaosoctopus.top",
             "url": "https://report.chaosoctopus.top/"
-          },
-          {
-            "type": "link",
-            "addDate": 1733790868489,
-            "title": "pintree – Deployment Overview",
-            "icon": "https://logo.clearbit.com/vercel.com",
-            "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
           },
           {
             "type": "link",
@@ -38537,29 +38642,15 @@
           },
           {
             "type": "link",
-            "addDate": 1739954107982,
-            "title": "下一本读什么|书单推荐、书单集合、年度推荐书单、经典书籍、经典句子、摘抄推荐|文学、社科、经管、少儿、科技、艺术、生活、传记",
-            "icon": "https://logo.clearbit.com/xiayibendushenme.com",
-            "url": "https://xiayibendushenme.com/"
-          },
-          {
-            "type": "link",
             "addDate": 1741057417621,
-            "title": "上海黄金交易所(金交所)行情查询-贵金属行情中心(手机金投网 m.cngold.org)",
+            "title": "贵金属行情金价查询 上海黄金交易所(金交所)",
             "icon": "https://logo.clearbit.com/m.cngold.org",
             "url": "https://m.cngold.org/quote/gjs/jjs.html"
           },
           {
             "type": "link",
-            "addDate": 1741159832615,
-            "title": "感情板 | Dcard",
-            "icon": "https://logo.clearbit.com/www.dcard.tw",
-            "url": "https://www.dcard.tw/f/relationship?tab=latest"
-          },
-          {
-            "type": "link",
             "addDate": 1742265878526,
-            "title": "首页 - 存一点基金助手",
+            "title": "存一点基金助手",
             "icon": "https://logo.clearbit.com/cunyd.com",
             "url": "https://cunyd.com/"
           },
@@ -38572,31 +38663,10 @@
           },
           {
             "type": "link",
-            "addDate": 1746493128210,
-            "title": "点金印记",
-            "icon": "https://logo.clearbit.com/www.idjyj.com",
-            "url": "http://www.idjyj.com/"
-          },
-          {
-            "type": "link",
             "addDate": 1747381179696,
             "title": "电子书导航|数字素养网",
             "icon": "https://logo.clearbit.com/szsyw.cn",
             "url": "https://szsyw.cn/book"
-          },
-          {
-            "type": "link",
-            "addDate": 1747639863475,
-            "title": "PayQrcode - 二合一收款码物理合并版",
-            "icon": "https://logo.clearbit.com/pay-qrcode.4ce.cn",
-            "url": "https://pay-qrcode.4ce.cn/?v=0515"
-          },
-          {
-            "type": "link",
-            "addDate": 1747963024834,
-            "title": "9条人生智慧，长大后感触才深",
-            "icon": "https://logo.clearbit.com/mp.weixin.qq.com",
-            "url": "https://mp.weixin.qq.com/s?__biz=MzIwMTE0NzE1NA==&mid=2651129214&idx=4&sn=8335ee46cff386ff6cd7dbee13dc29e9&chksm=8c71b4e46b768ede705b0ded799fe11fafc306712b13a649ebf1acf1596cdd32478255de7aa7&scene=27"
           }
         ]
       },
@@ -39329,6 +39399,27 @@
             "children": []
           }
         ]
+      },
+      {
+        "type": "link",
+        "addDate": 1739783995481,
+        "title": "豆包",
+        "icon": "https://logo.clearbit.com/www.doubao.com",
+        "url": "https://www.doubao.com/chat/"
+      },
+      {
+        "type": "link",
+        "addDate": 1739947480128,
+        "title": "问小白 - DeepSeek R1 模型上线",
+        "icon": "https://logo.clearbit.com/www.wenxiaobai.com",
+        "url": "https://www.wenxiaobai.com/chat/200006"
+      },
+      {
+        "type": "link",
+        "addDate": 1749195179467,
+        "title": "Deepseek",
+        "icon": "https://logo.clearbit.com/chat.deepseek.com",
+        "url": "https://chat.deepseek.com/"
       }
     ]
   }
