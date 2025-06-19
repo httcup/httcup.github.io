@@ -224,4 +224,65 @@
     --tw-bg-opacity: 1;
     --tw-ring-color: rgb(45 49 57 / var(--tw-bg-opacity));
   }
+.search-container {
+    position: relative;
+    width: 85%;
+    margin-top: 10px;
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
 
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+    height: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 更换字体 */
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease; /* 添加过渡效果 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+.search-input:hover {
+    border-color: #3cb884; /* 悬停时改变边框颜色 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 悬停时增强阴影效果 */
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3cb884;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(60, 184, 132, 0.2); /* 聚焦时添加蓝色光晕 */
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    border-radius: 15px;
+    background-color: #3cb884;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* 添加过渡效果 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-button:hover {
+    background-color: #36a573;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 悬停时增强阴影效果 */
+}
+
+/* 可以添加搜索图标 */
+.search-button::before {
+    content: '\f002'; /* Font Awesome 搜索图标代码 */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 18px;
+}
