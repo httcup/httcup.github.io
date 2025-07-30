@@ -5,27 +5,6 @@
     "title": "书签栏",
     "children": [
       {
-        "type": "link",
-        "addDate": 1722247088456,
-        "title": "临时记事本",
-        "icon": "https://logo.clearbit.com/",
-        "url": "javascript: (function(){ window.open('https://httcup.github.io/pad/', 'window', 'width=600,height=600'); })()"
-      },
-      {
-        "type": "link",
-        "addDate": 1704095778084,
-        "title": "小胡的书签pro",
-        "icon": "https://logo.clearbit.com/httcup.com",
-        "url": "https://httcup.com/"
-      },
-      {
-        "type": "link",
-        "addDate": 1728350932998,
-        "title": "小胡 vip",
-        "icon": "https://logo.clearbit.com/xhxh.vip",
-        "url": "https://xhxh.vip/"
-      },
-      {
         "type": "folder",
         "addDate": 1721964599340,
         "title": "我的个人书签",
@@ -475,6 +454,41 @@
                 "title": "安卓分身空壳",
                 "icon": "https://logo.clearbit.com/www.iofomo.com",
                 "url": "https://www.iofomo.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1750387557868,
+                "title": "文字生图表Napkin.ai",
+                "icon": "https://logo.clearbit.com/app.napkin.ai",
+                "url": "https://app.napkin.ai/page/create"
+              },
+              {
+                "type": "link",
+                "addDate": 1751362082318,
+                "title": "HiFiNi - 音乐磁场下载",
+                "icon": "https://logo.clearbit.com/hifini.com",
+                "url": "https://hifini.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1752050716390,
+                "title": "网页存档查询",
+                "icon": "https://logo.clearbit.com/web.archive.org",
+                "url": "https://web.archive.org/"
+              },
+              {
+                "type": "link",
+                "addDate": 1752548018085,
+                "title": "GD音乐台 - GD Studio's Online Music Platform",
+                "icon": "https://logo.clearbit.com/music.gdstudio.xyz",
+                "url": "https://music.gdstudio.xyz/"
+              },
+              {
+                "type": "link",
+                "addDate": 1753059798648,
+                "title": "彩云天气 - 天气雷达,分钟级天气预报,街道天气预报",
+                "icon": "https://logo.clearbit.com/caiyunai.com",
+                "url": "https://caiyunai.com/map/#118.1818,26.6375"
               }
             ]
           },
@@ -842,20 +856,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1721987006477,
-                "title": "pan666.cn",
-                "icon": "https://logo.clearbit.com/pan666.cn",
-                "url": "https://pan666.cn/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721987010957,
-                "title": "无为盘搜",
-                "icon": "https://logo.clearbit.com/wuweipansou.top",
-                "url": "https://wuweipansou.top/"
-              },
-              {
-                "type": "link",
                 "addDate": 1721987039383,
                 "title": "西部落软件搜索",
                 "icon": "https://logo.clearbit.com/www.xibuluo.com",
@@ -867,13 +867,6 @@
                 "title": "盘搜搜",
                 "icon": "https://logo.clearbit.com/www.pansoso.com",
                 "url": "https://www.pansoso.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721987076064,
-                "title": "小白盘",
-                "icon": "https://logo.clearbit.com/www.xiaobaipan.com",
-                "url": "https://www.xiaobaipan.com/"
               },
               {
                 "type": "link",
@@ -891,31 +884,10 @@
               },
               {
                 "type": "link",
-                "addDate": 1721987124482,
-                "title": "小纸条",
-                "icon": "https://logo.clearbit.com/ali.gitcafe.ink",
-                "url": "https://ali.gitcafe.ink/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721987138165,
-                "title": "阿里云盘整理 1",
-                "icon": "https://logo.clearbit.com/docs.qq.com",
-                "url": "https://docs.qq.com/sheet/DVHpJVmRhT3ViV09Q?tab=ppx5bp"
-              },
-              {
-                "type": "link",
                 "addDate": 1721987154959,
-                "title": "阿里网盘整理 2",
+                "title": "网盘整理 ",
                 "icon": "https://logo.clearbit.com/docs.qq.com",
                 "url": "https://docs.qq.com/sheet/DSlZmRHNtREpnaFFO?tab=BB08J2"
-              },
-              {
-                "type": "link",
-                "addDate": 1721987173656,
-                "title": "阿里网盘整理 3",
-                "icon": "https://logo.clearbit.com/docs.qq.com",
-                "url": "https://docs.qq.com/sheet/DVXp5Q2dRTVRXb2VS?tab=oz0lgd"
               }
             ]
           },
@@ -1136,13 +1108,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1721986859170,
-                "title": "电影淘淘搜索",
-                "icon": "https://logo.clearbit.com/www.dytt360.com",
-                "url": "https://www.dytt360.com/"
-              },
-              {
-                "type": "link",
                 "addDate": 1721987209193,
                 "title": "hianime动漫",
                 "icon": "https://logo.clearbit.com/hianime.to",
@@ -1256,7 +1221,7 @@
               {
                 "type": "link",
                 "addDate": 1721985938267,
-                "title": "跑马灯",
+                "title": "屏幕 LED跑马灯",
                 "icon": "https://logo.clearbit.com/marquee.shangzhenyang.com",
                 "url": "https://marquee.shangzhenyang.com/"
               },
@@ -2188,6 +2153,27 @@
                 "title": "电子书导航|数字素养网",
                 "icon": "https://logo.clearbit.com/szsyw.cn",
                 "url": "https://szsyw.cn/book"
+              },
+              {
+                "type": "link",
+                "addDate": 1750410425603,
+                "title": " 产品工具箱随机身份证信息",
+                "icon": "https://logo.clearbit.com/www.y3pm.com",
+                "url": "https://www.y3pm.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1751270630909,
+                "title": "个人店铺可经营类目明细表 - 飞书云文档",
+                "icon": "https://logo.clearbit.com/bytedance.larkoffice.com",
+                "url": "https://bytedance.larkoffice.com/sheets/shtcnGq3rd8PsL6vK95guSenyJf?sheet=MSnXyy"
+              },
+              {
+                "type": "link",
+                "addDate": 1751419677568,
+                "title": "进口原研药目录",
+                "icon": "https://logo.clearbit.com/medicine.lvwzhen.com",
+                "url": "https://medicine.lvwzhen.com/"
               }
             ]
           },
@@ -2816,17 +2802,10 @@
           },
           {
             "type": "link",
-            "addDate": 1704851733373,
-            "title": "AI 导航 2",
-            "icon": "https://logo.clearbit.com/github.com",
-            "url": "https://github.com/xx025/carrot"
-          },
-          {
-            "type": "link",
-            "addDate": 1704852876464,
-            "title": "AI 导航 3",
-            "icon": "https://logo.clearbit.com/cc.ai55.cc",
-            "url": "https://cc.ai55.cc/"
+            "addDate": 1750409080257,
+            "title": "AI论文大师-最强论文写作",
+            "icon": "https://logo.clearbit.com/lunwen.aiduihua.com",
+            "url": "https://lunwen.aiduihua.com/?iao"
           }
         ]
       },
@@ -6081,7 +6060,7 @@
                   },
                   {
                     "type": "link",
-                    "title": "WebArchive 存档查询",
+                    "title": "WebArchive 网页存档查询",
                     "icon": "https://logo.clearbit.com/web.archive.org",
                     "url": "https://web.archive.org/"
                   },
