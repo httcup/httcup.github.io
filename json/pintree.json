@@ -2482,6 +2482,27 @@
                 "title": "iMessage 聊天记录生成器",
                 "icon": "https://logo.clearbit.com/hellocreator.app",
                 "url": "https://hellocreator.app/fake-text-message"
+              },
+              {
+                "type": "link",
+                "addDate": 1756437331072,
+                "title": "专业提词器APP - 手机悬浮提词器 | 免费在线提词器软件 | Best Teleprompter",
+                "icon": "https://logo.clearbit.com/www.best-teleprompter.com",
+                "url": "https://www.best-teleprompter.com/zh"
+              },
+              {
+                "type": "link",
+                "addDate": 1756858846775,
+                "title": "X Twitter Downloader Video视频下载",
+                "icon": "https://logo.clearbit.com/x-twitter-downloader.com",
+                "url": "https://x-twitter-downloader.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1757377653160,
+                "title": "精选提示词库 - Awesome Prompts",
+                "icon": "https://logo.clearbit.com/prmbr.com",
+                "url": "https://prmbr.com/"
               }
             ]
           },
@@ -3769,6 +3790,13 @@
         "title": "Deepseek",
         "icon": "https://logo.clearbit.com/chat.deepseek.com",
         "url": "https://chat.deepseek.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1758761937581,
+        "title": "千问",
+        "icon": "https://logo.clearbit.com/chat.qwen.ai",
+        "url": "https://chat.qwen.ai/"
       },
       {
         "type": "folder",
