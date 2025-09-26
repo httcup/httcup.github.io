@@ -1670,6 +1670,111 @@
           },
           {
             "type": "folder",
+            "addDate": 1758870939792,
+            "title": "查询平台",
+            "children": [
+              {
+                "type": "link",
+                "addDate": 1758870964038,
+                "title": "查学历",
+                "icon": "https://logo.clearbit.com/www.chsi.com.cn",
+                "url": "http://www.chsi.com.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758870977680,
+                "title": "查征信",
+                "icon": "https://logo.clearbit.com/www.pbccrc.org.cn",
+                "url": "http://www.pbccrc.org.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758870990810,
+                "title": "查法律法规",
+                "icon": "https://logo.clearbit.com/flk.npc.gov.cn",
+                "url": "http://flk.npc.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871001016,
+                "title": "查药品/化妆品",
+                "icon": "https://logo.clearbit.com/www.nmpa.gov.cn",
+                "url": "http://www.nmpa.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871013764,
+                "title": "查食品",
+                "icon": "https://logo.clearbit.com/spcjsac.gsxt.gov.cn",
+                "url": "http://spcjsac.gsxt.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871025786,
+                "title": "查房价",
+                "icon": "https://logo.clearbit.com/www.creprice.cn",
+                "url": "http://www.creprice.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871038936,
+                "title": "查社保",
+                "icon": "https://logo.clearbit.com/si.12333.gov.cn",
+                "url": "http://si.12333.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871048931,
+                "title": "查知识产权",
+                "icon": "https://logo.clearbit.com/epub.cnipa.gov.cn",
+                "url": "http://epub.cnipa.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871058319,
+                "title": "查行业数据",
+                "icon": "https://logo.clearbit.com/data.stats.gov.cn",
+                "url": "http://data.stats.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871070269,
+                "title": "查国家标准",
+                "icon": "https://logo.clearbit.com/std.samr.gov.cn",
+                "url": "http://std.samr.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871078653,
+                "title": "查企业信息",
+                "icon": "https://logo.clearbit.com/www.gsxt.gov.cn",
+                "url": "http://www.gsxt.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871088369,
+                "title": "查四六级成绩",
+                "icon": "https://logo.clearbit.com/www.neea.edu.cn",
+                "url": "http://www.neea.edu.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871098158,
+                "title": "查招投标",
+                "icon": "https://logo.clearbit.com/cebpubservice.com",
+                "url": "http://cebpubservice.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871108722,
+                "title": "查裁判文书",
+                "icon": "https://logo.clearbit.com/wenshu.court.gov.cn",
+                "url": "http://wenshu.court.gov.cn/"
+              }
+            ]
+          },
+          {
+            "type": "folder",
             "addDate": 1721964751755,
             "title": "网盘存储",
             "children": [
@@ -1945,7 +2050,57 @@
             "type": "folder",
             "addDate": 1721964789594,
             "title": "在线文档",
-            "children": []
+            "children": [
+              {
+                "type": "link",
+                "addDate": 1758871145149,
+                "title": "腾讯文档",
+                "icon": "https://logo.clearbit.com/docs.qq.com",
+                "url": "https://docs.qq.com/desktop/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871164506,
+                "title": "石墨文档",
+                "icon": "https://logo.clearbit.com/shimo.im",
+                "url": "https://shimo.im/dashboard/used"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871205132,
+                "title": "谷歌文档",
+                "icon": "https://logo.clearbit.com/docs.google.com",
+                "url": "https://docs.google.com/document/u/0/?pli=1"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871236301,
+                "title": "飞书文档",
+                "icon": "https://logo.clearbit.com/www.feishu.cn",
+                "url": "https://www.feishu.cn/product/docs"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871280233,
+                "title": "语雀文档",
+                "icon": "https://logo.clearbit.com/www.yuque.com",
+                "url": "https://www.yuque.com/login"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871310620,
+                "title": "金山文档",
+                "icon": "https://logo.clearbit.com/www.kdocs.cn",
+                "url": "https://www.kdocs.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1758871345899,
+                "title": "幕布",
+                "icon": "https://logo.clearbit.com/mubu.com",
+                "url": "https://mubu.com/home"
+              }
+            ]
           },
           {
             "type": "folder",
