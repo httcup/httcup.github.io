@@ -6,17 +6,10 @@
     "children": [
       {
         "type": "link",
-        "addDate": 1704095778084,
-        "title": "小胡的书签pro",
-        "icon": "https://logo.clearbit.com/httcup.com",
-        "url": "https://httcup.com/"
-      },
-      {
-        "type": "link",
-        "addDate": 1728350932998,
-        "title": "小胡 vip",
-        "icon": "https://logo.clearbit.com/xhxh.vip",
-        "url": "https://xhxh.vip/"
+        "addDate": 1704175820906,
+        "title": "百度",
+        "icon": "https://logo.clearbit.com/www.baidu.com",
+        "url": "https://www.baidu.com/"
       },
       {
         "type": "folder",
@@ -41,6 +34,13 @@
                 "title": "必应签到",
                 "icon": "https://logo.clearbit.com/rewards.bing.com",
                 "url": "https://rewards.bing.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1760148756171,
+                "title": "视频下载",
+                "icon": "https://logo.clearbit.com/greenvideo.cc",
+                "url": "https://greenvideo.cc/"
               },
               {
                 "type": "link",
@@ -94,16 +94,16 @@
               {
                 "type": "link",
                 "addDate": 1721983626851,
-                "title": "文本派",
-                "icon": "https://logo.clearbit.com/txtpad.cn",
-                "url": "https://txtpad.cn/xhxh"
+                "title": "临时文件存储",
+                "icon": "https://logo.clearbit.com/upfile.live",
+                "url": "https://upfile.live/"
               },
               {
                 "type": "link",
                 "addDate": 1741306261668,
                 "title": "网络剪贴板",
-                "icon": "https://logo.clearbit.com/netcut.cn",
-                "url": "https://netcut.cn/xhxh"
+                "icon": "https://logo.clearbit.com/webnote.cc",
+                "url": "https://webnote.cc/xhxh"
               },
               {
                 "type": "link",
@@ -471,13 +471,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1751362082318,
-                "title": "HiFiNi - 音乐磁场下载",
-                "icon": "https://logo.clearbit.com/hifini.com",
-                "url": "https://hifini.com/"
-              },
-              {
-                "type": "link",
                 "addDate": 1752050716390,
                 "title": "网页存档查询",
                 "icon": "https://logo.clearbit.com/web.archive.org",
@@ -510,6 +503,20 @@
                 "title": "历史价格查询（京东、淘宝、天猫）",
                 "icon": "https://logo.clearbit.com/www.lsjgcx.com",
                 "url": "https://www.lsjgcx.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1760000787345,
+                "title": "小鹅通学员版-小鹅通",
+                "icon": "https://logo.clearbit.com/study.xiaoe-tech.com",
+                "url": "https://study.xiaoe-tech.com/#/muti_index"
+              },
+              {
+                "type": "link",
+                "addDate": 1761103102584,
+                "title": "今日热榜 2",
+                "icon": "https://logo.clearbit.com/u1.cx",
+                "url": "https://u1.cx/hot/"
               }
             ]
           },
@@ -909,6 +916,41 @@
                 "title": "网盘整理 ",
                 "icon": "https://logo.clearbit.com/docs.qq.com",
                 "url": "https://docs.qq.com/sheet/DSlZmRHNtREpnaFFO?tab=BB08J2"
+              },
+              {
+                "type": "link",
+                "addDate": 1762133849948,
+                "title": "PanSou 盘搜",
+                "icon": "https://logo.clearbit.com/so.252035.xyz",
+                "url": "https://so.252035.xyz/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764658364966,
+                "title": "小云搜索",
+                "icon": "https://logo.clearbit.com/www.yunso.net",
+                "url": "https://www.yunso.net/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764658453660,
+                "title": "盘他-移动云盘资源共享站",
+                "icon": "https://logo.clearbit.com/www.91panta.cn",
+                "url": "https://www.91panta.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764658542282,
+                "title": "彼心—移动云盘资源分享论坛",
+                "icon": "https://logo.clearbit.com/www.bixbiy.com",
+                "url": "https://www.bixbiy.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764658776792,
+                "title": "谷哥搜-影视网盘资源搜索",
+                "icon": "https://logo.clearbit.com/www.gugeso.com",
+                "url": "https://www.gugeso.com/"
               }
             ]
           },
@@ -1770,6 +1812,13 @@
                 "title": "查裁判文书",
                 "icon": "https://logo.clearbit.com/wenshu.court.gov.cn",
                 "url": "http://wenshu.court.gov.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1759993474737,
+                "title": "企业信息查询88查",
+                "icon": "https://logo.clearbit.com/88cha.com",
+                "url": "https://88cha.com/search"
               }
             ]
           },
@@ -2658,6 +2707,76 @@
                 "title": "精选提示词库 - Awesome Prompts",
                 "icon": "https://logo.clearbit.com/prmbr.com",
                 "url": "https://prmbr.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1759993139673,
+                "title": "英语语法俱乐部",
+                "icon": "https://logo.clearbit.com/yufa.szsyw.cn",
+                "url": "https://yufa.szsyw.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1759995837457,
+                "title": "中医养生调理-中药大全-中草药查询-乡间郎中",
+                "icon": "https://logo.clearbit.com/www.xjlz365.com",
+                "url": "https://www.xjlz365.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1759995890646,
+                "title": "测速网,免费在线测网速,专业网速测试 - internet 速度测试,宽带测速,wifi测速,全球网测",
+                "icon": "https://logo.clearbit.com/volumeshader.org",
+                "url": "https://volumeshader.org/zh/wifi-speed-test"
+              },
+              {
+                "type": "link",
+                "addDate": 1759995895933,
+                "title": "硬件测试网站",
+                "icon": "https://logo.clearbit.com/volumeshader.org",
+                "url": "https://volumeshader.org/zh"
+              },
+              {
+                "type": "link",
+                "addDate": 1760430979837,
+                "title": "X视频下载",
+                "icon": "https://logo.clearbit.com/xvideodownloaders.com",
+                "url": "https://xvideodownloaders.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1760431004652,
+                "title": "X视频下载 2",
+                "icon": "https://logo.clearbit.com/www.xsavenow.com",
+                "url": "https://www.xsavenow.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1762501688945,
+                "title": "如何给 Mac 选一款移动固态硬盘？（附抄作业）",
+                "icon": "https://logo.clearbit.com/mp.weixin.qq.com",
+                "url": "https://mp.weixin.qq.com/s/qdKugVHi5D0ubP-fiFUvjA"
+              },
+              {
+                "type": "link",
+                "addDate": 1762757792865,
+                "title": "HowToCook: 程序员在家做饭方法指南。Programmer's guide about how to cook at home (Simplified Chinese only).",
+                "icon": "https://logo.clearbit.com/github.com",
+                "url": "https://github.com/Anduin2017/HowToCook"
+              },
+              {
+                "type": "link",
+                "addDate": 1762757822768,
+                "title": "How To Cook 做饭指南/菜谱",
+                "icon": "https://logo.clearbit.com/cook.aiursoft.com",
+                "url": "https://cook.aiursoft.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1762819831767,
+                "title": "在线工具 - 你的工具箱",
+                "icon": "https://logo.clearbit.com/tool.lu",
+                "url": "https://tool.lu/tool"
               }
             ]
           },
@@ -3938,6 +4057,13 @@
         "title": "豆包",
         "icon": "https://logo.clearbit.com/www.doubao.com",
         "url": "https://www.doubao.com/chat/"
+      },
+      {
+        "type": "link",
+        "addDate": 1739947480128,
+        "title": "问小白 - DeepSeek R1 模型上线",
+        "icon": "https://logo.clearbit.com/www.wenxiaobai.com",
+        "url": "https://www.wenxiaobai.com/chat/200006"
       },
       {
         "type": "link",
@@ -40240,6 +40366,13 @@
             ]
           }
         ]
+      },
+      {
+        "type": "link",
+        "addDate": 1763520130134,
+        "title": "通义千问",
+        "icon": "https://logo.clearbit.com/www.tongyi.com",
+        "url": "https://www.tongyi.com/"
       }
     ]
   }
