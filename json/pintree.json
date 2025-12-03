@@ -6,6 +6,13 @@
     "children": [
       {
         "type": "link",
+        "addDate": 1728350932998,
+        "title": "小胡 vip",
+        "icon": "https://logo.clearbit.com/xhxh.vip",
+        "url": "https://xhxh.vip/"
+      },
+      {
+        "type": "link",
         "addDate": 1704175820906,
         "title": "百度",
         "icon": "https://logo.clearbit.com/www.baidu.com",
@@ -4060,10 +4067,10 @@
       },
       {
         "type": "link",
-        "addDate": 1739947480128,
-        "title": "问小白 - DeepSeek R1 模型上线",
-        "icon": "https://logo.clearbit.com/www.wenxiaobai.com",
-        "url": "https://www.wenxiaobai.com/chat/200006"
+        "addDate": 1764729499412,
+        "title": "ChatGPT",
+        "icon": "https://logo.clearbit.com/chatgpt.com",
+        "url": "https://chatgpt.com/"
       },
       {
         "type": "link",
@@ -40373,6 +40380,13 @@
         "title": "通义千问",
         "icon": "https://logo.clearbit.com/www.tongyi.com",
         "url": "https://www.tongyi.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1764720309073,
+        "title": "AI提示词生成器",
+        "icon": "https://logo.clearbit.com/systemprompt.icu",
+        "url": "https://systemprompt.icu/"
       }
     ]
   }
