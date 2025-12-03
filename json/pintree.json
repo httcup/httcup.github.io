@@ -3721,7 +3721,7 @@
               {
                 "type": "link",
                 "addDate": 1764749274228,
-                "title": "谷哥搜-影视网盘资源搜索",
+                "title": "谷哥搜",
                 "icon": "https://logo.clearbit.com/www.gugeso.com",
                 "url": "https://www.gugeso.com/"
               },
@@ -3850,6 +3850,34 @@
                 "title": "彼心—移动云盘资源分享论坛",
                 "icon": "https://logo.clearbit.com/www.bixbiy.com",
                 "url": "https://www.bixbiy.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749926018,
+                "title": "TGSO.Pro（TG 搜索）",
+                "icon": "https://logo.clearbit.com/tgso.pro",
+                "url": "https://tgso.pro/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749926019,
+                "title": "TGSO.Top（TG 搜索）",
+                "icon": "https://logo.clearbit.com/tgso.top",
+                "url": "https://tgso.top/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749926019,
+                "title": "Meow.TG（TG 搜索）",
+                "icon": "https://logo.clearbit.com/meow.tg",
+                "url": "https://meow.tg/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749926019,
+                "title": "Telemetrio（TG 搜索）",
+                "icon": "https://logo.clearbit.com/telemetr.io",
+                "url": "https://telemetr.io/en/catalog/global"
               }
             ]
           },
@@ -4354,6 +4382,62 @@
                 "title": "CCTV 直播",
                 "icon": "https://logo.clearbit.com/tv.cctv.com",
                 "url": "https://tv.cctv.com/live/index.shtml"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749461618,
+                "title": "Netflix",
+                "icon": "https://logo.clearbit.com/www.netflix.com",
+                "url": "https://www.netflix.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749748102,
+                "title": "Disney + ",
+                "icon": "https://logo.clearbit.com/www.disneyplus.com",
+                "url": "https://www.disneyplus.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749780582,
+                "title": "抖音",
+                "icon": "https://logo.clearbit.com/www.douyin.com",
+                "url": "https://www.douyin.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749793989,
+                "title": "快手",
+                "icon": "https://logo.clearbit.com/www.kuaishou.com",
+                "url": "https://www.kuaishou.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749807719,
+                "title": "西瓜视频",
+                "icon": "https://logo.clearbit.com/www.ixigua.com",
+                "url": "https://www.ixigua.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749821631,
+                "title": "央视频",
+                "icon": "https://logo.clearbit.com/www.yangshipin.cn",
+                "url": "https://www.yangshipin.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749835335,
+                "title": "斗鱼",
+                "icon": "https://logo.clearbit.com/www.douyu.com",
+                "url": "https://www.douyu.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749846773,
+                "title": "虎牙",
+                "icon": "https://logo.clearbit.com/www.huya.com",
+                "url": "https://www.huya.com/"
               }
             ]
           }
