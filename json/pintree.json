@@ -3650,157 +3650,213 @@
             "children": [
               {
                 "type": "link",
-                "addDate": 1721986996058,
-                "title": "大盘搜",
-                "icon": "https://logo.clearbit.com/dapanso.com",
-                "url": "https://dapanso.com/search?keyword=&page=1&type="
+                "addDate": 1764749274226,
+                "title": "盘了个盘",
+                "icon": "https://logo.clearbit.com/www.panlegepan.com",
+                "url": "https://www.panlegepan.com/"
               },
               {
                 "type": "link",
-                "addDate": 1764658364966,
+                "addDate": 1764749274226,
                 "title": "小云搜索",
                 "icon": "https://logo.clearbit.com/www.yunso.net",
                 "url": "https://www.yunso.net/"
               },
               {
                 "type": "link",
-                "addDate": 1721987049887,
-                "title": "盘搜搜",
-                "icon": "https://logo.clearbit.com/www.pansoso.com",
-                "url": "https://www.pansoso.com/"
+                "addDate": 1764749274227,
+                "title": "猫狸云搜索",
+                "icon": "https://logo.clearbit.com/www.maoliyun.com",
+                "url": "https://www.maoliyun.com/"
               },
               {
                 "type": "link",
-                "addDate": 1764658776792,
+                "addDate": 1764749274227,
+                "title": "猫狸盘搜",
+                "icon": "https://logo.clearbit.com/www.alipansou.com",
+                "url": "https://www.alipansou.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274227,
+                "title": "趣盘搜",
+                "icon": "https://logo.clearbit.com/pan.funletu.com",
+                "url": "https://pan.funletu.com/#/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274227,
+                "title": "混合盘",
+                "icon": "https://logo.clearbit.com/hunhepan.com",
+                "url": "https://hunhepan.com/search"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274227,
+                "title": "懒盘搜索",
+                "icon": "https://logo.clearbit.com/www.lzpanx.com",
+                "url": "https://www.lzpanx.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274227,
+                "title": "许搜",
+                "icon": "https://logo.clearbit.com/www.xusou.cn",
+                "url": "https://www.xusou.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
+                "title": "盘库吧",
+                "icon": "https://logo.clearbit.com/panku.app",
+                "url": "https://panku.app/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
+                "title": "即刻盘",
+                "icon": "https://logo.clearbit.com/jikepan.xyz",
+                "url": "https://jikepan.xyz/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
                 "title": "谷哥搜-影视网盘资源搜索",
                 "icon": "https://logo.clearbit.com/www.gugeso.com",
                 "url": "https://www.gugeso.com/"
               },
               {
                 "type": "link",
-                "addDate": 1721987089920,
-                "title": "热搜盘",
-                "icon": "https://logo.clearbit.com/www.repanso.com",
-                "url": "http://www.repanso.com/"
+                "addDate": 1764749274228,
+                "title": "盘搜搜",
+                "icon": "https://logo.clearbit.com/www.pansoso.com",
+                "url": "https://www.pansoso.com/"
               },
               {
                 "type": "link",
-                "addDate": 1721987097359,
-                "title": "大漠搜索",
-                "icon": "https://logo.clearbit.com/www.dmpans.com",
-                "url": "http://www.dmpans.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1762133849948,
+                "addDate": 1764749274228,
                 "title": "PanSou 盘搜",
                 "icon": "https://logo.clearbit.com/so.252035.xyz",
                 "url": "https://so.252035.xyz/"
               },
               {
                 "type": "link",
-                "addDate": 1721986991253,
-                "title": "易搜",
-                "icon": "https://logo.clearbit.com/yiso.fun",
-                "url": "https://yiso.fun/"
+                "addDate": 1764749274228,
+                "title": "PanSearch",
+                "icon": "https://logo.clearbit.com/www.pansearch.me",
+                "url": "https://www.pansearch.me/"
               },
               {
                 "type": "link",
-                "addDate": 1721987039383,
-                "title": "西部落软件搜索",
+                "addDate": 1764749274228,
+                "title": "大盘搜",
+                "icon": "https://logo.clearbit.com/dapanso.com",
+                "url": "https://dapanso.com/search?keyword=&page=1&type="
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
+                "title": "热搜盘",
+                "icon": "https://logo.clearbit.com/www.repanso.com",
+                "url": "http://www.repanso.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
+                "title": "大漠搜索",
+                "icon": "https://logo.clearbit.com/www.dmpans.com",
+                "url": "http://www.dmpans.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274228,
+                "title": "西部落（搜索软件）",
                 "icon": "https://logo.clearbit.com/www.xibuluo.com",
                 "url": "https://www.xibuluo.com/"
               },
               {
                 "type": "link",
-                "addDate": 1764658453660,
+                "addDate": 1764749274228,
+                "title": "易搜（需要关注公号）",
+                "icon": "https://logo.clearbit.com/yiso.fun",
+                "url": "https://yiso.fun/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "爱盘搜（需要关注公号）",
+                "icon": "https://logo.clearbit.com/aipanso.com",
+                "url": "https://aipanso.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "UP云搜（需要关注公号）",
+                "icon": "https://logo.clearbit.com/www.upyunso.com",
+                "url": "https://www.upyunso.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "千帆搜索（需要关注公号）",
+                "icon": "https://logo.clearbit.com/pan.qianfan.app",
+                "url": "https://pan.qianfan.app/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "SearchSearchGo（需要关注公号）",
+                "icon": "https://logo.clearbit.com/ssgo.app",
+                "url": "https://ssgo.app/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "毕方铺 （付费搜索）",
+                "icon": "https://logo.clearbit.com/www.iizhi.cn",
+                "url": "https://www.iizhi.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "万网搜（付费搜索）",
+                "icon": "https://logo.clearbit.com/www.wanwangsou.com",
+                "url": "https://www.wanwangsou.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "大力盘（付费搜索）",
+                "icon": "https://logo.clearbit.com/www.dalipan.com",
+                "url": "https://www.dalipan.com/#/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749274229,
+                "title": "盘搜Pro（付费搜索）",
+                "icon": "https://logo.clearbit.com/panso.pro",
+                "url": "https://panso.pro/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764749292852,
                 "title": "盘他-移动云盘资源共享站",
                 "icon": "https://logo.clearbit.com/www.91panta.cn",
                 "url": "https://www.91panta.cn/"
               },
               {
                 "type": "link",
-                "addDate": 1764658542282,
+                "addDate": 1764749292853,
                 "title": "彼心—移动云盘资源分享论坛",
                 "icon": "https://logo.clearbit.com/www.bixbiy.com",
                 "url": "https://www.bixbiy.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721987154959,
-                "title": "网盘资源整理 ",
-                "icon": "https://logo.clearbit.com/docs.qq.com",
-                "url": "https://docs.qq.com/sheet/DSlZmRHNtREpnaFFO?tab=BB08J2"
-              }
-            ]
-          },
-          {
-            "type": "folder",
-            "addDate": 1764748498079,
-            "title": "官方视频网站",
-            "children": [
-              {
-                "type": "link",
-                "addDate": 1764748498079,
-                "title": "哔哩哔哩",
-                "icon": "https://logo.clearbit.com/www.bilibili.com",
-                "url": "https://www.bilibili.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498079,
-                "title": "腾讯视频",
-                "icon": "https://logo.clearbit.com/v.qq.com",
-                "url": "https://v.qq.com/?ptag=qqbsc"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "优酷",
-                "icon": "https://logo.clearbit.com/www.youku.com",
-                "url": "https://www.youku.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "芒果 TV",
-                "icon": "https://logo.clearbit.com/www.mgtv.com",
-                "url": "https://www.mgtv.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "爱奇艺",
-                "icon": "https://logo.clearbit.com/www.iqiyi.com",
-                "url": "https://www.iqiyi.com/?vfm=m_303_qqll"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "ACFUN",
-                "icon": "https://logo.clearbit.com/www.acfun.cn",
-                "url": "https://www.acfun.cn/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "Youtube",
-                "icon": "https://logo.clearbit.com/www.youtube.com",
-                "url": "https://www.youtube.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764748498080,
-                "title": "CCTV 直播",
-                "icon": "https://logo.clearbit.com/tv.cctv.com",
-                "url": "https://tv.cctv.com/live/index.shtml"
               }
             ]
           },
           {
             "type": "folder",
             "addDate": 1764748547765,
-            "title": "在线观看-电影搜索",
+            "title": "电影搜索/观看",
             "children": [
               {
                 "type": "link",
@@ -3905,7 +3961,7 @@
           {
             "type": "folder",
             "addDate": 1764748651267,
-            "title": "在线观看—国内影视",
+            "title": "国内影视",
             "children": [
               {
                 "type": "link",
@@ -3989,7 +4045,7 @@
           {
             "type": "folder",
             "addDate": 1764748655743,
-            "title": "在线观看—海外影视",
+            "title": "海外影视",
             "children": [
               {
                 "type": "link",
@@ -4235,6 +4291,69 @@
                 "title": "港剧屋",
                 "icon": "https://logo.clearbit.com/www.gj5.tv",
                 "url": "https://www.gj5.tv/"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "addDate": 1764748498079,
+            "title": "官方视频网站",
+            "children": [
+              {
+                "type": "link",
+                "addDate": 1764748498079,
+                "title": "哔哩哔哩",
+                "icon": "https://logo.clearbit.com/www.bilibili.com",
+                "url": "https://www.bilibili.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498079,
+                "title": "腾讯视频",
+                "icon": "https://logo.clearbit.com/v.qq.com",
+                "url": "https://v.qq.com/?ptag=qqbsc"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "优酷",
+                "icon": "https://logo.clearbit.com/www.youku.com",
+                "url": "https://www.youku.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "芒果 TV",
+                "icon": "https://logo.clearbit.com/www.mgtv.com",
+                "url": "https://www.mgtv.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "爱奇艺",
+                "icon": "https://logo.clearbit.com/www.iqiyi.com",
+                "url": "https://www.iqiyi.com/?vfm=m_303_qqll"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "ACFUN",
+                "icon": "https://logo.clearbit.com/www.acfun.cn",
+                "url": "https://www.acfun.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "Youtube",
+                "icon": "https://logo.clearbit.com/www.youtube.com",
+                "url": "https://www.youtube.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764748498080,
+                "title": "CCTV 直播",
+                "icon": "https://logo.clearbit.com/tv.cctv.com",
+                "url": "https://tv.cctv.com/live/index.shtml"
               }
             ]
           }
