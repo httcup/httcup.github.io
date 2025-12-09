@@ -37,6 +37,34 @@
               },
               {
                 "type": "link",
+                "addDate": 1764812580451,
+                "title": "Zoom天气",
+                "icon": "https://logo.clearbit.com/zoom.earth",
+                "url": "https://zoom.earth/"
+              },
+              {
+                "type": "link",
+                "addDate": 1753059798648,
+                "title": "彩云天气 ",
+                "icon": "https://logo.clearbit.com/caiyunai.com",
+                "url": "https://caiyunai.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764812770548,
+                "title": "天气网",
+                "icon": "https://logo.clearbit.com/www.weather.com.cn",
+                "url": "https://www.weather.com.cn/"
+              },
+              {
+                "type": "link",
+                "addDate": 1721983701567,
+                "title": "万年历",
+                "icon": "https://logo.clearbit.com/qq.ip138.com",
+                "url": "https://qq.ip138.com/day/"
+              },
+              {
+                "type": "link",
                 "addDate": 1721983238119,
                 "title": "虫部落快搜",
                 "icon": "https://logo.clearbit.com/search.chongbuluo.com",
@@ -128,13 +156,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1721983487988,
-                "title": "福建教育",
-                "icon": "https://logo.clearbit.com/fjjyxy.edu-edu.com.cn",
-                "url": "https://fjjyxy.edu-edu.com.cn/Index/PortalNew"
-              },
-              {
-                "type": "link",
                 "addDate": 1721983515093,
                 "title": "微信传输助手",
                 "icon": "https://logo.clearbit.com/filehelper.weixin.qq.com",
@@ -192,16 +213,16 @@
               {
                 "type": "link",
                 "addDate": 1721983682507,
-                "title": "中国传统节日",
+                "title": "二十四节气日历",
                 "icon": "https://logo.clearbit.com/wannianli.tianqi.com",
                 "url": "https://wannianli.tianqi.com/jieri/"
               },
               {
                 "type": "link",
-                "addDate": 1721983701567,
-                "title": "万年历",
-                "icon": "https://logo.clearbit.com/qq.ip138.com",
-                "url": "https://qq.ip138.com/day/"
+                "addDate": 1721985850623,
+                "title": "qrbtf二维码生成",
+                "icon": "https://logo.clearbit.com/qrbtf.com",
+                "url": "https://qrbtf.com/zh"
               },
               {
                 "type": "link",
@@ -268,6 +289,20 @@
               },
               {
                 "type": "link",
+                "addDate": 1750234390467,
+                "title": "天翼云电脑",
+                "icon": "https://logo.clearbit.com/pc.ctyun.cn",
+                "url": "https://pc.ctyun.cn/#/login"
+              },
+              {
+                "type": "link",
+                "addDate": 1723531888106,
+                "title": "Mac",
+                "icon": "https://logo.clearbit.com/sunlogin.oray.com",
+                "url": "https://sunlogin.oray.com/share?shareid=1441678765"
+              },
+              {
+                "type": "link",
                 "addDate": 1721983900483,
                 "title": "云电脑",
                 "icon": "https://logo.clearbit.com/sunlogin.oray.com",
@@ -275,10 +310,38 @@
               },
               {
                 "type": "link",
+                "addDate": 1733790868489,
+                "title": "书签 pro-vecel",
+                "icon": "https://logo.clearbit.com/vercel.com",
+                "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
+              },
+              {
+                "type": "link",
                 "addDate": 1721983925716,
                 "title": "GitHub",
                 "icon": "https://logo.clearbit.com/github.com",
                 "url": "https://github.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1728350718063,
+                "title": "Cloudflare",
+                "icon": "https://logo.clearbit.com/dash.cloudflare.com",
+                "url": "https://dash.cloudflare.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1728629110752,
+                "title": "【趣域网】",
+                "icon": "https://logo.clearbit.com/www.quyu.net",
+                "url": "https://www.quyu.net/"
+              },
+              {
+                "type": "link",
+                "addDate": 1728369302963,
+                "title": "扣子 Bot",
+                "icon": "https://logo.clearbit.com/www.coze.cn",
+                "url": "https://www.coze.cn/"
               },
               {
                 "type": "link",
@@ -317,13 +380,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1721985850623,
-                "title": "qrbtf二维码生成",
-                "icon": "https://logo.clearbit.com/qrbtf.com",
-                "url": "https://qrbtf.com/zh"
-              },
-              {
-                "type": "link",
                 "addDate": 1723084795377,
                 "title": "业务登录",
                 "icon": "https://logo.clearbit.com/xw.ju72.cn",
@@ -338,20 +394,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1723531888106,
-                "title": "Mac",
-                "icon": "https://logo.clearbit.com/sunlogin.oray.com",
-                "url": "https://sunlogin.oray.com/share?shareid=1441678765"
-              },
-              {
-                "type": "link",
-                "addDate": 1728350718063,
-                "title": "Cloudflare",
-                "icon": "https://logo.clearbit.com/dash.cloudflare.com",
-                "url": "https://dash.cloudflare.com/"
-              },
-              {
-                "type": "link",
                 "addDate": 1721983199698,
                 "title": "WPS待办",
                 "icon": "https://logo.clearbit.com/todo.wps.cn",
@@ -359,17 +401,10 @@
               },
               {
                 "type": "link",
-                "addDate": 1728369302963,
-                "title": "扣子 Bot",
-                "icon": "https://logo.clearbit.com/www.coze.cn",
-                "url": "https://www.coze.cn/"
-              },
-              {
-                "type": "link",
-                "addDate": 1728629110752,
-                "title": "【趣域网】",
-                "icon": "https://logo.clearbit.com/www.quyu.net",
-                "url": "https://www.quyu.net/"
+                "addDate": 1721983487988,
+                "title": "福建教育",
+                "icon": "https://logo.clearbit.com/fjjyxy.edu-edu.com.cn",
+                "url": "https://fjjyxy.edu-edu.com.cn/Index/PortalNew"
               },
               {
                 "type": "link",
@@ -377,20 +412,6 @@
                 "title": "福州大学至诚学院",
                 "icon": "https://logo.clearbit.com/fzu.edu-xl.com",
                 "url": "https://fzu.edu-xl.com/StudentSiteNew/StudentSiteIndexNew/IndexNew"
-              },
-              {
-                "type": "link",
-                "addDate": 1749607859836,
-                "title": "去水印下载的视频",
-                "icon": "https://logo.clearbit.com/touchfish.ltd",
-                "url": "https://touchfish.ltd/"
-              },
-              {
-                "type": "link",
-                "addDate": 1733790868489,
-                "title": "pintree –",
-                "icon": "https://logo.clearbit.com/vercel.com",
-                "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
               },
               {
                 "type": "link",
@@ -437,16 +458,9 @@
               {
                 "type": "link",
                 "addDate": 1749777608560,
-                "title": "圈 X 和 Shadow去广告分流",
+                "title": "限免软件+圈 X 和 Shadow去广告分流",
                 "icon": "https://logo.clearbit.com/whatshub.top",
                 "url": "https://whatshub.top/"
-              },
-              {
-                "type": "link",
-                "addDate": 1750234390467,
-                "title": "天翼云电脑",
-                "icon": "https://logo.clearbit.com/pc.ctyun.cn",
-                "url": "https://pc.ctyun.cn/#/login"
               },
               {
                 "type": "link",
@@ -472,16 +486,9 @@
               {
                 "type": "link",
                 "addDate": 1752548018085,
-                "title": "GD音乐台 - GD Studio's Online Music Platform",
+                "title": "GD音乐台 ",
                 "icon": "https://logo.clearbit.com/music.gdstudio.xyz",
                 "url": "https://music.gdstudio.xyz/"
-              },
-              {
-                "type": "link",
-                "addDate": 1753059798648,
-                "title": "彩云天气 - 天气雷达,分钟级天气预报,街道天气预报",
-                "icon": "https://logo.clearbit.com/caiyunai.com",
-                "url": "https://caiyunai.com/map/#118.1818,26.6375"
               },
               {
                 "type": "link",
@@ -517,6 +524,13 @@
                 "title": "好拼 - 免费在线拼图工具 - 布局拼图 & 长图拼接",
                 "icon": "https://logo.clearbit.com/img.ops-coffee.com",
                 "url": "https://img.ops-coffee.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764817516520,
+                "title": "BananaAI生图提示词",
+                "icon": "https://logo.clearbit.com/glidea.github.io",
+                "url": "https://glidea.github.io/banana-prompt-quicker/"
               }
             ]
           },
@@ -3633,6 +3647,13 @@
                 "title": "聚合导航 - 素材、资源、软件、课程、工具····应有尽有，聚合资源、筛选分类、省时有效···",
                 "icon": "https://logo.clearbit.com/www.yqgdh.com",
                 "url": "https://www.yqgdh.com/#/"
+              },
+              {
+                "type": "link",
+                "addDate": 1764830974199,
+                "title": "数智理论资源-经济、政治、文化、社会、党建、科教、生态、国防、国际、图书、原创、视频、网评等理论资源平台|数字素养网",
+                "icon": "https://logo.clearbit.com/szsyw.cn",
+                "url": "https://szsyw.cn/lilun"
               }
             ]
           }
@@ -4046,13 +4067,6 @@
                 "title": "奈飞工厂",
                 "icon": "https://logo.clearbit.com/www.netflixgc.com",
                 "url": "https://www.netflixgc.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1764752853171,
-                "title": "影猫の仓库",
-                "icon": "https://logo.clearbit.com/www.ymck.pro",
-                "url": "https://www.ymck.pro/"
               }
             ]
           },
@@ -40941,17 +40955,17 @@
       },
       {
         "type": "link",
-        "addDate": 1739783995481,
-        "title": "豆包",
-        "icon": "https://logo.clearbit.com/www.doubao.com",
-        "url": "https://www.doubao.com/chat/"
-      },
-      {
-        "type": "link",
         "addDate": 1764729499412,
         "title": "ChatGPT",
         "icon": "https://logo.clearbit.com/chatgpt.com",
         "url": "https://chatgpt.com/"
+      },
+      {
+        "type": "link",
+        "addDate": 1739783995481,
+        "title": "豆包",
+        "icon": "https://logo.clearbit.com/www.doubao.com",
+        "url": "https://www.doubao.com/chat/"
       }
     ]
   }
