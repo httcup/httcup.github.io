@@ -538,6 +538,20 @@
                 "title": "AI提示词",
                 "icon": "https://logo.clearbit.com/promptup.net",
                 "url": "https://promptup.net/"
+              },
+              {
+                "type": "link",
+                "addDate": 1786605594258,
+                "title": "花生壳控制台",
+                "icon": "https://logo.clearbit.com/console-hsk-ng.oray.com",
+                "url": "https://console-hsk-ng.oray.com/console/file-hosting?page=1&size=20"
+              },
+              {
+                "type": "link",
+                "addDate": 1786605715347,
+                "title": "贝锐花生壳",
+                "icon": "https://logo.clearbit.com/drop.ficp.fun",
+                "url": "https://drop.ficp.fun/"
               }
             ]
           },
@@ -3815,6 +3829,20 @@
                 "title": "Z2H字帖 | 超级好用的字帖生成工具",
                 "icon": "https://logo.clearbit.com/z2h.cn",
                 "url": "https://z2h.cn/hanzi"
+              },
+              {
+                "type": "link",
+                "addDate": 1786411352216,
+                "title": "工具列表 | 教辅百宝箱",
+                "icon": "https://logo.clearbit.com/edu.zmpai.com",
+                "url": "https://edu.zmpai.com/all-tools"
+              },
+              {
+                "type": "link",
+                "addDate": 1786580052914,
+                "title": "微信读书统计与年度阅读报告生成工具｜读迹",
+                "icon": "https://logo.clearbit.com/weread.weiyexing.win",
+                "url": "https://weread.weiyexing.win/"
               }
             ]
           }
