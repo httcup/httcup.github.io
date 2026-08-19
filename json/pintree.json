@@ -552,6 +552,12 @@
                 "title": "贝锐花生壳",
                 "icon": "https://logo.clearbit.com/drop.ficp.fun",
                 "url": "https://drop.ficp.fun/"
+              },
+              {
+                "type": "link",
+                "title": "GitHub 中国开发者",
+                "icon": "https://logo.clearbit.com/github.com",
+                "url": "https://github.com/1c7/chinese-independent-developer"
               }
             ]
           },
@@ -818,6 +824,83 @@
                 "title": "阿里企业邮箱",
                 "icon": "https://logo.clearbit.com/qiye.aliyun.com",
                 "url": "https://qiye.aliyun.com/alimail/auth/login?reurl=%2Falimail%2F"
+              }
+            ]
+          },
+          {
+            "type": "folder",
+            "addDate": 1787043310663,
+            "title": "天气专用",
+            "children": [
+              {
+                "type": "link",
+                "addDate": 1787043467954,
+                "title": "Zoom Earth（推荐）",
+                "icon": "https://logo.clearbit.com/zoom.earth",
+                "url": "https://zoom.earth/"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043421546,
+                "title": "彩云天气（推荐）",
+                "icon": "https://logo.clearbit.com/caiyunapp.com",
+                "url": "https://caiyunapp.com/map"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043697409,
+                "title": "气象数据网综合实况 （推荐）",
+                "icon": "https://logo.clearbit.com/data.cma.cn",
+                "url": "https://data.cma.cn/dataGis/static/gridgis/#/pcindex"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043350598,
+                "title": "Windy",
+                "icon": "https://logo.clearbit.com/www.windy.com",
+                "url": "https://www.windy.com/?116.724,39.905,8"
+              },
+              {
+                "type": "link",
+                "addDate": 1787044124499,
+                "title": "气象台的未来七天降水量预报",
+                "icon": "https://logo.clearbit.com/www.nmc.cn",
+                "url": "https://www.nmc.cn/publish/precipitation/1-day.html"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043970386,
+                "title": "中国天气网全国雷达拼图",
+                "icon": "https://logo.clearbit.com/www.weather.com.cn",
+                "url": "https://www.weather.com.cn/radar/"
+              },
+              {
+                "type": "link",
+                "addDate": 1787044508968,
+                "title": "台风路径（浙江版）",
+                "icon": "https://logo.clearbit.com/typhoon.slt.zj.gov.cn",
+                "url": "https://typhoon.slt.zj.gov.cn/#/"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043744949,
+                "title": "ventusky",
+                "icon": "https://logo.clearbit.com/www.ventusky.com",
+                "url": "https://www.ventusky.com/"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043522801,
+                "title": "向日葵 8 号日本卫星",
+                "icon": "https://logo.clearbit.com/himawari8.nict.go.jp",
+                "url": "https://himawari8.nict.go.jp/zh/himawari8-image.htm"
+              },
+              {
+                "type": "link",
+                "addDate": 1787043933439,
+                "title": "空气质量历史数据/实时数据",
+                "icon": "https://logo.clearbit.com/aqicn.org",
+                "url": "https://aqicn.org/historical/cn"
               }
             ]
           },
@@ -26725,12 +26808,6 @@
                   },
                   {
                     "type": "link",
-                    "title": "GitHub 中国开发者",
-                    "icon": "https://logo.clearbit.com/github.com",
-                    "url": "https://github.com/1c7/chinese-independent-developer"
-                  },
-                  {
-                    "type": "link",
                     "title": "GitHub 星聚弃疗榜",
                     "icon": "https://logo.clearbit.com/github.com",
                     "url": "https://github.com/zhaoolee/StarsAndClown"
@@ -41176,6 +41253,13 @@
         "title": "豆包",
         "icon": "https://logo.clearbit.com/www.doubao.com",
         "url": "https://www.doubao.com/chat/"
+      },
+      {
+        "type": "link",
+        "addDate": 1786614220603,
+        "title": "小胡小胡的书签",
+        "icon": "https://logo.clearbit.com/wwwwww.ficp.fun",
+        "url": "https://wwwwww.ficp.fun/"
       }
     ]
   }
