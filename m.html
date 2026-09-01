@@ -49,4 +49,147 @@
             padding-bottom: 15px;
             margin: 0 0 25px 0;
             border-bottom: 1px solid #f0f2f5;
-            font-size
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+            text-align: center;
+        }
+
+        .bizmail_loginpanel form {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 表单行布局 */
+        .bizmail_loginpanel .bizmail_column {
+            height: auto;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bizmail_loginpanel .bizmail_column label {
+            display: block;
+            float: none;
+            width: 60px;
+            height: auto;
+            line-height: 1;
+            font-size: 14px;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        .bizmail_loginpanel .bizmail_column .bizmail_inputArea {
+            float: none;
+            width: calc(100% - 60px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 输入框美化 */
+        .bizmail_loginpanel input.text {
+            flex: 1;
+            font-size: 14px;
+            width: 100%;
+            height: 44px;
+            margin: 0;
+            padding: 0 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            background: #fafbfc;
+        }
+
+        .bizmail_loginpanel input.text:focus {
+            outline: none;
+            border-color: #4096ff;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(64, 150, 255, 0.15);
+        }
+
+        /* 域名后缀/下拉框美化 */
+        .bizmail_loginpanel .bizmail_column span {
+            font-size: 14px;
+            color: #666;
+            margin-left: 2px;
+            line-height: 1;
+        }
+
+        .bizmail_loginpanel select {
+            width: 130px;
+            height: 44px;
+            margin: 0;
+            padding: 0 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            background: #fafbfc;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .bizmail_loginpanel select:focus {
+            outline: none;
+            border-color: #4096ff;
+            background: #fff;
+        }
+
+        /* 提交按钮区域 */
+        .bizmail_loginpanel .bizmail_SubmitArea {
+            margin-left: 0;
+            clear: both;
+            margin-top: 10px;
+        }
+
+        .bizmail_loginpanel .bizmail_SubmitArea input[type="submit"] {
+            width: 100%;
+            height: 46px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #4096ff, #2979ff);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bizmail_loginpanel .bizmail_SubmitArea input[type="submit"]:hover {
+            background: linear-gradient(135deg, #2979ff, #1967d2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(64, 150, 255, 0.3);
+        }
+
+        .bizmail_loginpanel .bizmail_SubmitArea a {
+            display: inline-block;
+            margin-top: 15px;
+            margin-left: 0;
+            font-size: 13px;
+            color: #4096ff;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .bizmail_loginpanel .bizmail_SubmitArea a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <!-- 修复：替换HTTP为HTTPS、编码改为UTF-8 -->
+    <script type="text/javascript" src="https://exmail.qq.com/zh_CN/htmledition/js_biz/outerlogin.js" charset="UTF-8"></script>
+
+    <script type="text/javascript">
+        // 【核心配置】修改这里为你的企业邮箱域名，多域名用分号分隔 例：xxx.com;xxx.cn
+        writeLoginPanel({
+            domainlist: "163t.cn", 
+            mode: "vertical"
+        });
+    </script>
+&lt;/head&gt;
+&lt;body&gt;
+    <!-- JS自动渲染登录面板，无需手动写HTML结构 -->
+</body>
+</html>
