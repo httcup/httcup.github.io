@@ -45,6 +45,18 @@
             padding: 30px 25px;
         }
 
+        /* 新增Logo样式 */
+        .bizmail-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .bizmail-logo img {
+            width: auto;
+            height: 48px;
+            object-fit: contain;
+        }
+
         .bizmail_loginpanel h3 {
             padding-bottom: 15px;
             margin: 0 0 25px 0;
@@ -182,14 +194,30 @@
     <script type="text/javascript" src="https://exmail.qq.com/zh_CN/htmledition/js_biz/outerlogin.js" charset="UTF-8"></script>
 
     <script type="text/javascript">
+        // 重写渲染函数，插入官方Logo图片
+        const oldWriteLoginPanel = writeLoginPanel;
+        writeLoginPanel = function(e){
+            oldWriteLoginPanel(e);
+            // 给登录面板顶部添加Logo
+            const panel = document.querySelector('.bizmail_LoginBox');
+            if(panel && !document.querySelector('.bizmail-logo')){
+                const logoDiv = document.createElement('div');
+                logoDiv.className = 'bizmail-logo';
+                logoDiv.innerHTML = '<img src="https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/images/logo/logo_biz_new/logo_biz_24_04748d4.png" alt="腾讯企业邮箱">';
+                // 插入到标题上方
+                const title = panel.querySelector('h3');
+                panel.insertBefore(logoDiv, title);
+            }
+        }
+
         // 【核心配置】修改这里为你的企业邮箱域名，多域名用分号分隔 例：xxx.com;xxx.cn
         writeLoginPanel({
-            domainlist: "163t.cn", 
+            domainlist: "undefined163t.cn", 
             mode: "vertical"
         });
     </script>
-&lt;/head&gt;
-&lt;body&gt;
-    <!-- JS自动渲染登录面板，无需手动写HTML结构 -->
+</head>
+<body>
+    <!-- JS自动渲染登录面板+Logo，无需手动写HTML结构 -->
 </body>
 </html>
