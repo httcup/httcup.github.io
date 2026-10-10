@@ -822,6 +822,46 @@
 			        <style>        .bizmail_loginpanel{font-size:12px;width:300px;height:auto;border:1px solid #cccccc;background:#ffffff;}        .bizmail_LoginBox{padding:10px 15px;}        .bizmail_loginpanel h3{padding-bottom:5px;margin:0 0 5px 0;border-bottom:1px solid #cccccc;font-size:14px;}        .bizmail_loginpanel form{margin:0;padding:0;}        .bizmail_loginpanel input.text{font-size:12px;width:100px;height:20px;margin:0 2px;border:1px solid #C3C3C3;border-color:#7C7C7C #C3C3C3 #C3C3C3 #9A9A9A;}        .bizmail_loginpanel .bizmail_column{height:28px;}        .bizmail_loginpanel .bizmail_column label{display:block;float:left;width:30px;height:24px;line-height:24px;font-size:12px;}        .bizmail_loginpanel .bizmail_column .bizmail_inputArea{float:left;width:240px;}        .bizmail_loginpanel .bizmail_column span{font-size:12px;word-wrap:break-word;margin-left: 2px;line-height:200%;}        .bizmail_loginpanel .bizmail_SubmitArea{margin-left:30px;clear:both;}        .bizmail_loginpanel .bizmail_SubmitArea a{font-size:12px;margin-left:5px;}        .bizmail_loginpanel select{width:110px;height:20px;margin:0 2px;}        </style>        <script type="text/javascript" src="http://exmail.qq.com/zh_CN/htmledition/js_biz/outerlogin.js"  charset="gb18030"></script>        <script type="text/javascript">        writeLoginPanel({domainlist:"undefined163t.cn", mode:"vertical"});        </script>        
 		</script>
 
+<script>
+// ===== 搜索引擎选择 + 搜索跳转（修复新增）=====
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const options = document.querySelectorAll('#options-container .option');
+    let currentEngine = '';
+
+    // 默认选中第一个选项（秘塔），如需默认百度可改为 options[3]
+    options[0].classList.add('selected');
+    currentEngine = options[0].dataset.value;
+
+    // 点击选项：切换选中样式并记录引擎地址
+    options.forEach(opt => {
+        opt.addEventListener('click', () => {
+            options.forEach(o => o.classList.remove('selected'));
+            opt.classList.add('selected');
+            currentEngine = opt.dataset.value;
+        });
+    });
+
+    // 执行搜索跳转
+    const doSearch = () => {
+        const query = searchInput.value.trim();
+        if (!query) return;
+        if (currentEngine) {
+            window.open(currentEngine + encodeURIComponent(query), '_blank');
+        } else {
+            searchBookmarks(query); // 未选引擎时退回本地书签搜索
+        }
+    };
+
+    // 按钮点击
+    searchButton.addEventListener('click', doSearch);
+    // 输入框回车
+    searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') doSearch();
+    });
+});
+</script>
 	</body>
 
 </html>
