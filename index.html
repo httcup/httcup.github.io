@@ -385,19 +385,12 @@
 				return card;
 			}
 
-			// SHA-256 hash helper for folder lock
-			async function sha256Hex(text) {
-				const data = new TextEncoder().encode(text);
-				const buf = await crypto.subtle.digest('SHA-256', data);
-				return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-			}
-
-			// Check folder password lock, return true if unlocked / not locked
+			// Check folder password lock (Base64), return true if unlocked / not locked
 			async function checkFolderLock(folder) {
 				if (!folder || !folder.lock) return true;
 				const pwd = prompt('该文件夹已加密，请输入密码解锁「' + folder.title + '」');
 				if (pwd === null) return false;
-				if ((await sha256Hex(pwd)) !== folder.lock) {
+				if (btoa(pwd) !== folder.lock) {
 					alert('密码错误，无法进入');
 					return false;
 				}
@@ -412,7 +405,7 @@
 					if (lockHash) {
 						const pwd = prompt('该文件夹已加密，请输入密码解锁「' + title + '」');
 						if (pwd === null) return;
-						if ((await sha256Hex(pwd)) !== lockHash) {
+						if (btoa(pwd) !== lockHash) {
 							alert('密码错误，无法进入');
 							return;
 						}
