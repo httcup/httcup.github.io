@@ -298,7 +298,6 @@
 			function searchInData(data, query) {
 				let results = [];
 				data.forEach(item => {
-					if (item.lock) return; // 加密文件夹及其内容不进入搜索结果
 					if (item.title.toLowerCase().includes(query)) {
 						results.push(item);
 					}
