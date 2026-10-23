@@ -298,6 +298,7 @@
 			function searchInData(data, query) {
 				let results = [];
 				data.forEach(item => {
+					if (item.lock) return; // 加密文件夹及其内容不进入搜索结果
 					if (item.title.toLowerCase().includes(query)) {
 						results.push(item);
 					}
@@ -385,11 +386,38 @@
 				return card;
 			}
 
+			// SHA-256 hash helper for folder lock
+			async function sha256Hex(text) {
+				const data = new TextEncoder().encode(text);
+				const buf = await crypto.subtle.digest('SHA-256', data);
+				return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+			}
+
+			// Check folder password lock, return true if unlocked / not locked
+			async function checkFolderLock(folder) {
+				if (!folder || !folder.lock) return true;
+				const pwd = prompt('该文件夹已加密，请输入密码解锁「' + folder.title + '」');
+				if (pwd === null) return false;
+				if ((await sha256Hex(pwd)) !== folder.lock) {
+					alert('密码错误，无法进入');
+					return false;
+				}
+				return true;
+			}
+
 			// Create folder card element
-			function createFolderCard(title, children, path) {
+			function createFolderCard(title, children, path, lockHash) {
 				const card = document.createElement('div');
 				card.className = 'folder-card text-gray rounded-lg cursor-pointer flex flex-col items-center';
-				card.onclick = () => {
+				card.onclick = async () => {
+					if (lockHash) {
+						const pwd = prompt('该文件夹已加密，请输入密码解锁「' + title + '」');
+						if (pwd === null) return;
+						if ((await sha256Hex(pwd)) !== lockHash) {
+							alert('密码错误，无法进入');
+							return;
+						}
+					}
 					const newPath = path.concat({
 						title,
 						children
@@ -469,8 +497,9 @@
 								toggleIcon.classList.add('rotate-90');
 							}
 
-							navItem.onclick = (e) => {
+							navItem.onclick = async (e) => {
 								e.stopPropagation();
+								if (!(await checkFolderLock(folder))) return;
 								document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList
 									.remove('sidebar-active'));
 								navItem.classList.add('sidebar-active');
@@ -484,8 +513,9 @@
 								}));
 							};
 						} else {
-							navItem.onclick = (e) => {
+							navItem.onclick = async (e) => {
 								e.stopPropagation();
+								if (!(await checkFolderLock(folder))) return;
 								document.querySelectorAll('#navigation .sidebar-active').forEach(el => el.classList
 									.remove('sidebar-active'));
 								navItem.classList.add('sidebar-active');
@@ -608,7 +638,7 @@
 					const folderSection = document.createElement('div');
 					folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6';
 					folders.forEach(folder => {
-						const card = createFolderCard(folder.title, folder.children, path);
+						const card = createFolderCard(folder.title, folder.children, path, folder.lock);
 						folderSection.appendChild(card);
 					});
 					container.appendChild(folderSection);
