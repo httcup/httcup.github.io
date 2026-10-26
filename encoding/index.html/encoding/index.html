@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ç¼è§£ç å·¥å·</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #1f2329;
+    --text-2: #6b7280;
+    --border: #e5e7eb;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-soft: #eff6ff;
+    --danger: #dc2626;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111827;
+      --card: #1f2937;
+      --text: #f3f4f6;
+      --text-2: #9ca3af;
+      --border: #374151;
+      --primary: #60a5fa;
+      --primary-hover: #93c5fd;
+      --primary-soft: rgba(96, 165, 250, 0.12);
+      --danger: #f87171;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 24px 16px 48px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 28px; }
+  header h1 { font-size: 28px; font-weight: 700; letter-spacing: 0.5px; }
+  header .sub { color: var(--text-2); margin-top: 8px; font-size: 14px; }
+  .notice {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--primary-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--text-2);
+  }
+  .notice strong { color: var(--text); display: block; margin-bottom: 2px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 14px; }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--text-2); margin-bottom: 6px; }
+  textarea, select {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    font-size: 14px;
+    padding: 10px 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+  textarea:focus, select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+  select { font-family: inherit; cursor: pointer; appearance: auto; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+    font-family: inherit;
+  }
+  button:active { transform: translateY(1px); }
+  .btn-primary { background: var(--primary); color: #fff; flex: 1; min-width: 120px; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-ghost { background: transparent; color: var(--text-2); border: 1px solid var(--border); }
+  .btn-ghost:hover { color: var(--primary); border-color: var(--primary); }
+  .result-area { position: relative; }
+  .result-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 6px;
+  }
+  .result-actions button {
+    padding: 5px 12px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border-radius: 6px;
+  }
+  .btn-copy { background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border); }
+  .btn-copy:hover { background: var(--primary); color: #fff; }
+  .btn-reverse { background: transparent; color: var(--text-2); border: 1px dashed var(--border); }
+  .btn-reverse:hover { color: var(--primary); border-color: var(--primary); border-style: solid; }
+  .error-msg { color: var(--danger); font-size: 13px; margin-top: 8px; display: none; }
+  .error-msg.show { display: block; }
+  .hint { color: var(--text-2); font-size: 12.5px; margin-top: 6px; }
+  footer { text-align: center; color: var(--text-2); font-size: 12.5px; margin-top: 24px; }
+  footer a { color: var(--primary); text-decoration: none; }
+  .hidden { display: none !important; }
+  .badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>ç¼è§£ç å·¥å·</h1>
+    <p class="sub">Base64 Â· Hex Â· URL Â· HTML å®ä½ ï½ ç¼ç  / è§£ç </p>
+  </header>
+
+  <div class="notice">
+    <div>
+      <strong>ç¼ç ä¸æ¯å å¯</strong>
+      Base64 ç­ç¼ç åªæ¯æ ¼å¼è½¬æ¢ï¼ä¸è½ä¿æ¤ç§å¯ãè¾å¥ä¸ç»æåå¨æ¬å°æµè§å¨å¤çï¼<b>ä¸ä¸ä¼ ãä¸åå¥ URLãä¸ä¿å­</b>ï¼è¯·æ¾å¿ä½¿ç¨ã
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>è¾å¥ææ¬</h2>
+    <div class="field">
+      <textarea id="input" placeholder="å¨æ­¤è¾å¥è¦è½¬æ¢çåå®¹â¦" spellcheck="false"></textarea>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="format">ç¼ç æ ¼å¼</label>
+        <select id="format">
+          <option value="base64">Base64</option>
+          <option value="hex">Hex</option>
+          <option value="url">URL</option>
+          <option value="html">HTML å®ä½</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="action">æä½</label>
+        <select id="action">
+          <option value="encode">ç¼ç </option>
+          <option value="decode">è§£ç </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field hidden" id="urlModeField">
+      <label for="urlMode">URL æ¨¡å¼</label>
+      <select id="urlMode">
+        <option value="component">ç»ä»¶æ¨¡å¼ï¼+ åæ ·ä¿çï¼</option>
+        <option value="form">è¡¨åæ¨¡å¼ï¼+ è¿åä¸ºç©ºæ ¼ï¼</option>
+      </select>
+      <div class="hint">ç»ä»¶æ¨¡å¼æ URL ç»ä»¶è§åå¤çï¼ç©ºæ ¼ç¼ç ä¸º %20ï¼è¡¨åæ¨¡å¼éµå¾ª application/x-www-form-urlencodedï¼ç©ºæ ¼ç¼ç ä¸º +ã</div>
+    </div>
+
+    <div class="btn-row">
+      <button id="convertBtn" class="btn-primary">è½¬æ¢</button>
+    </div>
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+
+  <div class="card result-area">
+    <h2>è½¬æ¢ç»æ</h2>
+    <div class="result-actions">
+      <button id="copyBtn" class="btn-copy">å¤å¶</button>
+      <button id="reverseBtn" class="btn-reverse">ä½¿ç¨ç»æååè½¬æ¢</button>
+    </div>
+    <textarea id="output" readonly placeholder="ç»æå°æ¾ç¤ºå¨è¿éâ¦" spellcheck="false"></textarea>
+    <div class="hint" id="copyHint"></div>
+  </div>
+
+  <footer>
+    çº¯åç«¯æ¬å°å·¥å·ï¼æ ä»»ä½å¤é¨è¯·æ±ãå¯èªè¡é¨ç½²å° GitHub Pages / Vercel / Netlify ç­éææç®¡ã
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var inputEl = document.getElementById("input");
+  var outputEl = document.getElementById("output");
+  var formatEl = document.getElementById("format");
+  var actionEl = document.getElementById("action");
+  var urlModeEl = document.getElementById("urlMode");
+  var urlModeField = document.getElementById("urlModeField");
+  var convertBtn = document.getElementById("convertBtn");
+  var copyBtn = document.getElementById("copyBtn");
+  var reverseBtn = document.getElementById("reverseBtn");
+  var errorMsg = document.getElementById("errorMsg");
+  var copyHint = document.getElementById("copyHint");
+
+  /* ---------- UTF-8 å®å¨ç Base64 ---------- */
+  function utf8ToBytes(str) {
+    return new TextEncoder().encode(str);
+  }
+  function bytesToUtf8(bytes) {
+    return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  }
+  function bytesToBase64(bytes) {
+    var binary = "";
+    var chunk = 0x8000;
+    for (var i = 0; i < bytes.length; i += chunk) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+    }
+    return btoa(binary);
+  }
+  function base64ToBytes(b64) {
+    var binary = atob(b64);
+    var bytes = new Uint8Array(binary.length);
+    for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+
+  /* ---------- Hex ---------- */
+  function bytesToHex(bytes) {
+    var out = [];
+    for (var i = 0; i < bytes.length; i++) {
+      out.push(bytes[i].toString(16).padStart(2, "0"));
+    }
+    return out.join("");
+  }
+  function hexToBytes(hex) {
+    // å®¹å¿ç©ºæ ¼ã0x åç¼ãéå·ãè¿å­ç¬¦ç­åéç¬¦
+    var cleaned = hex
+      .replace(/^0x/i, "")
+      .replace(/[\s,ï¼ã;ï¼:\-]/g, "")
+      .trim();
+    if (cleaned.length === 0) throw new Error("ç©ºåå®¹");
+    if (cleaned.length % 2 !== 0) throw new Error("Hex å­ç¬¦ä¸²é¿åº¦å¿é¡»ä¸ºå¶æ°");
+    if (!/^[0-9a-fA-F]+$/.test(cleaned)) throw new Error("åå«é Hex å­ç¬¦");
+    var bytes = new Uint8Array(cleaned.length / 2);
+    for (var i = 0; i < bytes.length; i++) {
+      bytes[i] = parseInt(cleaned.substr(i * 2, 2), 16);
+    }
+    return bytes;
+  }
+
+  /* ---------- HTML å®ä½ ---------- */
+  var HTML_ENTITIES = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  };
+  function htmlEncode(str) {
+    return str.replace(/[&<>"']/g, function (ch) { return HTML_ENTITIES[ch]; });
+  }
+  function htmlDecode(str) {
+    // å©ç¨ DOM è§£ç å®ä½ï¼textarea åä¸ä¼æ§è¡èæ¬ï¼å®å¨
+    var el = document.createElement("textarea");
+    el.innerHTML = str;
+    return el.value;
+  }
+
+  /* ---------- ä¸»è½¬æ¢ ---------- */
+  function convert() {
+    errorMsg.classList.remove("show");
+    copyHint.textContent = "";
+    var text = inputEl.value;
+    var format = formatEl.value;
+    var action = actionEl.value;
+    var urlMode = urlModeEl.value;
+
+    if (!text) {
+      outputEl.value = "";
+      return;
+    }
+
+    try {
+      var result = doConvert(text, format, action, urlMode);
+      outputEl.value = result;
+    } catch (e) {
+      outputEl.value = "";
+      errorMsg.textContent = (action === "decode" ? "è§£ç å¤±è´¥" : "ç¼ç å¤±è´¥") + "ï¼" + (e && e.message ? e.message : String(e));
+      errorMsg.classList.add("show");
+    }
+  }
+
+  function doConvert(text, format, action, urlMode) {
+    var bytes;
+    if (action === "encode") {
+      switch (format) {
+        case "base64":
+          return bytesToBase64(utf8ToBytes(text));
+        case "hex":
+          return bytesToHex(utf8ToBytes(text));
+        case "url":
+          if (urlMode === "form") {
+            return encodeURIComponent(text).replace(/%20/g, "+");
+          }
+          return encodeURIComponent(text);
+        case "html":
+          return htmlEncode(text);
+        default:
+          throw new Error("æªç¥æ ¼å¼");
+      }
+    } else {
+      switch (format) {
+        case "base64":
+          return bytesToUtf8(base64ToBytes(text.trim()));
+        case "hex":
+          return bytesToUtf8(hexToBytes(text));
+        case "url":
+          if (urlMode === "form") {
+            return decodeURIComponent(text.replace(/\+/g, " "));
+          }
+          return decodeURIComponent(text);
+        case "html":
+          return htmlDecode(text);
+        default:
+          throw new Error("æªç¥æ ¼å¼");
+      }
+    }
+  }
+
+  /* ----------, äº¤äºº ---------- */
+  function updateUrlModeVisibility() {
+    urlModeField.classList.toggle("hidden", formatEl.value !== "url");
+  }
+
+  function copyResult() {
+    if (!outputEl.value) return;
+    var done = function () {
+      copyHint.textContent = "å·²å¤åæå°åªè´´æ¿";
+      setTimeout(function () { copyHint.textContent = ""; }, 1600);
+    };
+    if (navigator.clipboard&& window.isSecureContext) {
+      navigator.clipboard.writeText(outputEl.value).then(done, function () {
+        fallbackCopy(done);
+      });
+    } else {
+      fallbackCopy(done);
+    }
+  }
+
+  function fallbackCopy(onDone) {
+    outputEl.select();
+    outputEl.setSelectionRange(0, outputEl.value.length);
+    try {
+      document.execCommand("copy");
+      onDone();
+    } catch (e) {
+      copyHint.textContent = "å¤å¶å¤±è´¥ï¼è¯·æå¨éæ©å¤å¶";
+    }
+  }
+
+  function reverseConvert() {
+    if (!outputEl.value) return;
+    inputEl.value = outputEl.value;
+    // èªå¨åæ¢æ¹åï¼ç¼ç  <-> è§£ç 
+    actionEl.value = actionEl.value === "encode" ? "decode" : "encode";
+    convert();
+  }
+
+  formatEl.addEventListener("change", updateUrlModeVisibility);
+  convertBtn.addEventListener("click", convert);
+  copyBtn.addEventListener("click", copyResult);
+  reverseBtn.addEventListener("click", reverseConvert);
+  // Ctrl/Cmd + Enter å¿«æ·è½¬æ¢
+  inputEl.addEventListener("keydown", function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+      e.preventDefault();
+      convert();
+    }
+  });
+
+  updateUrlModeVisibility();
+})();
+</script>
+</body>
+</html>
