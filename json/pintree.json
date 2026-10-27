@@ -443,15 +443,8 @@
               },
               {
                 "type": "link",
-                "addDate": 1786605594258,
-                "title": "花生壳控制台",
-                "icon": "https://logo.clearbit.com/console-hsk-ng.oray.com",
-                "url": "https://console-hsk-ng.oray.com/console/file-hosting?page=1&size=20"
-              },
-              {
-                "type": "link",
                 "addDate": 1786605715347,
-                "title": "贝锐花生壳",
+                "title": "贝锐花生壳托管",
                 "icon": "https://logo.clearbit.com/drop.ficp.fun",
                 "url": "https://drop.ficp.fun/"
               },
@@ -460,13 +453,6 @@
                 "title": "GitHub 中国开发者",
                 "icon": "https://logo.clearbit.com/github.com",
                 "url": "https://github.com/1c7/chinese-independent-developer"
-              },
-              {
-                "type": "link",
-                "addDate": 1788224823678,
-                "title": "企业微信",
-                "icon": "https://logo.clearbit.com/work.weixin.qq.com",
-                "url": "https://work.weixin.qq.com/wework_admin/loginpage_wx?redirect_uri=https%3A%2F%2Fwork.weixin.qq.com%2Fwework_admin%2Fframe%3Fingoreindustry%3Dtrue#apps/qykit/proxy/exmail"
               },
               {
                 "type": "link",
@@ -5020,7 +5006,7 @@
         "type": "folder",
         "addDate": 1793064270923,
         "title": "我的加密书签",
-        "lock": "OA==",
+        "lock": "IA==",
         "children": [
           {
             "type": "link",
@@ -5126,6 +5112,20 @@
             "title": "Emails · Resend",
             "icon": "https://logo.clearbit.com/resend.com",
             "url": "https://resend.com/emails"
+          },
+          {
+            "type": "link",
+            "addDate": 1788224823678,
+            "title": "163t 企业邮箱管理",
+            "icon": "https://logo.clearbit.com/work.weixin.qq.com",
+            "url": "https://work.weixin.qq.com/wework_admin/loginpage_wx?redirect_uri=https%3A%2F%2Fwork.weixin.qq.com%2Fwework_admin%2Fframe%3Fingoreindustry%3Dtrue#apps/qykit/proxy/exmail"
+          },
+          {
+            "type": "link",
+            "addDate": 1793068372138,
+            "title": "扫码收款",
+            "icon": "https://logo.clearbit.com/xhxh.vip",
+            "url": "https://xhxh.vip/pay/"
           }
         ]
       },
@@ -41282,6 +41282,20 @@
         "title": "豆包",
         "icon": "https://logo.clearbit.com/www.doubao.com",
         "url": "https://www.doubao.com/chat/"
+      },
+      {
+        "type": "link",
+        "addDate": 1793073180623,
+        "title": "小胡的工具箱",
+        "icon": "https://logo.clearbit.com/tools.xhxh.vip",
+        "url": "https://tools.xhxh.vip/"
+      },
+      {
+        "type": "link",
+        "addDate": 1793081788221,
+        "title": "二维码生成器",
+        "icon": "https://logo.clearbit.com/qr.xhxh.vip",
+        "url": "https://qr.xhxh.vip/"
       }
     ]
   }
