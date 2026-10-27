@@ -72,6 +72,13 @@
               },
               {
                 "type": "link",
+                "addDate": 1793064195964,
+                "title": "64编码解码工具",
+                "icon": "https://logo.clearbit.com/xhxh.vip",
+                "url": "https://xhxh.vip/64/"
+              },
+              {
+                "type": "link",
                 "addDate": 1729045632858,
                 "title": "虫部落论坛",
                 "icon": "https://logo.clearbit.com/www.chongbuluo.com",
@@ -296,27 +303,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1723531888106,
-                "title": "Mac",
-                "icon": "https://logo.clearbit.com/sunlogin.oray.com",
-                "url": "https://sunlogin.oray.com/share?shareid=1441678765"
-              },
-              {
-                "type": "link",
-                "addDate": 1721983900483,
-                "title": "云电脑",
-                "icon": "https://logo.clearbit.com/sunlogin.oray.com",
-                "url": "https://sunlogin.oray.com/share?shareid=1418703505"
-              },
-              {
-                "type": "link",
-                "addDate": 1733790868489,
-                "title": "书签 pro-vecel",
-                "icon": "https://logo.clearbit.com/vercel.com",
-                "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
-              },
-              {
-                "type": "link",
                 "addDate": 1721983925716,
                 "title": "GitHub",
                 "icon": "https://logo.clearbit.com/github.com",
@@ -352,38 +338,10 @@
               },
               {
                 "type": "link",
-                "addDate": 1721983953841,
-                "title": "阿虚同学",
-                "icon": "https://logo.clearbit.com/axutongxue.onrender.com",
-                "url": "https://axutongxue.onrender.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721983987294,
-                "title": "Z-Library Official",
-                "icon": "https://logo.clearbit.com/t.me",
-                "url": "https://t.me/s/zlibrary_official"
-              },
-              {
-                "type": "link",
-                "addDate": 1721983999127,
-                "title": "Z-Library 镜像",
-                "icon": "https://logo.clearbit.com/topstip.com",
-                "url": "https://topstip.com/the-worlds-largest-digital-library-z-library-newly-available-official-site-and-mirror/"
-              },
-              {
-                "type": "link",
                 "addDate": 1721984015013,
                 "title": "uIPCat远程摄像头",
                 "icon": "https://logo.clearbit.com/uipcat.com",
                 "url": "https://uipcat.com/"
-              },
-              {
-                "type": "link",
-                "addDate": 1723084795377,
-                "title": "业务登录",
-                "icon": "https://logo.clearbit.com/xw.ju72.cn",
-                "url": "http://xw.ju72.cn/home/user/index.html"
               },
               {
                 "type": "link",
@@ -398,20 +356,6 @@
                 "title": "WPS待办",
                 "icon": "https://logo.clearbit.com/todo.wps.cn",
                 "url": "https://todo.wps.cn/"
-              },
-              {
-                "type": "link",
-                "addDate": 1721983487988,
-                "title": "福建教育",
-                "icon": "https://logo.clearbit.com/fjjyxy.edu-edu.com.cn",
-                "url": "https://fjjyxy.edu-edu.com.cn/Index/PortalNew"
-              },
-              {
-                "type": "link",
-                "addDate": 1744077314128,
-                "title": "福州大学至诚学院",
-                "icon": "https://logo.clearbit.com/fzu.edu-xl.com",
-                "url": "https://fzu.edu-xl.com/StudentSiteNew/StudentSiteIndexNew/IndexNew"
               },
               {
                 "type": "link",
@@ -443,34 +387,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1749774681619,
-                "title": "ChatGPT -英语词典",
-                "icon": "https://logo.clearbit.com/chatgpt.com",
-                "url": "https://chatgpt.com/g/g-684aa6ade9b88191849d27b5df199ebc-english-to-chinese-dictionary"
-              },
-              {
-                "type": "link",
-                "addDate": 1749774778861,
-                "title": "ChatGPT - 英语单词训练记忆大师",
-                "icon": "https://logo.clearbit.com/chatgpt.com",
-                "url": "https://chatgpt.com/g/g-B3YxSK9yC-ying-yu-dan-ci-xun-lian-ji-yi-da-shi/c/684b719f-5790-800d-93ba-b566fbbae819"
-              },
-              {
-                "type": "link",
-                "addDate": 1749777608560,
-                "title": "限免软件+圈 X 和 Shadow去广告分流",
-                "icon": "https://logo.clearbit.com/whatshub.top",
-                "url": "https://whatshub.top/"
-              },
-              {
-                "type": "link",
-                "addDate": 1750302771881,
-                "title": "安卓分身空壳",
-                "icon": "https://logo.clearbit.com/www.iofomo.com",
-                "url": "https://www.iofomo.com/"
-              },
-              {
-                "type": "link",
                 "addDate": 1750387557868,
                 "title": "文字生图表Napkin.ai",
                 "icon": "https://logo.clearbit.com/app.napkin.ai",
@@ -482,13 +398,6 @@
                 "title": "网页存档查询",
                 "icon": "https://logo.clearbit.com/web.archive.org",
                 "url": "https://web.archive.org/"
-              },
-              {
-                "type": "link",
-                "addDate": 1752548018085,
-                "title": "GD音乐台 ",
-                "icon": "https://logo.clearbit.com/music.gdstudio.xyz",
-                "url": "https://music.gdstudio.xyz/"
               },
               {
                 "type": "link",
@@ -510,13 +419,6 @@
                 "title": "小鹅通学员版-小鹅通",
                 "icon": "https://logo.clearbit.com/study.xiaoe-tech.com",
                 "url": "https://study.xiaoe-tech.com/#/muti_index"
-              },
-              {
-                "type": "link",
-                "addDate": 1761103102584,
-                "title": "今日热榜 2",
-                "icon": "https://logo.clearbit.com/u1.cx",
-                "url": "https://u1.cx/hot/"
               },
               {
                 "type": "link",
@@ -558,6 +460,20 @@
                 "title": "GitHub 中国开发者",
                 "icon": "https://logo.clearbit.com/github.com",
                 "url": "https://github.com/1c7/chinese-independent-developer"
+              },
+              {
+                "type": "link",
+                "addDate": 1788224823678,
+                "title": "企业微信",
+                "icon": "https://logo.clearbit.com/work.weixin.qq.com",
+                "url": "https://work.weixin.qq.com/wework_admin/loginpage_wx?redirect_uri=https%3A%2F%2Fwork.weixin.qq.com%2Fwework_admin%2Fframe%3Fingoreindustry%3Dtrue#apps/qykit/proxy/exmail"
+              },
+              {
+                "type": "link",
+                "addDate": 1792977694895,
+                "title": "GitHub 热门开源项目与增长趋势 | OpenPulse",
+                "icon": "https://logo.clearbit.com/openpulse.info",
+                "url": "https://openpulse.info/trending?window=7d"
               }
             ]
           },
@@ -3926,6 +3842,13 @@
                 "title": "微信读书统计与年度阅读报告生成工具｜读迹",
                 "icon": "https://logo.clearbit.com/weread.weiyexing.win",
                 "url": "https://weread.weiyexing.win/"
+              },
+              {
+                "type": "link",
+                "addDate": 1788137834416,
+                "title": "MicYou - 将手机变成电脑麦克风 | MicYou",
+                "icon": "https://logo.clearbit.com/micyou.top",
+                "url": "https://micyou.top/"
               }
             ]
           }
@@ -5047,7 +4970,6 @@
       {
         "type": "folder",
         "addDate": 1726013966979,
-        "lock":"OA==",
         "title": "ebooking",
         "children": [
           {
@@ -5091,6 +5013,119 @@
             "title": "途家网",
             "icon": "https://logo.clearbit.com/passport.tujia.com",
             "url": "https://passport.tujia.com/PortalSite/LoginPage/"
+          }
+        ]
+      },
+      {
+        "type": "folder",
+        "addDate": 1793064270923,
+        "title": "我的加密书签",
+        "lock": "OA==",
+        "children": [
+          {
+            "type": "link",
+            "addDate": 1793064355785,
+            "title": "64 编码",
+            "icon": "https://logo.clearbit.com/xhxh.vip",
+            "url": "https://xhxh.vip/64"
+          },
+          {
+            "type": "link",
+            "addDate": 1793064376170,
+            "title": "我的163t 企业邮箱登录",
+            "icon": "https://logo.clearbit.com/xhxh.vip",
+            "url": "https://xhxh.vip/mail"
+          },
+          {
+            "type": "link",
+            "addDate": 1723531888106,
+            "title": "Mac",
+            "icon": "https://logo.clearbit.com/sunlogin.oray.com",
+            "url": "https://sunlogin.oray.com/share?shareid=1441678765"
+          },
+          {
+            "type": "link",
+            "addDate": 1721983900483,
+            "title": "云电脑",
+            "icon": "https://logo.clearbit.com/sunlogin.oray.com",
+            "url": "https://sunlogin.oray.com/share?shareid=1418703505"
+          },
+          {
+            "type": "link",
+            "addDate": 1733790868489,
+            "title": "书签 pro-vecel",
+            "icon": "https://logo.clearbit.com/vercel.com",
+            "url": "https://vercel.com/hutus-projects-6dcfc293/pintree/CZyz4n8KXgPNc2U83pqRBd5EoDWG"
+          },
+          {
+            "type": "link",
+            "addDate": 1721983987294,
+            "title": "Z-Library Official",
+            "icon": "https://logo.clearbit.com/t.me",
+            "url": "https://t.me/s/zlibrary_official"
+          },
+          {
+            "type": "link",
+            "addDate": 1721983999127,
+            "title": "Z-Library 镜像",
+            "icon": "https://logo.clearbit.com/topstip.com",
+            "url": "https://topstip.com/the-worlds-largest-digital-library-z-library-newly-available-official-site-and-mirror/"
+          },
+          {
+            "type": "link",
+            "addDate": 1723084795377,
+            "title": "业务登录",
+            "icon": "https://logo.clearbit.com/xw.ju72.cn",
+            "url": "http://xw.ju72.cn/home/user/index.html"
+          },
+          {
+            "type": "link",
+            "addDate": 1721983487988,
+            "title": "福建教育",
+            "icon": "https://logo.clearbit.com/fjjyxy.edu-edu.com.cn",
+            "url": "https://fjjyxy.edu-edu.com.cn/Index/PortalNew"
+          },
+          {
+            "type": "link",
+            "addDate": 1744077314128,
+            "title": "福州大学至诚学院",
+            "icon": "https://logo.clearbit.com/fzu.edu-xl.com",
+            "url": "https://fzu.edu-xl.com/StudentSiteNew/StudentSiteIndexNew/IndexNew"
+          },
+          {
+            "type": "link",
+            "addDate": 1749774681619,
+            "title": "ChatGPT -英语词典",
+            "icon": "https://logo.clearbit.com/chatgpt.com",
+            "url": "https://chatgpt.com/g/g-684aa6ade9b88191849d27b5df199ebc-english-to-chinese-dictionary"
+          },
+          {
+            "type": "link",
+            "addDate": 1749777608560,
+            "title": "限免软件+圈 X 和 Shadow去广告分流",
+            "icon": "https://logo.clearbit.com/whatshub.top",
+            "url": "https://whatshub.top/"
+          },
+          {
+            "type": "link",
+            "addDate": 1749774778861,
+            "title": "ChatGPT - 英语单词训练记忆大师",
+            "icon": "https://logo.clearbit.com/chatgpt.com",
+            "url": "https://chatgpt.com/g/g-B3YxSK9yC-ying-yu-dan-ci-xun-lian-ji-yi-da-shi/c/684b719f-5790-800d-93ba-b566fbbae819"
+          },
+          {
+            "type": "link",
+            "addDate": 1750302771881,
+            "title": "安卓分身空壳",
+            "icon": "https://logo.clearbit.com/www.iofomo.com",
+            "url": "https://www.iofomo.com/"
+          },
+          {
+            "type": "link",
+            "addDate": 1788403891311,
+            "title": "Emails · Resend",
+            "icon": "https://logo.clearbit.com/resend.com",
+            "url": "https://resend.com/emails"
           }
         ]
       },
@@ -41236,13 +41271,6 @@
       },
       {
         "type": "link",
-        "addDate": 1764720309073,
-        "title": "AI提示词生成器",
-        "icon": "https://logo.clearbit.com/systemprompt.icu",
-        "url": "https://systemprompt.icu/"
-      },
-      {
-        "type": "link",
         "addDate": 1764729499412,
         "title": "ChatGPT",
         "icon": "https://logo.clearbit.com/chatgpt.com",
@@ -41254,13 +41282,6 @@
         "title": "豆包",
         "icon": "https://logo.clearbit.com/www.doubao.com",
         "url": "https://www.doubao.com/chat/"
-      },
-      {
-        "type": "link",
-        "addDate": 1786614220603,
-        "title": "小胡小胡的书签",
-        "icon": "https://logo.clearbit.com/wwwwww.ficp.fun",
-        "url": "https://wwwwww.ficp.fun/"
       }
     ]
   }
