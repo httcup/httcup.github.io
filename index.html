@@ -212,6 +212,7 @@
 						<div class=" gap-x-4   justify-between">
 
 							<div id="options-container" style="width: 90%;">
+								<div class="option" data-value="local" style="color: black;">本站</div>
 								<div class="option" data-value="https://metaso.cn/?q=" style="color: black;">秘塔</div>
 								<div class="option" data-value="https://so.360.com/?q=" style="color: black;">360</div>
 								<div class="option" data-value="https://tiangong.cn/result/?q=" style="color: black;">天工</div>
@@ -845,22 +846,27 @@
 		</script>
 
 <script>
-// ===== 搜索引擎选择 + 搜索跳转（修复新增 v4：默认不选中，未选择时搜索本地书签）=====
+// ===== 搜索引擎选择 + 搜索跳转（修复新增 v5：新增本站选项并默认选中）=====
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     const options = document.querySelectorAll('#options-container .option');
-    let currentEngine = ''; // 空 = 未选择引擎，搜索走本地书签
+    let currentEngine = 'local'; // 'local' = 本站书签搜索
 
-    // 默认不选中任何引擎，点搜索即搜索本地书签
+    // 默认选中「本站」选项
+    options.forEach(o => o.classList.remove('selected'));
+    const localOption = Array.from(options).find(o => o.textContent.trim() === '本站');
+    if (localOption) {
+        localOption.classList.add('selected');
+    }
 
     // 点击选项：已选中的再次点击可取消选择；未选中的则切换选中
     options.forEach(opt => {
         opt.addEventListener('click', () => {
             if (opt.classList.contains('selected')) {
-                // 取消选择 → 恢复书签搜索
+                // 取消选择 → 恢复本站书签搜索
                 opt.classList.remove('selected');
-                currentEngine = '';
+                currentEngine = 'local';
             } else {
                 options.forEach(o => o.classList.remove('selected'));
                 opt.classList.add('selected');
@@ -873,10 +879,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const doSearch = () => {
         const query = searchInput.value.trim();
         if (!query) return;
-        if (currentEngine) {
+        if (currentEngine && currentEngine !== 'local') {
             window.open(currentEngine + encodeURIComponent(query), '_blank');
         } else {
-            searchBookmarks(query); // 未选引擎时搜索本地书签
+            searchBookmarks(query); // 本站/未选引擎时搜索本地书签
         }
     };
 
