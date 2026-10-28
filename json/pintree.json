@@ -135,13 +135,6 @@
               },
               {
                 "type": "link",
-                "addDate": 1721983840053,
-                "title": "公共记事本",
-                "icon": "https://logo.clearbit.com/note.ms",
-                "url": "https://note.ms/"
-              },
-              {
-                "type": "link",
                 "addDate": 1721983396193,
                 "title": "腾讯文档",
                 "icon": "https://logo.clearbit.com/docs.qq.com",
@@ -460,6 +453,13 @@
                 "title": "GitHub 热门开源项目与增长趋势 | OpenPulse",
                 "icon": "https://logo.clearbit.com/openpulse.info",
                 "url": "https://openpulse.info/trending?window=7d"
+              },
+              {
+                "type": "link",
+                "addDate": 1793088826690,
+                "title": "AI观潮 · 每日 新闻精选",
+                "icon": "https://logo.clearbit.com/aiguanchao.com",
+                "url": "https://aiguanchao.com/"
               }
             ]
           },
@@ -3835,6 +3835,34 @@
                 "title": "MicYou - 将手机变成电脑麦克风 | MicYou",
                 "icon": "https://logo.clearbit.com/micyou.top",
                 "url": "https://micyou.top/"
+              },
+              {
+                "type": "link",
+                "addDate": 1793089851058,
+                "title": "免费在线工具箱：PDF、图片、视频、音频与文本 | ToolKnit",
+                "icon": "https://logo.clearbit.com/toolknit.com",
+                "url": "https://toolknit.com/zh/"
+              },
+              {
+                "type": "link",
+                "addDate": 1793089858635,
+                "title": "免费电商计算器与商品 SEO 工具 | DTCStack",
+                "icon": "https://logo.clearbit.com/www.dtcstackhq.com",
+                "url": "https://www.dtcstackhq.com/zh/tools/"
+              },
+              {
+                "type": "link",
+                "addDate": 1793090045352,
+                "title": "拼豆图纸生成器：照片一键转拼豆图纸，自动标色号和颗数（免费）",
+                "icon": "https://logo.clearbit.com/beadpattern.art",
+                "url": "https://beadpattern.art/zh/"
+              },
+              {
+                "type": "link",
+                "addDate": 1793090175370,
+                "title": "AI IP 检测：环境分、IP 纯净度与服务连通性｜IP for AI",
+                "icon": "https://logo.clearbit.com/ipforai.cc",
+                "url": "https://ipforai.cc/"
               }
             ]
           }
@@ -41287,15 +41315,22 @@
         "type": "link",
         "addDate": 1793073180623,
         "title": "小胡的工具箱",
-        "icon": "https://logo.clearbit.com/tools.xhxh.vip",
-        "url": "https://tools.xhxh.vip/"
+        "icon": "https://logo.clearbit.com/139t.cn",
+        "url": "https://139t.cn/"
       },
       {
         "type": "link",
         "addDate": 1793081788221,
         "title": "二维码生成器",
-        "icon": "https://logo.clearbit.com/qr.xhxh.vip",
-        "url": "https://qr.xhxh.vip/"
+        "icon": "https://logo.clearbit.com/qr.139t.cn",
+        "url": "https://qr.139t.cn/"
+      },
+      {
+        "type": "link",
+        "addDate": 1793175773967,
+        "title": "随手记存为 md",
+        "icon": "https://logo.clearbit.com/md.139t.cn",
+        "url": "https://md.139t.cn/"
       }
     ]
   }
