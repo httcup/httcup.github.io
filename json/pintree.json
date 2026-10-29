@@ -41331,6 +41331,13 @@
         "title": "随手记存为 md",
         "icon": "https://logo.clearbit.com/md.139t.cn",
         "url": "https://md.139t.cn/"
+      },
+      {
+        "type": "link",
+        "addDate": 1793245029408,
+        "title": "云便签 · 随手记",
+        "icon": "https://logo.clearbit.com/note.139t.cn",
+        "url": "https://note.139t.cn/"
       }
     ]
   }
