@@ -273,10 +273,13 @@
 			});
 
 			// ===== 全局唯一的数据加载入口：结果缓存，全站只 fetch 一次 =====
+			// PINTREE_DATA_VERSION 由 update-pintree.sh 在推送数据时自动更新，
+			// 用于绕过 Cloudflare 对 json 的强缓存
+			const PINTREE_DATA_VERSION = '202610300815';
 			let _pintreePromise = null;
 			function loadBookmarks() {
 				if (!_pintreePromise) {
-					_pintreePromise = fetch('json/pintree.json')
+					_pintreePromise = fetch('json/pintree.json?v=' + PINTREE_DATA_VERSION)
 						.then(response => {
 							if (!response.ok) throw new Error('HTTP ' + response.status);
 							return response.json();
