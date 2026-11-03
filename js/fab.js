@@ -105,10 +105,23 @@
     });
   }
 
+  var IMG_SIZE = { 'reward-qr.jpg': [432, 480], 'feedback-qr.jpg': [480, 444] };
+
   function openImage(title, src, captionHTML) {
+    var key = src.split('/').pop();
+    var dim = IMG_SIZE[key] || [480, 480];
     openShell(title,
-      '<div class="xh-qr-img"><img src="' + src + '" alt="' + esc(title) + '"></div>' +
+      '<div class="xh-qr-img"><img src="' + src + '" alt="' + esc(title) + '"' +
+      ' width="' + dim[0] + '" height="' + dim[1] + '" decoding="async"></div>' +
       '<p>' + captionHTML + '</p>');
+  }
+
+  /* 空闲时把两张二维码预加载进缓存，点开就是秒出，不再等网络 */
+  function preloadImages() {
+    ['assets/fab/reward-qr.jpg', 'assets/fab/feedback-qr.jpg'].forEach(function (p) {
+      var img = new Image();
+      img.src = BASE + p;
+    });
   }
 
   /* ---------- 按钮组 ---------- */
@@ -155,9 +168,18 @@
 
   /* 立即构建（脚本放在 body 末尾）；个别页面有阻塞式外链脚本，
      不能等 DOMContentLoaded，否则悬浮按钮会迟迟不出现 */
-  if (document.body) {
+  function init() {
     build();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(preloadImages, { timeout: 2500 });
+    } else {
+      setTimeout(preloadImages, 1800);
+    }
+  }
+
+  if (document.body) {
+    init();
   } else {
-    document.addEventListener('DOMContentLoaded', build);
+    document.addEventListener('DOMContentLoaded', init);
   }
 })();

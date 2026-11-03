@@ -15,6 +15,16 @@
 				} catch (e) {}
 			})();
 		</script>
+		<script>
+			/* 提前发起书签数据请求：与样式/HTML 解析并行，减少首屏等待
+			   cache: no-cache → 带 If-None-Match/If-Modified-Since 校验，数据没变只回 304 */
+			window.__xhData = fetch('json/pintree.json', { cache: 'no-cache' }).then(function (r) {
+				if (!r.ok) throw new Error('HTTP ' + r.status);
+				var lm = r.headers.get('last-modified');
+				if (lm) document.documentElement.dataset.dataUpdated = lm;
+				return r.json();
+			});
+		</script>
 		<title>小胡小胡的书签收藏 | 小胡的工具站</title>
 		<meta name="description"
 			content="小胡小胡的书签收藏，收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。同系列站点：小胡的工具站（139t.cn）。">
@@ -115,6 +125,11 @@
 				user-select: none;
 			}
 			html.dark .site-tile { background: #232a3a; color: #c3cad9; }
+
+			/* 窄屏：右下角悬浮按钮会压住最右一列卡片，给内容留出安全边距 */
+			@media (max-width: 640px) {
+				#bookmarks { padding-right: 56px; }
+			}
 
 			/* 搜索区整条在深色模式下跟随页面底色，避免白底压浅灰字 */
 			html.dark .aaa {
@@ -374,7 +389,8 @@
 			let _pintreePromise = null;
 			function loadBookmarks() {
 				if (!_pintreePromise) {
-					_pintreePromise = fetch('json/pintree.json', { cache: 'no-cache' })
+					// 复用 head 里提前发起的请求（没有则现发一次）
+					_pintreePromise = window.__xhData || fetch('json/pintree.json', { cache: 'no-cache' })
 						.then(response => {
 							if (!response.ok) throw new Error('HTTP ' + response.status);
 							const lm = response.headers.get('last-modified');
