@@ -4,10 +4,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>小胡小胡的书签</title>
+		<script>
+			/* 首屏渲染前定好主题，避免深色系统下先白后黑闪一下 */
+			(function () {
+				try {
+					var saved = localStorage.getItem('xh-theme');
+					var dark = saved ? saved === 'dark'
+						: window.matchMedia('(prefers-color-scheme: dark)').matches;
+					if (dark) document.documentElement.classList.add('dark');
+				} catch (e) {}
+			})();
+		</script>
+		<title>小胡小胡的书签收藏 | 小胡的工具站</title>
 		<meta name="description"
-			content="小胡自己收藏的书签，搜索框可以直接搜书签关键词.">
+			content="小胡小胡的书签收藏，收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。同系列站点：小胡的工具站（139t.cn）。">
 		<meta name="author" content="小胡">
+		<meta name="keywords" content="小胡小胡的书签收藏,小胡的书签,书签导航,网址导航,小胡的工具站,在线工具,书签收藏">
+		<meta name="theme-color" content="#0BA665">
 		<meta name="robots" content="index, follow">
 		<link rel="canonical" href="https://xhxh.vip/">
 		<meta name="baidu-site-verification" content="codeva-yGSkQOcwmt" />
@@ -38,16 +51,18 @@
 		<!-- Facebook Meta Tags -->
 		<meta property="og:url" content="https://xhxh.vip/">
 		<meta property="og:type" content="website">
-		<meta property="og:title" content="小胡小胡的书签">
-		<meta property="og:description" content="小胡自己收藏的书签，搜索框可以直接搜书签关键词.">
+		<meta property="og:title" content="小胡小胡的书签收藏 | 小胡的工具站">
+		<meta property="og:description" content="小胡小胡的书签收藏，收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。同系列站点：小胡的工具站（139t.cn）。">
 		<meta property="og:image" content="https://xhxh.vip/assets/og.png">
+		<meta property="og:site_name" content="小胡小胡的书签收藏">
+		<meta property="og:locale" content="zh_CN">
 
 		<!-- Twitter Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image">
 		<meta property="twitter:domain" content="xhxh.vip">
 		<meta property="twitter:url" content="https://xhxh.vip/">
-		<meta name="twitter:title" content="小胡小胡的书签">
-		<meta name="twitter:description" content="小胡自己收藏的书签，搜索框可以直接搜书签关键词.">
+		<meta name="twitter:title" content="小胡小胡的书签收藏 | 小胡的工具站">
+		<meta name="twitter:description" content="小胡小胡的书签收藏，收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。同系列站点：小胡的工具站（139t.cn）。">
 		<meta name="twitter:image" content="https://xhxh.vip/assets/og.png">
 
 		<!-- Favicon -->
@@ -119,8 +134,16 @@
 				"@context": "https://schema.org",
 				"@type": "WebSite",
 				"url": "https://xhxh.vip/",
-				"name": "小胡小胡的书签",
-				"description": "小胡自己收藏的书签，搜索框可以直接搜书签关键词."
+				"name": "小胡小胡的书签收藏",
+				"alternateName": ["小胡的书签", "小胡小胡的书签"],
+				"description": "小胡小胡的书签收藏，收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。同系列站点：小胡的工具站（139t.cn）。",
+				"inLanguage": "zh-CN",
+				"publisher": {
+					"@type": "Person",
+					"name": "小胡",
+					"url": "https://139t.cn/"
+				},
+				"sameAs": ["https://139t.cn/", "https://github.com/httcup"]
 			}
 		</script>
 		<link rel="stylesheet" href="css/fab.css">
@@ -151,7 +174,7 @@
 						<div
 							class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:pintree-bg-gray-900 px-6 pb-4">
 							<div class="flex h-16 shrink-0 items-center">
-								<a href="" class="ml-4 font-extrabold text-2xl dark:text-white">书签</a>
+								<a href="./" class="ml-4 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
 							</div>
 							<div id="sidebar-2" class="flex flex-1 flex-col">
 								<!-- Sidebar content will be injected here -->
@@ -166,7 +189,7 @@
 				<div
 					class="flex flex-col border-r border-gray-200 dark:pintree-border-gray-800 bg-white px-4 h-full font-semibold dark:pintree-bg-gray-900">
 					<div class="flex p-0 h-16 shrink-0 items-center">
-						<a href="" class="ml-4 font-extrabold text-xl dark:text-white">书签</a>
+						<a href="./" class="ml-4 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
 					</div>
 					<div class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer">
 						<div id="sidebar" class="flex flex-1 flex-col">
@@ -174,6 +197,12 @@
 								<!-- Navigation items will be inserted here -->
 							</ul>
 						</div>
+					</div>
+					<div class="mt-2 mb-4 pt-3 border-t border-gray-100 dark:pintree-border-gray-800">
+						<a href="https://139t.cn/" target="_blank" rel="noopener"
+							class="ml-4 text-xs font-normal text-gray-500 hover:text-main-500 dark:text-gray-400">
+							小胡的工具站 ↗
+						</a>
 					</div>
 				</div>
 			</div>
@@ -183,7 +212,7 @@
 				<div class="items-center top-0 z-40  h-16 shrink-0 gap-x-4 border-b border-gray bg-white dark:pintree-bg-gray px-4  aaa"
 					style="width: 100%; ">
 					<div class=" gap-x-4 justify-between">
-						<a href="" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white">书签</a>
+						<a href="./" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
 						<style>
         .search-container {
             position: relative;
@@ -287,6 +316,9 @@
 
 				<!-- Main content area -->
 				<main class="mt-4 dark:pintree-bg-gray-900 flex-grow">
+					<h1 style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">
+						小胡小胡的书签收藏 · 小胡的工具站
+					</h1>
 					<div id="loading-spinner" class="flex justify-center items-center h-full">
 						<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-400 h-6 w-6"></div>
 					</div>
@@ -329,22 +361,24 @@
 					}, 300); // Match the duration of the transition
 				};
 
-				// Event listeners for open and close buttons
-				openSidebarButton.addEventListener('click', openSidebar);
-				closeSidebarButton.addEventListener('click', closeSidebar);
-				offCanvasBackdrop.addEventListener('click', closeSidebar); // Close sidebar when clicking on the backdrop
+				// Event listeners for open and close buttons（元素缺失时安全跳过）
+				if (openSidebarButton) openSidebarButton.addEventListener('click', openSidebar);
+				if (closeSidebarButton) closeSidebarButton.addEventListener('click', closeSidebar);
+				if (offCanvasBackdrop) offCanvasBackdrop.addEventListener('click', closeSidebar); // 点遮罩关闭
 			});
 
 			// ===== 全局唯一的数据加载入口：结果缓存，全站只 fetch 一次 =====
-			// PINTREE_DATA_VERSION 由 update-pintree.sh 在推送数据时自动更新，
-			// 用于绕过 Cloudflare 对 json 的强缓存
-			const PINTREE_DATA_VERSION = '202611040045';
+			// 不写死版本号：用 cache: 'no-cache' 让浏览器带 If-None-Match / If-Modified-Since
+			// 回服务端校验，数据文件没变只回 304（几乎零开销），变了就自动拿到新内容。
+			// 版本即文件修改时间，无需再手工维护 PINTREE_DATA_VERSION。
 			let _pintreePromise = null;
 			function loadBookmarks() {
 				if (!_pintreePromise) {
-					_pintreePromise = fetch('json/pintree.json?v=' + PINTREE_DATA_VERSION)
+					_pintreePromise = fetch('json/pintree.json', { cache: 'no-cache' })
 						.then(response => {
 							if (!response.ok) throw new Error('HTTP ' + response.status);
+							const lm = response.headers.get('last-modified');
+							if (lm) document.documentElement.dataset.dataUpdated = lm;
 							return response.json();
 						});
 				}
@@ -364,14 +398,21 @@
 					.catch(error => console.error('Error searching bookmarks:', error));
 			}
 
+			// 同时匹配「标题」和「网址/域名」：输入 github.com、github、notion 都能命中
 			function searchInData(data, query) {
+				const q = String(query || '').toLowerCase().trim();
+				if (!q) return [];
 				let results = [];
 				data.forEach(item => {
-					if (item.title.toLowerCase().includes(query)) {
+					const title = (item.title || '').toLowerCase();
+					const url = (item.url || '').toLowerCase();
+					// 网址里去掉协议再比一次，输入 "https://" 或不输都能命中
+					const bare = url.replace(/^https?:\/\//, '');
+					if (title.includes(q) || url.includes(q) || bare.includes(q)) {
 						results.push(item);
 					}
 					if (item.children) {
-						const childResults = searchInData(item.children, query);
+						const childResults = searchInData(item.children, q);
 						if (childResults.length > 0) {
 							results = results.concat(childResults);
 						}
@@ -729,13 +770,8 @@
 					const firstLayer = data;
 					// Render navigation using the first layer of data
 					renderNavigation(firstLayer, document.getElementById('navigation'), true);
-					// Render bookmarks using the first layer of data, starting from the Bookmark
-					renderBookmarks(firstLayer, [{
-						title: 'Bookmark',
-						children: firstLayer
-					}]);
 
-					// Automatically select and show the first item
+					// 直接渲染第一个文件夹的内容，避免先渲染顶层再覆盖（白跑一遍 DOM）
 					if (firstLayer.length > 0) {
 						const firstItem = firstLayer[0];
 						updateSidebarActiveState([{
@@ -748,6 +784,11 @@
 						}, {
 							title: firstItem.title,
 							children: firstItem.children
+						}]);
+					} else {
+						renderBookmarks(firstLayer, [{
+							title: 'Bookmark',
+							children: firstLayer
 						}]);
 					}
 				})
@@ -820,23 +861,24 @@
 			const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 			applyColorTheme(prefersDarkTheme ? 'dark' : 'light');
 
-			// Listen for changes in the color theme
+			// 系统主题变化时跟随（用户手动选过主题则不覆盖）
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+				try { if (localStorage.getItem('xh-theme')) return; } catch (e) {}
 				applyColorTheme(event.matches ? 'dark' : 'light');
 			});
 
-			// Open mobile menu
-			document.getElementById('open-sidebar-button').addEventListener('click', function() {
+			// Open mobile menu（按钮不存在时安全跳过）
+			var openBtn = document.getElementById('open-sidebar-button');
+			if (openBtn) openBtn.addEventListener('click', function () {
 				var navigation = document.getElementById('navigation').cloneNode(true);
 				document.getElementById('sidebar-2').appendChild(navigation);
 			});
 		</script>
 
 		<script>
-			document.addEventListener('DOMContentLoaded', (event) => {
+			document.addEventListener('DOMContentLoaded', () => {
 				const yearElement = document.getElementById('currentYear');
-				const currentYear = new Date().getFullYear();
-				yearElement.textContent = currentYear;
+				if (yearElement) yearElement.textContent = new Date().getFullYear();
 			});
 
 
