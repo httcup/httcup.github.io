@@ -5,7 +5,6 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>小胡小胡的书签</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<meta name="description"
 			content="小胡自己收藏的书签，搜索框可以直接搜书签关键词.">
 		<meta name="author" content="小胡">
@@ -90,6 +89,18 @@
 			.aaa {
 			            height: auto;
 			        }
+			/* 书签卡片图标：与右下角悬浮按钮同款小方圆角 */
+			.site-tile {
+				width: 32px; height: 32px; flex: 0 0 auto;
+				margin-right: 16px;
+				display: grid; place-items: center;
+				border-radius: 10px;
+				background: #f2f4f7; color: #344054;
+				font-size: 13px; font-weight: 600; line-height: 1;
+				user-select: none;
+			}
+			html.dark .site-tile { background: #232a3a; color: #c3cad9; }
+
 			/* 搜索区整条在深色模式下跟随页面底色，避免白底压浅灰字 */
 			html.dark .aaa {
 				background-color: #12161b !important;
@@ -327,7 +338,7 @@
 			// ===== 全局唯一的数据加载入口：结果缓存，全站只 fetch 一次 =====
 			// PINTREE_DATA_VERSION 由 update-pintree.sh 在推送数据时自动更新，
 			// 用于绕过 Cloudflare 对 json 的强缓存
-			const PINTREE_DATA_VERSION = '202611030945';
+			const PINTREE_DATA_VERSION = '202611040045';
 			let _pintreePromise = null;
 			function loadBookmarks() {
 				if (!_pintreePromise) {
@@ -391,52 +402,29 @@
 
 			// Create bookmark card element
 			function createCard(title, url, icon) {
-				const card = document.createElement('div');
+				/* 站点图标改为与右下角悬浮按钮同款的「同色小方圆角 + 首字符」，
+				   纯 CSS 渲染，不再请求任何 favicon 服务（原来 6000+ 个外链图标，既慢又大量失效） */
+
+				// 用 <a> 而不是 div+onclick：可键盘聚焦、可右键复制、对搜索引擎友好
+				const card = document.createElement('a');
 				card.className =
 					'cursor-pointer flex items-center hover:shadow-sm transition-shadow p-4 bg-white shadow-sm ring-1 ring-gray-900/5 dark:pintree-ring-gray-800 rounded-lg hover:bg-gray-100 dark:pintree-bg-gray-900 dark:hover:pintree-bg-gray-800';
-				card.onclick = () => window.open(url, '_blank'); // Make the whole card clickable
+				card.href = url;
+				card.target = '_blank';
+				card.rel = 'noopener noreferrer';
+				card.title = title + '\n' + url;
 
-				// ===== 站点首字母彩色圆形图标（替代默认图标，作为最终兜底）=====
-				const AVATAR_COLORS = ['#3cb884', '#4f86f7', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#10b981', '#f97316', '#6366f1'];
-				const makeLetterIcon = (t) => {
-					const el = document.createElement('div');
+				const makeTileIcon = (t) => {
+					const el = document.createElement('span');
 					const name = (t || '?').trim();
-					el.textContent = name.charAt(0).toUpperCase() || '?';
-					el.title = t;
-					const hash = [...name].reduce((a, c) => a + c.charCodeAt(0), 0);
-					el.style.backgroundColor = AVATAR_COLORS[hash % AVATAR_COLORS.length];
-					el.className =
-						'w-8 h-8 mr-4 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-semibold';
+					const ch = name.charAt(0) || '?';
+					el.textContent = /[a-z]/i.test(ch) ? ch.toUpperCase() : ch;
+					el.setAttribute('aria-hidden', 'true');
+					el.className = 'site-tile';
 					return el;
 				};
 
-				let cardIcon;
-				if (icon) {
-					cardIcon = document.createElement('img');
-					cardIcon.src = icon;
-					cardIcon.alt = title;
-					cardIcon.loading = 'lazy'; // 懒加载：滚动到可视区域才请求图标
-					cardIcon.decoding = 'async';
-					cardIcon.className = 'w-8 h-8 mr-4 rounded-full flex-shrink-0 card-icon-bg';
-
-					// 三级回退：cccyun(腾讯CDN) → favicon.im → 首字母圆形图标
-					let fallbackUrl = '';
-					if (icon.includes('favicon.cccyun.cc/')) {
-						const d = icon.split('favicon.cccyun.cc/')[1];
-						if (d) fallbackUrl = 'https://favicon.im/' + d + '?larger=true';
-					}
-					cardIcon.onerror = () => {
-						if (fallbackUrl) {
-							const u = fallbackUrl;
-							fallbackUrl = '';
-							cardIcon.src = u;
-							return;
-						}
-						cardIcon.replaceWith(makeLetterIcon(title));
-					};
-				} else {
-					cardIcon = makeLetterIcon(title);
-				}
+				const cardIcon = makeTileIcon(title);
 
 				const cardContent = document.createElement('div');
 				cardContent.className = 'flex flex-col overflow-hidden'; // Ensure the content is hidden if too long
