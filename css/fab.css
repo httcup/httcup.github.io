@@ -1,0 +1,96 @@
+/* 右下角悬浮按钮组（手机扫码打开 / 打赏 / 反馈更新 / 返回顶部）
+   配色、圆角、阴影、透明度全部对齐 139t.cn，不含蓝色；深色模式由 html.dark 切换 */
+
+#xh-fab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 90;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.xh-fab-btn {
+  width: 40px; height: 40px; flex: 0 0 auto;
+  display: grid; place-items: center;
+  padding: 0; border: 0; border-radius: 12px; cursor: pointer;
+  background: #f2f4f7; color: #344054;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, .10);
+  transition: background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease,
+              opacity .2s ease, visibility .2s;
+  text-decoration: none;
+}
+.xh-fab-btn svg { width: 17px; height: 17px; }
+.xh-fab-btn:hover {
+  background: #ffffff; color: #0BA665;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -4px rgba(16, 24, 40, .22);
+}
+.xh-fab-btn:active { transform: translateY(0); }
+
+/* 返回顶部：滚过一屏才显示 */
+.xh-fab-top {
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transform: translateY(6px) scale(.85);
+}
+.xh-fab-top.show { opacity: 1; pointer-events: auto; visibility: visible; transform: none; }
+
+/* 深色模式（沿用 139t.cn 深色值） */
+html.dark .xh-fab-btn {
+  background: #232a3a; color: #c3cad9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+}
+html.dark .xh-fab-btn:hover {
+  background: #161b26; color: #6ee7b7;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, .6);
+}
+
+/* ---------- 弹层 ---------- */
+
+.xh-modal-back {
+  position: fixed; inset: 0; z-index: 120;
+  background: rgba(15, 18, 26, .45);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  font-family: inherit;
+  animation: xh-fade .18s ease;
+}
+@keyframes xh-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.xh-modal {
+  position: relative;
+  width: min(360px, 100%);
+  padding: 22px 22px 18px;
+  border-radius: 18px;
+  background: #fff; color: #101828;
+  box-shadow: 0 24px 60px -16px rgba(16, 24, 40, .45);
+  text-align: center;
+}
+html.dark .xh-modal { background: #161b26; color: #e6e9f0; }
+
+.xh-modal h3 { margin: 0 0 14px; font-size: 15px; font-weight: 700; }
+.xh-modal p { margin: 12px 0 4px; font-size: 13px; line-height: 1.6; color: #667085; }
+html.dark .xh-modal p { color: #9aa4b8; }
+
+.xh-modal .xh-close {
+  position: absolute; top: 10px; right: 10px;
+  width: 28px; height: 28px; display: grid; place-items: center;
+  border: 0; border-radius: 9px; cursor: pointer;
+  background: transparent; color: #98a2b3; font-size: 18px; line-height: 1;
+}
+.xh-modal .xh-close:hover { color: #101828; background: #f2f4f7; }
+html.dark .xh-modal .xh-close:hover { color: #e6e9f0; background: #232a3a; }
+
+.xh-qr-box { display: flex; justify-content: center; min-height: 208px; align-items: center; color: #98a2b3; font-size: 13px; }
+.xh-qr-box svg { display: block; width: 208px; height: 208px; border-radius: 8px; }
+.xh-qr-img { display: flex; justify-content: center; }
+.xh-qr-img img { display: block; width: 240px; max-width: 100%; height: auto; border-radius: 10px; }
+.xh-modal code {
+  display: inline-block; max-width: 100%; margin-top: 4px;
+  font-size: 11.5px; color: #98a2b3; word-break: break-all;
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+@media (max-width: 640px) {
+  #xh-fab { right: 12px; bottom: 12px; gap: 6px; }
+  .xh-fab-btn { width: 36px; height: 36px; border-radius: 11px; }
+  .xh-fab-btn svg { width: 15px; height: 15px; }
+}
