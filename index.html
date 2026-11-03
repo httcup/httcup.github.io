@@ -61,27 +61,40 @@
 		<link rel="stylesheet" href="css/tailwind.css">
 
 		<style>
+			/* 搜索引擎选项：对齐 139t.cn 的小字胶囊（含深色适配） */
+			#options-container {
+				display: flex; flex-wrap: wrap; align-items: center;
+				gap: 2px 4px; padding: 2px 0;
+			}
 			.option {
 				cursor: pointer;
-				padding: 6px;
-				margin: 5px;
-				border: 1px solid #ccc;
-				display: inline-block;
-				border-radius: 10px;
-				font-size: 12px;
+				display: inline-flex; align-items: center;
+				padding: 5px 10px;
+				border: 0;
+				border-radius: 8px;
+				font-size: 12.5px; font-weight: 500; line-height: 1.4;
+				color: #667085;
+				background: transparent;
+				transition: color .15s ease, background .15s ease;
+				white-space: nowrap;
 			}
-
-			.option:hover {
-				background-color: #f0f0f0;
-			}
-
+			.option:hover { color: #101828; background: #f2f4f7; }
 			.selected {
-				background-color: #3cb884;
+				color: #101828;
+				background: #eef1f5;
+				font-weight: 650;
 			}
+			html.dark .option { color: #9aa4b8; }
+			html.dark .option:hover { color: #e6e9f0; background: #232a3a; }
+			html.dark .selected { color: #e6e9f0; background: #232a3a; }
 			.aaa {
 			            height: auto;
-			           
 			        }
+			/* 搜索区整条在深色模式下跟随页面底色，避免白底压浅灰字 */
+			html.dark .aaa {
+				background-color: #12161b !important;
+				border-color: #1f2530 !important;
+			}
 			 @media screen and (max-width: 768px) { /* Adjust the max-width as needed */
 			            .aaa {
 			                height: auto;
@@ -163,60 +176,98 @@
 						<style>
         .search-container {
             position: relative;
-            width: 85%; /* 容器的宽度与输入框的宽度一致 */
-            margin-top: 10px;
+            width: 100%;
+            margin: 4px 0 10px;
+            display: flex; align-items: center;
         }
+        .search-container > .search-ico {
+            position: absolute; left: 14px;
+            width: 17px; height: 17px;
+            color: #667085; pointer-events: none;
+        }
+        html.dark .search-container > .search-ico { color: #9aa4b8; }
 
         .search-input {
-            width: 100%; /* 输入框宽度占满容器 */
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 15px; /* 圆角 */
-            box-sizing: border-box; /* 包括内边距和边框 */
-            height: 40px; /* 输入框高度 */
+            width: 100%;
+            height: 48px;
+            padding: 0 108px 0 42px;
+            box-sizing: border-box;
+            border: 1px solid #e4e7ec;
+            border-radius: 14px;
+            background: #ffffff;
+            color: #101828;
+            font-size: 14.5px;
+            font-family: inherit;
+            box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+            transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+            outline: none;
         }
+        .search-input::placeholder { color: #98a2b3; }
+        .search-input:focus {
+            border-color: #c9d2dd;
+            box-shadow: 0 0 0 3px rgba(16, 24, 40, .06);
+        }
+        html.dark .search-input {
+            background: #161b26; color: #e6e9f0;
+            border-color: #2a3142;
+            box-shadow: none;
+        }
+        html.dark .search-input::placeholder { color: #6b768c; }
+        html.dark .search-input:focus { border-color: #3a4356; box-shadow: 0 0 0 3px rgba(255, 255, 255, .06); }
+
+        .search-kbd {
+            position: absolute; right: 60px;
+            font-family: ui-monospace, Menlo, monospace;
+            font-size: 11px; line-height: 16px;
+            color: #98a2b3;
+            border: 1px solid #e4e7ec; border-radius: 5px;
+            padding: 0 5px; background: #f9fafb;
+            pointer-events: none;
+        }
+        html.dark .search-kbd { color: #6b768c; border-color: #2a3142; background: #1d2433; }
 
         .search-button {
             position: absolute;
-            right: 0; /* 右侧对齐 */
-            top: 0; /* 顶部对齐 */
-            height: 100%; /* 高度与输入框一致 */
-            width: 50px;
-            border-radius: 15px; /* 圆角 */
-            background-color: #3cb884;
-            color: white;
-            border: radius; /* 移除边框 */
+            right: 6px;
+            width: 36px; height: 36px;
+            display: grid; place-items: center;
+            border: 0; border-radius: 50%;
             cursor: pointer;
-            box-sizing: border-box; /* 包括内边距和边框 */
+            background: #101828; color: #ffffff;
+            transition: background .15s ease, transform .15s ease;
         }
-
-        .search-button:hover {
-            background-color: #36a573;
-        }
+        .search-button:hover { background: #344054; transform: scale(1.04); }
+        .search-button svg { width: 16px; height: 16px; }
+        html.dark .search-button { background: #ffffff; color: #101828; }
+        html.dark .search-button:hover { background: #e6e9f0; }
     </style>
-    <div class="search-container">              
-        <input id="searchInput" class="search-input" placeholder="搜索/查找书签..." aria-label="搜索书签">
-        <button id="searchButton" class="search-button">搜索</button>
+    <div class="search-container">
+        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        <input id="searchInput" class="search-input" placeholder="搜索书签，网站或关键词…" aria-label="搜索书签" autocomplete="off">
+        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        <button id="searchButton" class="search-button" aria-label="搜索">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </button>
     </div>
 						</div>
 				
 					<div>
 						<div class=" gap-x-4   justify-between">
 
-							<div id="options-container" style="width: 90%;">
-								<div class="option" data-value="local" style="color: black;">本站</div>
-								<div class="option" data-value="https://metaso.cn/?q=" style="color: black;">秘塔</div>
-								<div class="option" data-value="https://www.baidu.com/s?wd=" style="color: black;">百度</div>
-								<div class="option" data-value="https://www.google.com.hk/search?hl=zh-CN&q=" style="color: black;">谷歌</div>
-								<div class="option" data-value="https://cn.bing.com/search?q=" style="color: black;">必应</div>
-								<div class="option" data-value="https://soupian.pro/search?key=" style="color: black;">影视</div>
-								<div class="option" data-value="https://dongpian1.com/session/new?utm_source=WZYY-yinghezhinan&amp;prompt=" data-placeholder=" style="color: black;">懂片帝</div>
-								<div class="option" data-value="https://s.weibo.com/weibo/" style="color: black;">微博</div>
-								<div class="option" data-value="https://www.douyin.com/search/" style="color: black;">抖音</div>
-								<div class="option" data-value="https://search.bilibili.com/all?keyword=" style="color: black;">B站</div>
-								<div class="option" data-value="https://www.xiaohongshu.com/search_result?keyword=" style="color: black;">小红书</div>
-								<div class="option" data-value="https://www.xiachufang.com/search/?keyword=" style="color: black;">下厨房</div>
-								<div class="option" data-value="https://www.nosetime.com/search.php?x=0&y=0&word=" style="color: black;">香水时代</div>
+							<div id="options-container">
+								<div class="option" data-value="local">本站</div>
+								<div class="option" data-value="https://metaso.cn/?q=">秘塔</div>
+								<div class="option" data-value="https://www.baidu.com/s?wd=">百度</div>
+								<div class="option" data-value="https://www.google.com.hk/search?hl=zh-CN&q=">谷歌</div>
+								<div class="option" data-value="https://cn.bing.com/search?q=">必应</div>
+								<div class="option" data-value="https://soupian.pro/search?key=">影视</div>
+								<div class="option" data-value="https://dongpian1.com/session/new?utm_source=WZYY-yinghezhinan&amp;prompt=" data-placeholder="用懂片帝搜索…">懂片帝</div>
+								<div class="option" data-value="https://s.weibo.com/weibo/">微博</div>
+								<div class="option" data-value="https://www.douyin.com/search/">抖音</div>
+								<div class="option" data-value="https://search.bilibili.com/all?keyword=">B站</div>
+								<div class="option" data-value="https://www.xiaohongshu.com/search_result?keyword=">小红书</div>
+								<div class="option" data-value="https://www.xiachufang.com/search/?keyword=">下厨房</div>
+								<div class="option" data-value="https://www.nosetime.com/search.php?x=0&y=0&word=">香水时代</div>
 							
 							</div>
 						</div>
@@ -849,6 +900,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 按钮点击
     searchButton.addEventListener('click', doSearch);
+    // 「/」快捷聚焦搜索框（对应输入框右侧提示）
+    document.addEventListener('keydown', e => {
+        const tag = (document.activeElement && document.activeElement.tagName) || '';
+        if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
+            e.preventDefault();
+            searchInput.focus();
+        }
+    });
     // 输入框回车
     searchInput.addEventListener('keydown', e => {
         if (e.key === 'Enter') doSearch();
