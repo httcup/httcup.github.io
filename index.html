@@ -76,10 +76,6 @@
 		<meta name="twitter:image" content="https://xhxh.vip/assets/og.png">
 
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-		<link rel="mask-icon" href="assets/favicon/favicon-32x32.png" color="#0b0b0f">
 
 		<!-- Stylesheet -->
 		<link rel="stylesheet" href="css/tailwind.css">
@@ -125,6 +121,7 @@
 				user-select: none;
 			}
 			html.dark .site-tile { background: #232a3a; color: #c3cad9; }
+			.site-tile-emoji { font-size: 19px; font-weight: 400; line-height: 1; }
 
 			/* 窄屏：右下角悬浮按钮会压住最右一列卡片，给内容留出安全边距 */
 			@media (max-width: 640px) {
@@ -162,6 +159,11 @@
 			}
 		</script>
 		<link rel="stylesheet" href="css/fab.css">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 </head>
 
 	<body class="h-full dark:pintree-bg-gray-900 bg-white">
@@ -471,17 +473,21 @@
 				card.rel = 'noopener noreferrer';
 				card.title = title + '\n' + url;
 
-				const makeTileIcon = (t) => {
+				/* 每个书签随机分到一只小动物（按标题+网址取哈希，固定不变、不用联网） */
+				const ANIMALS = ['🐶', '🐱', '🦊', '🐻', '🐼', '🐨', '🦁', '🐯', '🐮', '🐷',
+					'🐸', '🐵', '🐔', '🐧', '🦉', '🦄', '🐙', '🦋', '🐢', '🐳', '🦔', '🦦', '🐑', '🐹'];
+				const makeAnimalIcon = (key) => {
 					const el = document.createElement('span');
-					const name = (t || '?').trim();
-					const ch = name.charAt(0) || '?';
-					el.textContent = /[a-z]/i.test(ch) ? ch.toUpperCase() : ch;
+					let h = 0;
+					const str = String(key || '');
+					for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
+					el.textContent = ANIMALS[Math.abs(h) % ANIMALS.length];
 					el.setAttribute('aria-hidden', 'true');
-					el.className = 'site-tile';
+					el.className = 'site-tile site-tile-emoji';
 					return el;
 				};
 
-				const cardIcon = makeTileIcon(title);
+				const cardIcon = makeAnimalIcon(title + url);
 
 				const cardContent = document.createElement('div');
 				cardContent.className = 'flex flex-col overflow-hidden'; // Ensure the content is hidden if too long
