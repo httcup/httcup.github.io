@@ -1,0 +1,21 @@
+{
+  "name": "小胡小胡的书签收藏",
+  "short_name": "书签收藏夹",
+  "description": "收录 6000+ 常用网站与工具，支持关键词/网址搜索、分类书签、手机扫码打开。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "assets/icon/apple-touch-120.png", "sizes": "120x120", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/apple-touch-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/apple-touch-167.png", "sizes": "167x167", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/apple-touch-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/apple-touch-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon/apple-touch-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
