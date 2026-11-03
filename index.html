@@ -123,6 +123,17 @@
 			html.dark .site-tile { background: #232a3a; color: #c3cad9; }
 			.site-tile-emoji { font-size: 19px; font-weight: 400; line-height: 1; }
 
+			/* 侧栏/顶栏头像：与站点小方圆角图标同款圆角方形 */
+			.brand-avatar {
+				width: 28px; height: 28px; flex: 0 0 auto;
+				object-fit: cover;
+				border-radius: 9px;
+				background: #eef0f3;
+				box-shadow: 0 0 0 1px rgba(16, 24, 40, .06);
+			}
+			.brand-avatar-lg { width: 32px; height: 32px; border-radius: 10px; }
+			html.dark .brand-avatar { box-shadow: 0 0 0 1px rgba(255, 255, 255, .1); }
+
 			/* 窄屏：右下角悬浮按钮会压住最右一列卡片，给内容留出安全边距 */
 			@media (max-width: 640px) {
 				#bookmarks { padding-right: 56px; }
@@ -191,7 +202,10 @@
 						<div
 							class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:pintree-bg-gray-900 px-6 pb-4">
 							<div class="flex h-16 shrink-0 items-center">
-								<a href="./" class="ml-4 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
+								<a href="./" class="ml-4 flex items-center gap-2 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+									<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="32" height="32" class="brand-avatar brand-avatar-lg" decoding="async">
+									<span>书签收藏夹</span>
+								</a>
 							</div>
 							<div id="sidebar-2" class="flex flex-1 flex-col">
 								<!-- Sidebar content will be injected here -->
@@ -206,7 +220,10 @@
 				<div
 					class="flex flex-col border-r border-gray-200 dark:pintree-border-gray-800 bg-white px-4 h-full font-semibold dark:pintree-bg-gray-900">
 					<div class="flex p-0 h-16 shrink-0 items-center">
-						<a href="./" class="ml-4 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
+						<a href="./" class="ml-4 flex items-center gap-2 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+							<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="28" height="28" class="brand-avatar" decoding="async">
+							<span>书签收藏夹</span>
+						</a>
 					</div>
 					<div class="flex flex-1 flex-col overflow-y-auto no-scrollbar p-1 cursor-pointer">
 						<div id="sidebar" class="flex flex-1 flex-col">
@@ -229,7 +246,10 @@
 				<div class="items-center top-0 z-40  h-16 shrink-0 gap-x-4 border-b border-gray bg-white dark:pintree-bg-gray px-4  aaa"
 					style="width: 100%; ">
 					<div class=" gap-x-4 justify-between">
-						<a href="./" class="lg:hidden ml-4 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">书签</a>
+						<a href="./" class="lg:hidden ml-4 inline-flex items-center gap-2 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+							<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="26" height="26" class="brand-avatar" decoding="async">
+							<span>书签收藏夹</span>
+						</a>
 						<style>
         .search-container {
             position: relative;
@@ -460,6 +480,9 @@
 			// document.getElementById('clearSearchButton').addEventListener('click', clearSearchResults);
 
 			// Create bookmark card element
+			/* 动物图标随机种子：整页只生成一次 —— 刷新换一批，页面内切换文件夹保持稳定 */
+			const ICON_SEED = (Date.now() ^ Math.floor(Math.random() * 1e9)) | 0;
+
 			function createCard(title, url, icon) {
 				/* 站点图标改为与右下角悬浮按钮同款的「同色小方圆角 + 首字符」，
 				   纯 CSS 渲染，不再请求任何 favicon 服务（原来 6000+ 个外链图标，既慢又大量失效） */
@@ -473,12 +496,13 @@
 				card.rel = 'noopener noreferrer';
 				card.title = title + '\n' + url;
 
-				/* 每个书签随机分到一只小动物（按标题+网址取哈希，固定不变、不用联网） */
+				/* 每个书签随机分到一只小动物：每次打开/刷新页面都重新随机；
+				   同一次访问内用固定种子，切换文件夹时不会乱跳 */
 				const ANIMALS = ['🐶', '🐱', '🦊', '🐻', '🐼', '🐨', '🦁', '🐯', '🐮', '🐷',
 					'🐸', '🐵', '🐔', '🐧', '🦉', '🦄', '🐙', '🦋', '🐢', '🐳', '🦔', '🦦', '🐑', '🐹'];
 				const makeAnimalIcon = (key) => {
 					const el = document.createElement('span');
-					let h = 0;
+					let h = ICON_SEED;
 					const str = String(key || '');
 					for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) | 0;
 					el.textContent = ANIMALS[Math.abs(h) % ANIMALS.length];
