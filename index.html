@@ -265,7 +265,8 @@
 						<style>
         .search-container {
             position: relative;
-            width: 100%;
+            /* 宽度由 syncSearchWidth() 与下方选项行右边缘对齐，最大不超过容器 */
+            width: 100%; max-width: 100%;
             margin: 4px 0 10px;
             display: flex; align-items: center;
         }
@@ -279,7 +280,7 @@
         .search-input {
             width: 100%;
             height: 48px;
-            padding: 0 108px 0 42px;
+            padding: 0 54px 0 42px;
             box-sizing: border-box;
             border: 1px solid #e4e7ec;
             border-radius: 14px;
@@ -304,16 +305,6 @@
         html.dark .search-input::placeholder { color: #6b768c; }
         html.dark .search-input:focus { border-color: #3a4356; box-shadow: 0 0 0 3px rgba(255, 255, 255, .06); }
 
-        .search-kbd {
-            position: absolute; right: 60px;
-            font-family: ui-monospace, Menlo, monospace;
-            font-size: 11px; line-height: 16px;
-            color: #98a2b3;
-            border: 1px solid #e4e7ec; border-radius: 5px;
-            padding: 0 5px; background: #f9fafb;
-            pointer-events: none;
-        }
-        html.dark .search-kbd { color: #6b768c; border-color: #2a3142; background: #1d2433; }
 
         .search-button {
             position: absolute;
@@ -333,7 +324,6 @@
     <div class="search-container">
         <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
         <input id="searchInput" class="search-input" placeholder="搜索书签，网站或关键词…" aria-label="搜索书签" autocomplete="off">
-        <kbd class="search-kbd" aria-hidden="true">/</kbd>
         <button id="searchButton" class="search-button" aria-label="搜索">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
         </button>
@@ -986,9 +976,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // 搜索框宽度与下方选项行右边缘对齐（选项换行时退化为整行宽度，避免过短）
+    const syncSearchWidth = () => {
+        const sc = document.querySelector('.search-container');
+        const oc = document.getElementById('options-container');
+        if (!sc || !oc) return;
+        const opts = oc.querySelectorAll('.option');
+        if (!opts.length) return;
+        const firstBox = opts[0].getBoundingClientRect();
+        const lastBox = opts[opts.length - 1].getBoundingClientRect();
+        const ocBox = oc.getBoundingClientRect();
+        const wrapped = lastBox.bottom - firstBox.bottom > 4;
+        const target = wrapped ? ocBox.width : (lastBox.right - ocBox.left);
+        sc.style.width = Math.max(320, Math.round(target)) + 'px';
+    };
+    syncSearchWidth();
+    window.addEventListener('resize', () => requestAnimationFrame(syncSearchWidth));
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncSearchWidth);
+
     // 按钮点击
     searchButton.addEventListener('click', doSearch);
-    // 「/」快捷聚焦搜索框（对应输入框右侧提示）
+    // 「/」快捷聚焦搜索框（提示已去掉，快捷键保留）
     document.addEventListener('keydown', e => {
         const tag = (document.activeElement && document.activeElement.tagName) || '';
         if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
