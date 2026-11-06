@@ -1,32 +1,47 @@
-/* 右下角悬浮按钮组（手机扫码打开 / 打赏 / 反馈更新 / 返回顶部）
-   所有字体、颜色、圆角、阴影、动效值统一取自 css/design-system.css，本站只有一套 Design Values */
+/* 右下角悬浮按钮组（手机扫码打开 / 打赏 / 反馈更新 / 深浅色切换 / 返回顶部）
+   取值统一来自 css/design-system.css 的 Design Values。
+   注意：404 / m / mail / pay / 64 等独立页面没有引入 design-system.css，
+   因此每个 var() 都带同值 fallback，保证悬浮组件在全站外观一致；
+   引入 design-system.css 的页面由它覆盖，两者取值相同，无副作用。 */
 
 #xh-fab {
-  position: fixed; right: var(--xh-s4); bottom: var(--xh-s4); z-index: 90;
-  display: flex; flex-direction: column; align-items: center; gap: var(--xh-s2);
-  font-family: var(--xh-font);
+  position: fixed; right: var(--xh-s4, 16px); bottom: var(--xh-s4, 16px); z-index: 90;
+  display: flex; flex-direction: column; align-items: center; gap: var(--xh-s2, 8px);
+  font-family: var(--xh-font, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif);
 }
 
 .xh-fab-btn {
   width: 40px; height: 40px; flex: 0 0 auto;
   display: grid; place-items: center;
-  padding: 0; border: 0; border-radius: var(--xh-r-xl); cursor: pointer;
-  background: var(--xh-surface); color: var(--xh-muted);
-  box-shadow: var(--xh-shadow-md);
-  transition: background var(--xh-dur-color) var(--xh-ease),
-              color var(--xh-dur-color) var(--xh-ease),
-              transform var(--xh-dur-move) var(--xh-ease),
-              box-shadow var(--xh-dur-color) var(--xh-ease),
-              opacity var(--xh-dur-color) var(--xh-ease),
-              visibility var(--xh-dur-color) var(--xh-ease);
+  padding: 0; border: 0; border-radius: var(--xh-r-xl, 12px); cursor: pointer;
+  background: var(--xh-surface, #f2f4f7); color: var(--xh-muted, #667085);
+  box-shadow: var(--xh-shadow-md, 0 2px 8px rgba(16, 24, 40, .10));
+  transition: background var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+              color var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+              transform var(--xh-dur-move, 500ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+              box-shadow var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+              opacity var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1)),
+              visibility var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1));
   text-decoration: none;
 }
 .xh-fab-btn svg { width: 16px; height: 16px; }
 .xh-fab-btn:hover {
-  background: var(--xh-surface-2); color: var(--xh-accent);
+  background: var(--xh-surface-2, #eef1f5); color: var(--xh-accent, #3CB884);
   transform: translateY(-2px);
-  box-shadow: var(--xh-shadow-lg);
+  box-shadow: var(--xh-shadow-lg, 0 8px 24px -8px rgba(16, 24, 40, .22));
 }
+.xh-fab-btn:active { transform: scale(.98); }
+
+/* ---------- 深浅色切换 ----------
+   浅色显示月亮（点击进入深色），深色显示太阳（点击回浅色）。
+   状态由 html.dark 单一驱动，任何来源的主题变化都会自动同步图标。 */
+.xh-fab-theme .xh-i-sun { display: none; }
+html.dark .xh-fab-theme .xh-i-moon { display: none; }
+html.dark .xh-fab-theme .xh-i-sun { display: block; }
+.xh-fab-theme svg {
+  transition: transform var(--xh-dur-move, 500ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+.xh-fab-theme:hover svg { transform: rotate(-15deg); }
 
 /* 返回顶部：滚过一屏才显示 */
 .xh-fab-top {
@@ -36,12 +51,12 @@
 .xh-fab-top.show { opacity: 1; pointer-events: auto; visibility: visible; transform: none; }
 
 html.dark .xh-fab-btn {
-  background: var(--xh-surface-2); color: var(--xh-text);
-  box-shadow: var(--xh-shadow-md);
+  background: var(--xh-surface-2, #232a3a); color: var(--xh-text, #e6e9f0);
+  box-shadow: var(--xh-shadow-md, 0 2px 8px rgba(16, 24, 40, .45));
 }
 html.dark .xh-fab-btn:hover {
-  background: var(--xh-surface); color: var(--xh-accent);
-  box-shadow: var(--xh-shadow-lg);
+  background: var(--xh-surface, #1f2530); color: var(--xh-accent, #3CB884);
+  box-shadow: var(--xh-shadow-lg, 0 8px 24px -8px rgba(16, 24, 40, .55));
 }
 
 /* ---------- 弹层 ---------- */
@@ -51,51 +66,58 @@ html.dark .xh-fab-btn:hover {
   background: rgba(15, 18, 26, .45);
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
   display: flex; align-items: center; justify-content: center;
-  padding: var(--xh-s5);
-  font-family: var(--xh-font);
-  animation: xh-fade var(--xh-dur-color) var(--xh-ease);
+  padding: var(--xh-s5, 24px);
+  font-family: var(--xh-font, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif);
+  animation: xh-fade var(--xh-dur-color, 300ms) var(--xh-ease, cubic-bezier(0.22, 1, 0.36, 1));
 }
 @keyframes xh-fade { from { opacity: 0; } to { opacity: 1; } }
 
 .xh-modal {
   position: relative;
   width: min(360px, 100%);
-  padding: var(--xh-s5) var(--xh-s5) var(--xh-s4);
-  border-radius: var(--xh-r-2xl);          /* outer 16px */
-  background: var(--xh-bg); color: var(--xh-text);
-  box-shadow: var(--xh-shadow-lg);
+  padding: var(--xh-s5, 24px) var(--xh-s5, 24px) var(--xh-s4, 16px);
+  border-radius: var(--xh-r-2xl, 16px);          /* outer 16px */
+  background: var(--xh-bg, #ffffff); color: var(--xh-text, #101828);
+  box-shadow: var(--xh-shadow-lg, 0 8px 24px -8px rgba(16, 24, 40, .22));
   text-align: center;
 }
-.xh-modal h3 { margin: 0 0 var(--xh-s3); font-size: var(--xh-text-sm); font-weight: 600; }
-.xh-modal p { margin: var(--xh-s3) 0 var(--xh-s1); font-size: var(--xh-text-sm); line-height: 1.6; color: var(--xh-muted); }
-html.dark .xh-modal p { color: var(--xh-muted); }
+html.dark .xh-modal { background: var(--xh-bg, #12161b); color: var(--xh-text, #e6e9f0); }
+.xh-modal h3 { margin: 0 0 var(--xh-s3, 12px); font-size: var(--xh-text-sm, 14px); font-weight: 600; }
+.xh-modal p { margin: var(--xh-s3, 12px) 0 var(--xh-s1, 4px); font-size: var(--xh-text-sm, 14px); line-height: 1.6; color: var(--xh-muted, #667085); }
+html.dark .xh-modal p { color: var(--xh-muted, #9aa4b8); }
 
 /* 内层圆角 = 16 − 8 = 8 */
 .xh-modal .xh-close {
-  position: absolute; top: var(--xh-s2); right: var(--xh-s2);
+  position: absolute; top: var(--xh-s2, 8px); right: var(--xh-s2, 8px);
   width: 28px; height: 28px; display: grid; place-items: center;
-  border: 0; border-radius: var(--xh-r-lg); cursor: pointer;
-  background: transparent; color: var(--xh-muted);
-  font-size: var(--xh-text-lg); line-height: 1;
+  border: 0; border-radius: var(--xh-r-lg, 8px); cursor: pointer;
+  background: transparent; color: var(--xh-muted, #667085);
+  font-size: var(--xh-text-lg, 18px); line-height: 1;
 }
-.xh-modal .xh-close:hover { color: var(--xh-text); background: var(--xh-surface); }
-html.dark .xh-modal .xh-close:hover { color: var(--xh-text); background: var(--xh-surface-2); }
+.xh-modal .xh-close:hover { color: var(--xh-text, #101828); background: var(--xh-surface, #f2f4f7); }
+html.dark .xh-modal .xh-close:hover { color: var(--xh-text, #e6e9f0); background: var(--xh-surface-2, #232a3a); }
 
 .xh-qr-box {
   display: flex; justify-content: center; align-items: center;
-  min-height: 208px; color: var(--xh-muted); font-size: var(--xh-text-sm);
+  min-height: 208px; color: var(--xh-muted, #667085); font-size: var(--xh-text-sm, 14px);
 }
-.xh-qr-box svg { display: block; width: 208px; height: 208px; border-radius: var(--xh-r-lg); }
+.xh-qr-box svg { display: block; width: 208px; height: 208px; border-radius: var(--xh-r-lg, 8px); }
 .xh-qr-img { display: flex; justify-content: center; }
-.xh-qr-img img { display: block; width: 240px; max-width: 100%; height: auto; border-radius: var(--xh-r-lg); }
+.xh-qr-img img { display: block; width: 240px; max-width: 100%; height: auto; border-radius: var(--xh-r-lg, 8px); }
 .xh-modal code {
-  display: inline-block; max-width: 100%; margin-top: var(--xh-s1);
-  font-size: var(--xh-text-xs); color: var(--xh-muted); word-break: break-all;
-  font-family: var(--xh-font-mono);
+  display: inline-block; max-width: 100%; margin-top: var(--xh-s1, 4px);
+  font-size: var(--xh-text-xs, 12px); color: var(--xh-muted, #667085); word-break: break-all;
+  font-family: var(--xh-font-mono, ui-monospace, Menlo, Consolas, monospace);
 }
 
 @media (max-width: 640px) {
-  #xh-fab { right: var(--xh-s3); bottom: var(--xh-s3); gap: var(--xh-s2); }
-  .xh-fab-btn { width: 36px; height: 36px; border-radius: var(--xh-r-xl); }
+  #xh-fab { right: var(--xh-s3, 12px); bottom: var(--xh-s3, 12px); gap: var(--xh-s2, 8px); }
+  .xh-fab-btn { width: 36px; height: 36px; border-radius: var(--xh-r-xl, 12px); }
   .xh-fab-btn svg { width: 16px; height: 16px; }
+}
+
+/* 独立页面没有 design-system.css，这里自带降级 */
+@media (prefers-reduced-motion: reduce) {
+  .xh-fab-btn, .xh-fab-theme svg { transition: none; }
+  .xh-modal-back { animation: none; }
 }

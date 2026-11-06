@@ -661,17 +661,29 @@
       var p = decodeURI(location.pathname || '/') + (location.search || '');
       document.getElementById('reqPath').textContent = p.length > 64 ? p.slice(0, 61) + '…' : p;
 
-      // 主题切换
+      // 主题切换：与全站悬浮按钮共用 xh-theme，404 页的选择在首页同样生效
       var btn = document.getElementById('themeToggleButton');
+      var savedTheme = function () {
+        try { return localStorage.getItem('xh-theme') || localStorage.getItem('theme'); }
+        catch (e) { return null; }
+      };
       btn.addEventListener('click', function () {
-        var dark = document.documentElement.classList.toggle('dark');
-        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) { }
+        var dark = !document.documentElement.classList.contains('dark');
+        if (window.xhSetTheme) {
+          window.xhSetTheme(dark ? 'dark' : 'light');
+        } else {
+          document.documentElement.classList.toggle('dark', dark);
+          try {
+            localStorage.setItem('xh-theme', dark ? 'dark' : 'light');
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+          } catch (e) { }
+        }
       });
 
       // 未手动选择过时，跟随系统主题变化
       try {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-          if (localStorage.getItem('theme')) return;
+          if (savedTheme()) return;
           document.documentElement.classList.toggle('dark', e.matches);
         });
       } catch (e) { }

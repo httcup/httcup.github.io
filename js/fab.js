@@ -1,4 +1,4 @@
-/* 右下角悬浮按钮组：手机扫码打开 / 打赏 / 反馈更新 / 返回顶部
+/* 右下角悬浮按钮组：手机扫码打开 / 打赏 / 反馈更新 / 深浅色切换 / 返回顶部
    用法：在任意页面 </head> 前加 <link rel="stylesheet" href="css/fab.css">，
         </body> 前加 <script src="js/fab.js"></script>（子目录页面用 ../ 前缀即可，
         资源路径会根据本脚本的 src 自动推算）。
@@ -29,7 +29,9 @@
     scan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM20 14v.01M14 20v.01M20 20v.01"/></svg>',
     reward: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M7 3v2M11 3v2M15 3v2"/></svg>',
     feedback: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8Z"/></svg>',
-    top: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/><path d="m18 20-6-6-6 6" opacity=".55"/></svg>'
+    top: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/><path d="m18 20-6-6-6 6" opacity=".55"/></svg>',
+    moon: '<svg class="xh-i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.8 6.8 0 0 0 9.7 9.7Z"/></svg>',
+    sun: '<svg class="xh-i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>'
   };
 
   function esc(s) {
@@ -124,6 +126,76 @@
     });
   }
 
+  /* ---------- 深浅色主题 ----------
+     状态真源是 <html class="dark"> + localStorage['xh-theme']；
+     首页 head 里的防闪烁脚本、首页 applyColorTheme、404 页自己的主题按钮
+     都会直接改 html.dark，这里用 MutationObserver 兜住图标与文案。         */
+
+  var THEME_KEY = 'xh-theme';
+  var LEGACY_KEY = 'theme';          /* 404.html 的历史键，写入时一并兼容 */
+  var themeBtn = null;
+
+  function readSavedTheme() {
+    try { return localStorage.getItem(THEME_KEY) || localStorage.getItem(LEGACY_KEY); }
+    catch (e) { return null; }
+  }
+  function isDark() { return document.documentElement.classList.contains('dark'); }
+
+  function syncThemeMeta(dark) {
+    var color = dark ? '#12161b' : '#ffffff';
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', color);
+  }
+
+  function syncThemeUI() {
+    var dark = isDark();
+    if (themeBtn) {
+      /* WAI-ARIA toggle button：名称固定表达状态，aria-pressed 表达开关，
+         title 才用作鼠标悬浮时的动作提示，避免读屏时「名称」与「已按下」自相矛盾 */
+      themeBtn.title = dark ? '切换到浅色模式' : '切换到深色模式';
+      themeBtn.setAttribute('aria-label', '深色模式');
+      themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    }
+    syncThemeMeta(dark);
+  }
+
+  /* persist=false 用于「跟随系统」和「别的标签页改了主题」，避免回写造成循环 */
+  function setTheme(dark, persist) {
+    document.documentElement.classList.toggle('dark', dark);
+    if (persist) {
+      try {
+        localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light');
+        localStorage.setItem(LEGACY_KEY, dark ? 'dark' : 'light');
+      } catch (e) {}
+    }
+    syncThemeUI();
+    try {
+      window.dispatchEvent(new CustomEvent('xh:themechange', { detail: { theme: dark ? 'dark' : 'light' } }));
+    } catch (e) {}
+  }
+
+  /* 供其它页面脚本复用，保证全站只走这一套逻辑 */
+  window.xhSetTheme = function (theme) { setTheme(theme === 'dark', true); };
+
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncThemeUI).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['class']
+    });
+  }
+
+  try {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var onSchemeChange = function (e) { if (!readSavedTheme()) setTheme(e.matches, false); };
+    if (mq.addEventListener) mq.addEventListener('change', onSchemeChange);
+    else if (mq.addListener) mq.addListener(onSchemeChange);
+  } catch (e) {}
+
+  window.addEventListener('storage', function (e) {
+    if (e.key !== THEME_KEY && e.key !== LEGACY_KEY) return;
+    var v = e.newValue || readSavedTheme();
+    if (v) setTheme(v === 'dark', false);
+  });
+
   /* ---------- 按钮组 ---------- */
 
   function build() {
@@ -146,6 +218,12 @@
       openImage('反馈与更新', BASE + 'assets/fab/feedback-qr.jpg', '扫码关注更新或者发送反馈');
     });
     fab.appendChild(feed);
+
+    /* 浅色显示月亮（点击进入深色），深色显示太阳；图标由 fab.css 按 html.dark 切换 */
+    themeBtn = btn('xh-fab-theme', '深色模式', ICO.moon + ICO.sun);
+    themeBtn.addEventListener('click', function () { setTheme(!isDark(), true); });
+    fab.appendChild(themeBtn);
+    syncThemeUI();
 
     var top = btn('xh-fab-top', '返回顶部', ICO.top);
     top.addEventListener('click', function () {
