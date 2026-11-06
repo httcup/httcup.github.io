@@ -188,12 +188,12 @@ html.dark .option.selected { color: var(--xh-accent); background: var(--xh-surfa
 html.dark .search-input { background: var(--xh-bg); color: var(--xh-text); border-color: var(--xh-border); }
 html.dark .search-input:focus { border-color: var(--xh-accent); box-shadow: 0 0 0 3px var(--xh-ring); }
 
-/* 嵌套圆角：inner = outer − gap = 12 − 8 = 4 */
+/* 搜索按钮沿用站点原有圆形（36×36），深色底 + 白色放大镜 */
 .search-button {
   position: absolute; right: var(--xh-s2);
   width: 36px; height: 36px;
   display: grid; place-items: center;
-  border: 0; border-radius: var(--xh-r-sm);
+  border: 0; border-radius: 50%;
   cursor: pointer;
   background: var(--xh-text); color: var(--xh-bg);
   transition: background var(--xh-dur-color) var(--xh-ease),
