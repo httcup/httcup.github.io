@@ -136,8 +136,8 @@
 
     var reward = btn('xh-fab-reward', '打赏一杯咖啡', ICO.reward);
     reward.addEventListener('click', function () {
-      openImage('打赏一杯咖啡 ☕', BASE + 'assets/fab/reward-qr.jpg',
-        '更新不易，赞助打赏支持一下！<br>谢谢你的支持！！');
+      openImage('打赏一杯咖啡', BASE + 'assets/fab/reward-qr.jpg',
+        '如果这些书签对你有用，可以扫码支持更新。');
     });
     fab.appendChild(reward);
 
@@ -153,11 +153,24 @@
     });
     fab.appendChild(top);
 
-    function syncTop() {
-      top.classList.toggle('show', (window.scrollY || document.documentElement.scrollTop || 0) > window.innerHeight);
+    /* 哨兵元素 + IntersectionObserver 代替逐帧 scroll 监听 */
+    var sentinel = document.createElement('div');
+    sentinel.className = 'xh-scroll-sentinel';
+    sentinel.setAttribute('aria-hidden', 'true');
+    document.body.insertBefore(sentinel, document.body.firstChild);
+    function setTopVisible(show) { top.classList.toggle('show', show); }
+    if ('IntersectionObserver' in window) {
+      var topObserver = new IntersectionObserver(function (entries) {
+        setTopVisible(!entries[0].isIntersecting);
+      }, { threshold: 0 });
+      topObserver.observe(sentinel);
+    } else {
+      function syncTopFallback() {
+        setTopVisible((window.scrollY || document.documentElement.scrollTop || 0) > window.innerHeight);
+      }
+      window.addEventListener('scroll', syncTopFallback, { passive: true });
+      syncTopFallback();
     }
-    window.addEventListener('scroll', syncTop, { passive: true });
-    syncTop();
 
     document.body.appendChild(fab);
   }

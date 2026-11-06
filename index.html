@@ -87,76 +87,6 @@
 		<!-- Stylesheet -->
 		<link rel="stylesheet" href="css/tailwind.css">
 
-		<style>
-			/* 搜索引擎选项：对齐 139t.cn 的小字胶囊（含深色适配） */
-			#options-container {
-				display: flex; flex-wrap: wrap; align-items: center;
-				gap: 2px 4px; padding: 2px 0;
-			}
-			.option {
-				cursor: pointer;
-				display: inline-flex; align-items: center;
-				padding: 5px 10px;
-				border: 0;
-				border-radius: 8px;
-				font-size: 12.5px; font-weight: 500; line-height: 1.4;
-				color: #667085;
-				background: transparent;
-				transition: color .15s ease, background .15s ease;
-				white-space: nowrap;
-			}
-			.option:hover { color: #101828; background: #f2f4f7; }
-			.selected {
-				color: #101828;
-				background: #eef1f5;
-				font-weight: 650;
-			}
-			html.dark .option { color: #9aa4b8; }
-			html.dark .option:hover { color: #e6e9f0; background: #232a3a; }
-			html.dark .selected { color: #e6e9f0; background: #232a3a; }
-			.aaa {
-			            height: auto;
-			        }
-			/* 书签卡片图标：与右下角悬浮按钮同款小方圆角 */
-			.site-tile {
-				width: 32px; height: 32px; flex: 0 0 auto;
-				margin-right: 16px;
-				display: grid; place-items: center;
-				border-radius: 10px;
-				background: #f2f4f7; color: #344054;
-				font-size: 13px; font-weight: 600; line-height: 1;
-				user-select: none;
-			}
-			html.dark .site-tile { background: #232a3a; color: #c3cad9; }
-			.site-tile-emoji { font-size: 19px; font-weight: 400; line-height: 1; }
-
-			/* 侧栏/顶栏头像：与站点小方圆角图标同款圆角方形 */
-			.brand-avatar {
-				width: 28px; height: 28px; flex: 0 0 auto;
-				object-fit: cover;
-				border-radius: 9px;
-				background: #eef0f3;
-				box-shadow: 0 0 0 1px rgba(16, 24, 40, .06);
-			}
-			.brand-avatar-lg { width: 32px; height: 32px; border-radius: 10px; }
-			html.dark .brand-avatar { box-shadow: 0 0 0 1px rgba(255, 255, 255, .1); }
-
-			/* 窄屏：右下角悬浮按钮会压住最右一列卡片，给内容留出安全边距 */
-			@media (max-width: 640px) {
-				#bookmarks { padding-right: 56px; }
-			}
-
-			/* 搜索区整条在深色模式下跟随页面底色，避免白底压浅灰字 */
-			html.dark .aaa {
-				background-color: #12161b !important;
-				border-color: #1f2530 !important;
-			}
-			 @media screen and (max-width: 768px) { /* Adjust the max-width as needed */
-			            .aaa {
-			                height: auto;
-			            }
-			        }
-		</style>
 
 		<!-- Structured Data for SEO -->
 		<script type="application/ld+json">
@@ -187,9 +117,11 @@
 	<link rel="apple-touch-icon" sizes="167x167" href="assets/icon/apple-touch-167.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="assets/icon/apple-touch-152.png">
 	<link rel="manifest" href="manifest.json">
+	<link rel="stylesheet" href="css/design-system.css">
 </head>
 
 	<body class="h-full dark:pintree-bg-gray-900 bg-white">
+		<a href="#main-content" class="xh-skip">跳转到主要内容</a>
 
 		<div>
 			<!-- Mobile Off-Canvas Menu -->
@@ -202,8 +134,8 @@
 						<!-- Close button for the off-canvas menu -->
 						<div class="absolute left-full top-0 flex w-16 justify-center pt-5">
 							<button id="close-sidebar-button" type="button" class="-m-2.5 p-2.5">
-								<span class="sr-only">Close sidebar</span>
-								<svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+								<span class="sr-only">关闭菜单</span>
+								<svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="2"
 									stroke="currentColor" aria-hidden="true">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 								</svg>
@@ -214,7 +146,7 @@
 						<div
 							class="flex grow flex-col gap-y-5 overflow-y-auto bg-white dark:pintree-bg-gray-900 px-6 pb-4">
 							<div class="flex h-16 shrink-0 items-center">
-								<a href="./" class="ml-4 flex items-center gap-2 font-extrabold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+								<a href="./" class="ml-4 flex items-center gap-2 font-bold text-2xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
 									<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="32" height="32" class="brand-avatar brand-avatar-lg" decoding="async">
 									<span>书签收藏夹</span>
 								</a>
@@ -228,11 +160,11 @@
 			</div>
 
 			<!-- Static Sidebar for Desktop -->
-			<div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col">
+			<div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-60 lg:flex-col" role="navigation" aria-label="书签分类">
 				<div
 					class="flex flex-col border-r border-gray-200 dark:pintree-border-gray-800 bg-white px-4 h-full font-semibold dark:pintree-bg-gray-900">
 					<div class="flex p-0 h-16 shrink-0 items-center">
-						<a href="./" class="ml-4 flex items-center gap-2 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+						<a href="./" class="ml-4 flex items-center gap-2 font-bold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
 							<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="28" height="28" class="brand-avatar" decoding="async">
 							<span>书签收藏夹</span>
 						</a>
@@ -244,88 +176,26 @@
 							</ul>
 						</div>
 					</div>
-					<div class="mt-2 mb-4 pt-3 border-t border-gray-100 dark:pintree-border-gray-800">
-						<a href="https://139t.cn/" target="_blank" rel="noopener"
-							class="ml-4 text-xs font-normal text-gray-500 hover:text-main-500 dark:text-gray-400">
-							小胡的工具站 ↗
-						</a>
-					</div>
 				</div>
 			</div>
 
 			<!-- Main Content Area -->
 			<div class="lg:pl-60 dark:pintree-bg-gray-900 flex flex-col min-h-screen">
-				<div class="items-center top-0 z-40  h-16 shrink-0 gap-x-4 border-b border-gray bg-white dark:pintree-bg-gray px-4  aaa"
-					style="width: 100%; ">
+				<div class="items-center top-0 z-40  h-16 shrink-0 gap-x-4 border-b border-gray bg-white dark:pintree-bg-gray px-4  aaa xh-topbar" role="banner"
+					>
 					<div class=" gap-x-4 justify-between">
-						<a href="./" class="lg:hidden ml-4 inline-flex items-center gap-2 font-extrabold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
+						<button id="open-sidebar-button" type="button" class="xh-menu-btn" aria-label="打开分类菜单" aria-controls="off-canvas-menu" aria-expanded="false">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+						</button>
+						<a href="./" class="lg:hidden ml-4 inline-flex items-center gap-2 font-bold text-xl dark:text-white" aria-label="小胡小胡的书签收藏 首页">
 							<img src="assets/avatar.jpg" srcset="assets/avatar@2x.jpg 2x" alt="" width="26" height="26" class="brand-avatar" decoding="async">
 							<span>书签收藏夹</span>
 						</a>
-						<style>
-        .search-container {
-            position: relative;
-            /* 宽度由 syncSearchWidth() 与下方选项行右边缘对齐，最大不超过容器 */
-            width: 100%; max-width: 100%;
-            margin: 4px 0 10px;
-            display: flex; align-items: center;
-        }
-        .search-container > .search-ico {
-            position: absolute; left: 14px;
-            width: 17px; height: 17px;
-            color: #667085; pointer-events: none;
-        }
-        html.dark .search-container > .search-ico { color: #9aa4b8; }
-
-        .search-input {
-            width: 100%;
-            height: 48px;
-            padding: 0 54px 0 42px;
-            box-sizing: border-box;
-            border: 1px solid #e4e7ec;
-            border-radius: 14px;
-            background: #ffffff;
-            color: #101828;
-            font-size: 14.5px;
-            font-family: inherit;
-            box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
-            transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
-            outline: none;
-        }
-        .search-input::placeholder { color: #98a2b3; }
-        .search-input:focus {
-            border-color: #c9d2dd;
-            box-shadow: 0 0 0 3px rgba(16, 24, 40, .06);
-        }
-        html.dark .search-input {
-            background: #161b26; color: #e6e9f0;
-            border-color: #2a3142;
-            box-shadow: none;
-        }
-        html.dark .search-input::placeholder { color: #6b768c; }
-        html.dark .search-input:focus { border-color: #3a4356; box-shadow: 0 0 0 3px rgba(255, 255, 255, .06); }
-
-
-        .search-button {
-            position: absolute;
-            right: 6px;
-            width: 36px; height: 36px;
-            display: grid; place-items: center;
-            border: 0; border-radius: 50%;
-            cursor: pointer;
-            background: #101828; color: #ffffff;
-            transition: background .15s ease, transform .15s ease;
-        }
-        .search-button:hover { background: #344054; transform: scale(1.04); }
-        .search-button svg { width: 16px; height: 16px; }
-        html.dark .search-button { background: #ffffff; color: #101828; }
-        html.dark .search-button:hover { background: #e6e9f0; }
-    </style>
     <div class="search-container">
         <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
         <input id="searchInput" class="search-input" placeholder="搜索书签，网站或关键词…" aria-label="搜索书签" autocomplete="off">
         <button id="searchButton" class="search-button" aria-label="搜索">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
         </button>
     </div>
 						</div>
@@ -334,19 +204,19 @@
 						<div class=" gap-x-4   justify-between">
 
 							<div id="options-container">
-								<div class="option" data-value="local">本站</div>
-								<div class="option" data-value="https://metaso.cn/?q=">秘塔</div>
-								<div class="option" data-value="https://www.baidu.com/s?wd=">百度</div>
-								<div class="option" data-value="https://www.google.com.hk/search?hl=zh-CN&q=">谷歌</div>
-								<div class="option" data-value="https://cn.bing.com/search?q=">必应</div>
-								<div class="option" data-value="https://soupian.pro/search?key=">影视</div>
-								<div class="option" data-value="https://dongpian1.com/session/new?utm_source=WZYY-yinghezhinan&amp;prompt=" data-placeholder="用懂片帝搜索…">懂片帝</div>
-								<div class="option" data-value="https://s.weibo.com/weibo/">微博</div>
-								<div class="option" data-value="https://www.douyin.com/search/">抖音</div>
-								<div class="option" data-value="https://search.bilibili.com/all?keyword=">B站</div>
-								<div class="option" data-value="https://www.xiaohongshu.com/search_result?keyword=">小红书</div>
-								<div class="option" data-value="https://www.xiachufang.com/search/?keyword=">下厨房</div>
-								<div class="option" data-value="https://www.nosetime.com/search.php?x=0&y=0&word=">香水时代</div>
+								<button type="button" class="option" data-value="local" aria-pressed="true">本站</button>
+								<button type="button" class="option" data-value="https://metaso.cn/?q=" aria-pressed="false">秘塔</button>
+								<button type="button" class="option" data-value="https://www.baidu.com/s?wd=" aria-pressed="false">百度</button>
+								<button type="button" class="option" data-value="https://www.google.com.hk/search?hl=zh-CN&q=" aria-pressed="false">谷歌</button>
+								<button type="button" class="option" data-value="https://cn.bing.com/search?q=" aria-pressed="false">必应</button>
+								<button type="button" class="option" data-value="https://soupian.pro/search?key=" aria-pressed="false">影视</button>
+								<button type="button" class="option" data-value="https://dongpian1.com/session/new?utm_source=WZYY-yinghezhinan&amp;prompt=" data-placeholder="用懂片帝搜索…" aria-pressed="false">懂片帝</button>
+								<button type="button" class="option" data-value="https://s.weibo.com/weibo/" aria-pressed="false">微博</button>
+								<button type="button" class="option" data-value="https://www.douyin.com/search/" aria-pressed="false">抖音</button>
+								<button type="button" class="option" data-value="https://search.bilibili.com/all?keyword=" aria-pressed="false">B站</button>
+								<button type="button" class="option" data-value="https://www.xiaohongshu.com/search_result?keyword=" aria-pressed="false">小红书</button>
+								<button type="button" class="option" data-value="https://www.xiachufang.com/search/?keyword=" aria-pressed="false">下厨房</button>
+								<button type="button" class="option" data-value="https://www.nosetime.com/search.php?x=0&y=0&word=" aria-pressed="false">香水时代</button>
 							
 							</div>
 						</div>
@@ -354,12 +224,12 @@
 				</div>
 
 				<!-- Main content area -->
-				<main class="mt-4 dark:pintree-bg-gray-900 flex-grow">
-					<h1 style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">
+				<main id="main-content" tabindex="-1" class="mt-4 dark:pintree-bg-gray-900 flex-grow">
+					<h1 class="xh-sr-only">
 						小胡小胡的书签收藏 · 小胡的工具站
 					</h1>
-					<div id="loading-spinner" class="flex justify-center items-center h-full">
-						<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-400 h-6 w-6"></div>
+					<div id="loading-spinner" class="xh-skeleton" role="status" aria-live="polite" aria-busy="true" aria-label="正在加载书签">
+						<div class="xh-skeleton-grid"><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div><div class="xh-skeleton-tile"></div></div><div class="xh-skeleton-rows"><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div><div class="xh-skeleton-row"></div></div>
 					</div>
 					<div id="breadcrumbs" class="mt-2 px-6 text-sm text-gray-400 flex justify-between items-center">
 						<div id="breadcrumbs-path" class="">
@@ -370,6 +240,15 @@
 						<!-- Bookmark cards will be inserted here -->
 					</div>
 				</main>
+				<footer class="xh-footer">
+					<div class="xh-footer-inner">
+						<span>© <span id="currentYear">2026</span> 小胡小胡的书签收藏</span>
+						<nav class="xh-footer-links" aria-label="页脚导航">
+							<a href="privacy.html">隐私与统计说明</a>
+							<a href="./">返回首页</a>
+						</nav>
+					</div>
+				</footer>
 			</div>
 		</div>
 
@@ -385,6 +264,7 @@
 				// Function to open the sidebar
 				const openSidebar = () => {
 					offCanvasMenu.classList.remove('hidden');
+					if (openSidebarButton) openSidebarButton.setAttribute('aria-expanded', 'true');
 					setTimeout(() => {
 						offCanvasBackdrop.classList.add('opacity-100');
 						offCanvasContent.classList.add('translate-x-0');
@@ -393,6 +273,7 @@
 
 				// Function to close the sidebar
 				const closeSidebar = () => {
+					if (openSidebarButton) openSidebarButton.setAttribute('aria-expanded', 'false');
 					offCanvasBackdrop.classList.remove('opacity-100');
 					offCanvasContent.classList.remove('translate-x-0');
 					setTimeout(() => {
@@ -431,11 +312,11 @@
 					.then(data => {
 						const results = searchInData(data, query.toLowerCase());
 						renderBookmarks(results, [{
-							title: 'Search Results',
+							title: '搜索结果',
 							children: results
 						}]);
 					})
-					.catch(error => console.error('Error searching bookmarks:', error));
+					.catch(error => showLoadError(error, '搜索书签失败'));
 			}
 
 			// 同时匹配「标题」和「网址/域名」：输入 github.com、github、notion 都能命中
@@ -470,16 +351,13 @@
 						const secondLayer = data[0].children;
 						renderNavigation(secondLayer, document.getElementById('navigation'));
 						renderBookmarks(secondLayer, [{
-							title: 'Bookmark',
+							title: '书签',
 							children: secondLayer
 						}]);
 						document.getElementById('searchInput').value = '';
-						// document.getElementById('clearSearchButton').classList.add('hidden');
 					})
-					.catch(error => console.error('Error clearing search results:', error));
+					.catch(error => showLoadError(error, '书签读取失败'));
 			}
-
-			// document.getElementById('clearSearchButton').addEventListener('click', clearSearchResults);
 
 			// Create bookmark card element
 			/* 动物图标随机种子：整页只生成一次 —— 刷新换一批，页面内切换文件夹保持稳定 */
@@ -538,16 +416,50 @@
 				return card;
 			}
 
-			// Check folder password lock (Base64), return true if unlocked / not locked
+						// 用弹层替代 prompt / alert：可聚焦、可取消、错误内联可见
+			function askFolderPassword(title, lockHash) {
+				return new Promise(resolve => {
+					const back = document.createElement('div');
+					back.className = 'xh-pw-back';
+					back.innerHTML =
+						'<div class="xh-pw" role="dialog" aria-modal="true" aria-label="解锁文件夹">' +
+						'<h2 class="xh-pw-title">该文件夹已加密</h2>' +
+						'<p class="xh-pw-desc"></p>' +
+						'<form class="xh-pw-form" novalidate>' +
+						'<input class="xh-pw-input" type="password" placeholder="输入密码" autocomplete="off" aria-label="文件夹密码">' +
+						'<p class="xh-pw-error" role="alert" hidden>密码不正确，请重试</p>' +
+						'<div class="xh-pw-actions">' +
+						'<button type="button" class="xh-pw-cancel">取消</button>' +
+						'<button type="submit" class="xh-pw-ok">解锁</button>' +
+						'</div></form></div>';
+					const input = back.querySelector('.xh-pw-input');
+					const err = back.querySelector('.xh-pw-error');
+					back.querySelector('.xh-pw-desc').textContent = '输入密码以打开「' + title + '」';
+					function done(ok) {
+						document.removeEventListener('keydown', onKey);
+						back.remove();
+						resolve(ok);
+					}
+					function onKey(e) { if (e.key === 'Escape') done(false); }
+					document.addEventListener('keydown', onKey);
+					back.addEventListener('click', e => { if (e.target === back) done(false); });
+					back.querySelector('.xh-pw-cancel').addEventListener('click', () => done(false));
+					back.querySelector('form').addEventListener('submit', e => {
+						e.preventDefault();
+						let encoded = '';
+						try { encoded = btoa(input.value); } catch (err2) { encoded = ''; }
+						if (encoded === lockHash) { done(true); }
+						else { err.hidden = false; input.focus(); input.select(); }
+					});
+					document.body.appendChild(back);
+					input.focus();
+				});
+			}
+
+// Check folder password lock (Base64), return true if unlocked / not locked
 			async function checkFolderLock(folder) {
 				if (!folder || !folder.lock) return true;
-				const pwd = prompt('该文件夹已加密，请输入密码解锁「' + folder.title + '」');
-				if (pwd === null) return false;
-				if (btoa(pwd) !== folder.lock) {
-					alert('密码错误，无法进入');
-					return false;
-				}
-				return true;
+				return askFolderPassword(folder.title, folder.lock);
 			}
 
 			// Create folder card element
@@ -556,12 +468,8 @@
 				card.className = 'folder-card text-gray rounded-lg cursor-pointer flex flex-col items-center';
 				card.onclick = async () => {
 					if (lockHash) {
-						const pwd = prompt('该文件夹已加密，请输入密码解锁「' + title + '」');
-						if (pwd === null) return;
-						if (btoa(pwd) !== lockHash) {
-							alert('密码错误，无法进入');
-							return;
-						}
+						const ok = await askFolderPassword(title, lockHash);
+						if (!ok) return;
 					}
 					const newPath = path.concat({
 						title,
@@ -728,13 +636,39 @@
 				});
 			}
 
-			// Show a message when no search results are found
+						// 用户可见的错误态：替代只写 console 的静默失败
+			function showLoadError(error, heading) {
+				const spinner = document.getElementById('loading-spinner');
+				if (spinner) spinner.style.display = 'none';
+				const box = document.getElementById('bookmarks');
+				if (!box) return;
+				box.innerHTML = '';
+				const wrap = document.createElement('div');
+				wrap.className = 'xh-error';
+				wrap.setAttribute('role', 'alert');
+				const h = document.createElement('h2');
+				h.className = 'xh-error-title';
+				h.textContent = heading || '书签数据加载失败';
+				const p = document.createElement('p');
+				p.textContent = '没能读取书签数据，请检查网络连接后重试。';
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.className = 'xh-error-btn';
+				btn.textContent = '重新加载';
+				btn.addEventListener('click', () => location.reload());
+				wrap.appendChild(h);
+				wrap.appendChild(p);
+				wrap.appendChild(btn);
+				box.appendChild(wrap);
+			}
+
+// Show a message when no search results are found
 			function showNoResultsMessage() {
 				const container = document.getElementById('bookmarks');
 				container.innerHTML = ''; // Clear previous content
 
 				const messageContainer = document.createElement('div');
-				messageContainer.className = 'flex flex-col items-center justify-center h-full';
+				messageContainer.className = 'flex flex-col items-center justify-center h-full xh-empty';
 
 				const icon = document.createElement('svg');
 				icon.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -747,11 +681,11 @@
 
 				const title = document.createElement('h2');
 				title.className = 'text-gray-500 text-xl font-semibold mt-4';
-				title.innerText = 'Oops, Nothing to See Here!';
+				title.innerText = '没有找到匹配的书签';
 
 				const message = document.createElement('p');
 				message.className = 'text-gray-500 mt-2';
-				message.innerText = 'Try another search or discover more cool stuff elsewhere!';
+				message.innerText = '换个关键词试试，或从左侧分类浏览。';
 
 				messageContainer.appendChild(icon);
 				messageContainer.appendChild(title);
@@ -781,7 +715,7 @@
 				// Create folder section
 				if (folders.length > 0) {
 					const folderSection = document.createElement('div');
-					folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6';
+					folderSection.className = 'grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 2xl:grid-cols-12 gap-6 xh-reveal';
 					folders.forEach(folder => {
 						const card = createFolderCard(folder.title, folder.children, path, folder.lock);
 						folderSection.appendChild(card);
@@ -799,7 +733,7 @@
 				// Create link section
 				if (links.length > 0) {
 					const linkSection = document.createElement('div');
-					linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6';
+					linkSection.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-6 xh-reveal';
 					links.forEach(link => {
 						const card = createCard(link.title, link.url, link.icon);
 						linkSection.appendChild(card);
@@ -809,6 +743,22 @@
 
 				// Update sidebar active state
 				updateSidebarActiveState(path);
+
+				// 分组级一次性淡入，6000+ 条书签不会逐个进动画
+				const reveals = container.querySelectorAll('.xh-reveal');
+				if ('IntersectionObserver' in window) {
+					const io = new IntersectionObserver(entries => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('is-visible');
+								io.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.05 });
+					reveals.forEach(el => io.observe(el));
+				} else {
+					reveals.forEach(el => el.classList.add('is-visible'));
+				}
 			}
 
 			// Fetch and render data（使用全局缓存，只请求一次 JSON）
@@ -827,7 +777,7 @@
 							children: firstItem.children
 						}]);
 						renderBookmarks(firstItem.children, [{
-							title: 'Bookmark',
+							title: '书签',
 							children: firstLayer
 						}, {
 							title: firstItem.title,
@@ -835,23 +785,13 @@
 						}]);
 					} else {
 						renderBookmarks(firstLayer, [{
-							title: 'Bookmark',
+							title: '书签',
 							children: firstLayer
 						}]);
 					}
 				})
-				.catch(error => console.error('Error loading bookmarks:', error));
+				.catch(error => showLoadError(error, '书签数据加载失败'));
 
-			// Search functionality on pressing Enter（已统一由下方 v5 搜索块处理，避免回车触发两次搜索）
-
-			// // Search functionality on button click
-			// document.getElementById('searchButton').addEventListener('click', function() {
-			// 	const query = document.getElementById('searchInput').value;
-			// 	searchBookmarks(query);
-			// });
-
-			// // Theme toggle functionality
-			// const themeToggleButton = document.getElementById('themeToggleButton');
 			const sunIcon = document.getElementById('sunIcon');
 			const moonIcon = document.getElementById('moonIcon');
 
@@ -889,12 +829,10 @@
 				})
 				.catch(error => {
 					console.error('Error loading bookmarks:', error);
-					// Optionally hide the spinner and show an error message
-					document.getElementById('loading-spinner').style.display = 'none';
+					showLoadError(error, '书签数据加载失败');
 				});
 
 			// Event listener for theme toggle button
-			// themeToggleButton.addEventListener('click', toggleTheme);
 
 			// Automatically apply theme according to system theme settings
 			function applyColorTheme(theme) {
@@ -907,7 +845,9 @@
 
 			// Detect initial color theme
 			const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			applyColorTheme(prefersDarkTheme ? 'dark' : 'light');
+			let savedTheme = null;
+			try { savedTheme = localStorage.getItem('xh-theme'); } catch (e) {}
+			applyColorTheme(savedTheme ? savedTheme : (prefersDarkTheme ? 'dark' : 'light'));
 
 			// 系统主题变化时跟随（用户手动选过主题则不覆盖）
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
@@ -918,8 +858,10 @@
 			// Open mobile menu（按钮不存在时安全跳过）
 			var openBtn = document.getElementById('open-sidebar-button');
 			if (openBtn) openBtn.addEventListener('click', function () {
+				var host = document.getElementById('sidebar-2');
+				if (host.querySelector('#navigation')) return;
 				var navigation = document.getElementById('navigation').cloneNode(true);
-				document.getElementById('sidebar-2').appendChild(navigation);
+				host.appendChild(navigation);
 			});
 		</script>
 
@@ -928,10 +870,6 @@
 				const yearElement = document.getElementById('currentYear');
 				if (yearElement) yearElement.textContent = new Date().getFullYear();
 			});
-
-
-			// （已移除旧版搜索引擎选择逻辑，统一由下方 v5 搜索块处理，避免重复绑定）
-	        <!-- 已移除：腾讯企业邮遗留代码（http 混合内容被浏览器拦截，且与站点无关） -->
 
 		</script>
 
@@ -942,13 +880,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('searchButton');
     const options = document.querySelectorAll('#options-container .option');
     let currentEngine = 'local'; // 'local' = 本站书签搜索
+    const syncPressed = () => options.forEach(o =>
+        o.setAttribute('aria-pressed', o.classList.contains('selected') ? 'true' : 'false'));
 
-    // 默认选中「本站」选项
+    // 默认选中「本站」选项，并同步 aria-pressed
     options.forEach(o => o.classList.remove('selected'));
     const localOption = Array.from(options).find(o => o.textContent.trim() === '本站');
-    if (localOption) {
-        localOption.classList.add('selected');
-    }
+    if (localOption) localOption.classList.add('selected');
+    syncPressed();
 
     // 点击选项：已选中的再次点击可取消选择；未选中的则切换选中
     options.forEach(opt => {
@@ -962,6 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opt.classList.add('selected');
                 currentEngine = opt.dataset.value;
             }
+            syncPressed();
         });
     });
 

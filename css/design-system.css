@@ -1,0 +1,393 @@
+/* ==========================================================================
+   Design Values — 小胡小胡的书签收藏 (xhxh.vip)
+   --------------------------------------------------------------------------
+   单一真源：字体、色板、圆角、间距、动效全部集中在这里。
+   规则取自 elayadesign/redesign-skill，但值已 fork 成中文书签导航站自己的系统：
+   保留原有蓝灰调性与品牌绿、保留与 139t.cn 的一致性，不套用默认中性暗色。
+   本文件在所有其它样式之后加载，覆盖 tailwind.css / fab.css 中的旧具体值。
+   ========================================================================== */
+
+:root {
+  /* 字体：中文优先 + 西文回退，全站只用这一套 */
+  --xh-font: "PingFang SC", "Noto Sans SC", "HarmonyOS Sans SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --xh-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* 字号：Tailwind 阶 */
+  --xh-text-xs: 12px;
+  --xh-text-sm: 14px;
+  --xh-text-base: 16px;
+  --xh-text-lg: 18px;
+  --xh-text-xl: 20px;
+
+  /* 间距：闭合阶 */
+  --xh-s1: 4px;
+  --xh-s2: 8px;
+  --xh-s3: 12px;
+  --xh-s4: 16px;
+  --xh-s5: 24px;
+  --xh-s6: 32px;
+  --xh-s7: 40px;
+  --xh-s8: 48px;
+  --xh-s9: 64px;
+
+  /* 圆角：Tailwind 阶 */
+  --xh-r-sm: 4px;
+  --xh-r-md: 6px;
+  --xh-r-lg: 8px;
+  --xh-r-xl: 12px;
+  --xh-r-2xl: 16px;
+
+  /* 表面 / 文字（浅色） */
+  --xh-bg: #ffffff;
+  --xh-surface: #f2f4f7;
+  --xh-surface-2: #eef1f5;
+  --xh-border: #e4e7ec;
+  --xh-text: #101828;
+  --xh-muted: #667085;
+
+  /* 唯一强调色：HSL 饱和度 51%，hover 为同色明度变化，不再出现第二种绿 */
+  --xh-accent: #3CB884;
+  --xh-accent-hover: #339f72;
+  --xh-on-accent: #ffffff;
+
+  /* 阴影：统一朝背景色相 tint */
+  --xh-shadow: 0 1px 2px rgba(16, 24, 40, .06);
+  --xh-shadow-md: 0 2px 8px rgba(16, 24, 40, .10);
+  --xh-shadow-lg: 0 8px 24px -8px rgba(16, 24, 40, .22);
+  --xh-ring: rgba(60, 184, 132, .35);
+
+  /* 动效：基础曲线 + 位移 500ms / 颜色 300ms，均不低于 200ms */
+  --xh-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --xh-dur-move: 500ms;
+  --xh-dur-color: 300ms;
+
+  --xh-content-max: 1440px;
+}
+
+html.dark {
+  --xh-bg: #12161b;
+  --xh-surface: #1f2530;
+  --xh-surface-2: #232a3a;
+  --xh-border: #2a3142;
+  --xh-text: #e6e9f0;
+  --xh-muted: #9aa4b8;
+  --xh-shadow: 0 1px 2px rgba(16, 24, 40, .5);
+  --xh-shadow-md: 0 2px 8px rgba(16, 24, 40, .45);
+  --xh-shadow-lg: 0 8px 24px -8px rgba(16, 24, 40, .55);
+  --xh-ring: rgba(60, 184, 132, .45);
+}
+
+/* --------------------------------------------------------------------------
+   1. 全局基线
+   -------------------------------------------------------------------------- */
+html, body { font-family: var(--xh-font); }
+body { background-color: var(--xh-bg); color: var(--xh-text); }
+.min-h-screen { min-height: 100dvh; }
+
+/* 键盘焦点：覆盖全部动态生成的卡片、链接、按钮 */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--xh-accent) !important;
+  outline-offset: 2px;
+}
+/* 按压反馈 */
+.option:active,
+.folder-card:active,
+.xh-fab-btn:active,
+.xh-menu-btn:active,
+.xh-error-btn:active,
+.xh-pw-ok:active,
+.xh-pw-cancel:active { transform: scale(.98); }
+
+.xh-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.xh-skip {
+  position: fixed; top: var(--xh-s2); left: var(--xh-s2); z-index: 200;
+  padding: var(--xh-s2) var(--xh-s4);
+  border-radius: var(--xh-r-lg);
+  background: var(--xh-accent); color: var(--xh-on-accent);
+  font-size: var(--xh-text-sm); font-weight: 600; text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--xh-dur-move) var(--xh-ease);
+}
+.xh-skip:focus { transform: translateY(0); }
+
+/* --------------------------------------------------------------------------
+   2. 顶栏 / 搜索区（从 index.html 两段内联 <style> 迁移，统一成一处真源）
+   -------------------------------------------------------------------------- */
+.xh-topbar { width: 100%; }
+.aaa { height: auto; }
+html.dark .aaa { background-color: var(--xh-bg) !important; border-color: var(--xh-border) !important; }
+@media screen and (max-width: 768px) { .aaa { height: auto; } }
+/* 窄屏：原本固定 100px 的文件夹图标 + 24px 间距会把三列撑出视口 */
+@media screen and (max-width: 640px) {
+  #bookmarks { padding-right: 56px; }
+  #bookmarks .xh-reveal { gap: var(--xh-s3); }
+  .folder__svg { width: 88px; max-width: 100%; height: auto; }
+}
+
+/* 内容区约束：超宽屏不再无限拉宽 */
+#breadcrumbs, #bookmarks, .xh-footer-inner {
+  max-width: var(--xh-content-max);
+  margin-left: auto; margin-right: auto;
+  width: 100%;
+}
+
+#options-container {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: var(--xh-s1); padding: var(--xh-s1) 0;
+}
+.option {
+  -webkit-appearance: none; appearance: none;
+  display: inline-flex; align-items: center;
+  padding: var(--xh-s1) var(--xh-s3);
+  border: 0; border-radius: var(--xh-r-lg);
+  font-family: var(--xh-font);
+  font-size: var(--xh-text-xs); font-weight: 500; line-height: 1.4;
+  color: var(--xh-muted); background: transparent;
+  white-space: nowrap; cursor: pointer;
+  transition: color var(--xh-dur-color) var(--xh-ease),
+              background var(--xh-dur-color) var(--xh-ease),
+              transform var(--xh-dur-color) var(--xh-ease);
+}
+.option:hover { color: var(--xh-text); background: var(--xh-surface); }
+.option.selected { color: var(--xh-accent-hover); background: var(--xh-surface-2); font-weight: 600; }
+html.dark .option { color: var(--xh-muted); }
+html.dark .option:hover { color: var(--xh-text); background: var(--xh-surface); }
+html.dark .option.selected { color: var(--xh-accent); background: var(--xh-surface-2); }
+
+.search-container {
+  position: relative; width: 100%; max-width: 100%;
+  margin: var(--xh-s1) 0 var(--xh-s2);
+  display: flex; align-items: center;
+}
+.search-container > .search-ico {
+  position: absolute; left: var(--xh-s3);
+  width: 16px; height: 16px;
+  color: var(--xh-muted); pointer-events: none;
+}
+.search-input {
+  width: 100%; height: 48px;
+  padding: 0 var(--xh-s9) 0 var(--xh-s7);
+  box-sizing: border-box;
+  border: 1px solid var(--xh-border);
+  border-radius: var(--xh-r-xl);              /* outer 12px */
+  background: var(--xh-bg); color: var(--xh-text);
+  font-family: var(--xh-font); font-size: var(--xh-text-sm);
+  box-shadow: var(--xh-shadow);
+  transition: border-color var(--xh-dur-color) var(--xh-ease),
+              box-shadow var(--xh-dur-color) var(--xh-ease),
+              background var(--xh-dur-color) var(--xh-ease);
+}
+.search-input::placeholder { color: var(--xh-muted); }
+.search-input:focus { border-color: var(--xh-accent); box-shadow: 0 0 0 3px var(--xh-ring); }
+html.dark .search-input { background: var(--xh-bg); color: var(--xh-text); border-color: var(--xh-border); }
+html.dark .search-input:focus { border-color: var(--xh-accent); box-shadow: 0 0 0 3px var(--xh-ring); }
+
+/* 嵌套圆角：inner = outer − gap = 12 − 8 = 4 */
+.search-button {
+  position: absolute; right: var(--xh-s2);
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border: 0; border-radius: var(--xh-r-sm);
+  cursor: pointer;
+  background: var(--xh-text); color: var(--xh-bg);
+  transition: background var(--xh-dur-color) var(--xh-ease),
+              transform var(--xh-dur-move) var(--xh-ease);
+}
+.search-button:hover { background: var(--xh-surface-2); color: var(--xh-text); transform: scale(1.04); }
+.search-button svg { width: 16px; height: 16px; }
+html.dark .search-button { background: var(--xh-text); color: var(--xh-bg); }
+html.dark .search-button:hover { background: var(--xh-surface-2); color: var(--xh-text); }
+
+/* --------------------------------------------------------------------------
+   3. 图标 / 卡片
+   -------------------------------------------------------------------------- */
+.site-tile {
+  width: 32px; height: 32px; flex: 0 0 auto;
+  margin-right: var(--xh-s4);
+  display: grid; place-items: center;
+  border-radius: var(--xh-r-lg);
+  background: var(--xh-surface); color: var(--xh-text);
+  font-size: var(--xh-text-xs); font-weight: 600; line-height: 1;
+  user-select: none;
+}
+html.dark .site-tile { background: var(--xh-surface-2); color: var(--xh-text); }
+.site-tile-emoji { font-size: var(--xh-text-lg); font-weight: 400; line-height: 1; }
+
+.brand-avatar {
+  width: 28px; height: 28px; flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: var(--xh-r-lg);
+  background: var(--xh-surface-2);
+  box-shadow: 0 0 0 1px var(--xh-border);
+}
+.brand-avatar-lg { width: 32px; height: 32px; }
+
+/* 收敛 tailwind.css 里的两套绿与纯黑阴影 */
+:root { --folderColor: var(--xh-accent); }
+.text-main-500 { color: var(--xh-accent) !important; }
+.hover\:text-main-500:hover { color: var(--xh-accent) !important; }
+.sidebar-active { background-color: var(--xh-surface-2) !important; color: var(--xh-accent) !important; }
+.folder__back { fill: var(--xh-accent-hover); }   /* 同色明度变化，保留文件夹前后层次 */
+.folder__front { fill: var(--xh-accent); }
+.loader { border-top-color: var(--xh-accent); }
+/* 原本固定 100px 会把 390px 视口下的三列撑出横向滚动 */
+.folder__svg { width: 100%; max-width: 100px; height: auto; }
+
+/* --------------------------------------------------------------------------
+   4. 移动端菜单按钮（补齐原本缺失的触发入口）
+   -------------------------------------------------------------------------- */
+.xh-menu-btn {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px; flex: 0 0 auto;
+  margin-left: var(--xh-s3);
+  border: 0; border-radius: var(--xh-r-lg);
+  background: var(--xh-surface); color: var(--xh-text);
+  cursor: pointer;
+  transition: background var(--xh-dur-color) var(--xh-ease), transform var(--xh-dur-color) var(--xh-ease);
+}
+.xh-menu-btn:hover { background: var(--xh-surface-2); }
+.xh-menu-btn svg { width: 20px; height: 20px; }
+@media screen and (min-width: 1024px) { .xh-menu-btn { display: none; } }
+
+/* --------------------------------------------------------------------------
+   5. 加载骨架屏（替代圆形 spinner）
+   -------------------------------------------------------------------------- */
+.xh-skeleton { padding: var(--xh-s5) 0; }
+.xh-skeleton-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--xh-s5);
+  margin-bottom: var(--xh-s6);
+}
+.xh-skeleton-rows { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--xh-s5); }
+.xh-skeleton-tile, .xh-skeleton-row {
+  border-radius: var(--xh-r-lg);
+  background: linear-gradient(90deg, var(--xh-surface) 25%, var(--xh-surface-2) 50%, var(--xh-surface) 75%);
+  background-size: 200% 100%;
+  animation: xh-shimmer 1.4s var(--xh-ease) infinite;
+}
+.xh-skeleton-tile { height: 72px; }
+.xh-skeleton-row { height: 64px; }
+@keyframes xh-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media screen and (min-width: 640px) { .xh-skeleton-grid { grid-template-columns: repeat(6, 1fr); } }
+@media screen and (min-width: 1024px) {
+  .xh-skeleton-grid { grid-template-columns: repeat(8, 1fr); }
+  .xh-skeleton-rows { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+   6. 错误态 / 空状态 / 页脚
+   -------------------------------------------------------------------------- */
+.xh-error, .xh-empty {
+  max-width: 480px; margin: var(--xh-s9) auto;
+  padding: var(--xh-s5);
+  border: 1px solid var(--xh-border); border-radius: var(--xh-r-xl);
+  background: var(--xh-surface); text-align: center;
+}
+.xh-error-title { margin: 0 0 var(--xh-s2); font-size: var(--xh-text-lg); font-weight: 600; }
+.xh-error p { margin: 0 0 var(--xh-s4); font-size: var(--xh-text-sm); color: var(--xh-muted); }
+.xh-error-btn {
+  padding: var(--xh-s2) var(--xh-s4);
+  border: 0; border-radius: var(--xh-r-lg);
+  background: var(--xh-accent); color: var(--xh-on-accent);
+  font-family: var(--xh-font); font-size: var(--xh-text-sm); font-weight: 600;
+  cursor: pointer;
+  transition: background var(--xh-dur-color) var(--xh-ease), transform var(--xh-dur-color) var(--xh-ease);
+}
+.xh-error-btn:hover { background: var(--xh-accent-hover); }
+
+.xh-footer {
+  margin-top: var(--xh-s7);
+  border-top: 1px solid var(--xh-border);
+  background: var(--xh-bg);
+}
+.xh-footer-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--xh-s3);
+  padding: var(--xh-s5) var(--xh-s5);
+  font-size: var(--xh-text-xs); color: var(--xh-muted);
+}
+.xh-footer-links { display: flex; flex-wrap: wrap; gap: var(--xh-s4); }
+.xh-footer a { color: var(--xh-muted); text-decoration: none; }
+.xh-footer a:hover { color: var(--xh-accent); }
+
+/* --------------------------------------------------------------------------
+   7. 密码弹层（替代 prompt / alert）
+   -------------------------------------------------------------------------- */
+.xh-pw-back {
+  position: fixed; inset: 0; z-index: 130;
+  display: grid; place-items: center;
+  padding: var(--xh-s4);
+  background: rgba(15, 18, 26, .55);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  animation: xh-fade var(--xh-dur-color) var(--xh-ease);
+}
+.xh-pw {
+  width: min(360px, 100%);
+  padding: var(--xh-s5);
+  border-radius: var(--xh-r-2xl);
+  background: var(--xh-bg); color: var(--xh-text);
+  box-shadow: var(--xh-shadow-lg);
+}
+.xh-pw-title { margin: 0 0 var(--xh-s2); font-size: var(--xh-text-lg); font-weight: 600; }
+.xh-pw-desc { margin: 0 0 var(--xh-s4); font-size: var(--xh-text-sm); color: var(--xh-muted); }
+.xh-pw-input {
+  width: 100%; box-sizing: border-box;
+  padding: var(--xh-s2) var(--xh-s3);
+  border: 1px solid var(--xh-border); border-radius: var(--xh-r-lg);
+  background: var(--xh-surface); color: var(--xh-text);
+  font-family: var(--xh-font); font-size: var(--xh-text-sm);
+}
+.xh-pw-error { margin: var(--xh-s2) 0 0; font-size: var(--xh-text-xs); color: #d92d20; }
+.xh-pw-actions { display: flex; justify-content: flex-end; gap: var(--xh-s2); margin-top: var(--xh-s4); }
+.xh-pw-actions button {
+  padding: var(--xh-s2) var(--xh-s4);
+  border: 0; border-radius: var(--xh-r-lg);
+  font-family: var(--xh-font); font-size: var(--xh-text-sm); font-weight: 600;
+  cursor: pointer;
+  transition: background var(--xh-dur-color) var(--xh-ease), transform var(--xh-dur-color) var(--xh-ease);
+}
+.xh-pw-cancel { background: var(--xh-surface); color: var(--xh-text); }
+.xh-pw-ok { background: var(--xh-accent); color: var(--xh-on-accent); }
+.xh-pw-ok:hover { background: var(--xh-accent-hover); }
+
+/* --------------------------------------------------------------------------
+   8. 滚动显现 / 减弱动效
+   -------------------------------------------------------------------------- */
+.xh-reveal {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity var(--xh-dur-move) var(--xh-ease),
+              transform var(--xh-dur-move) var(--xh-ease);
+}
+.xh-reveal.is-visible { opacity: 1; transform: none; }
+.xh-scroll-sentinel {
+  position: absolute; top: 0; left: 0;
+  width: 1px; height: 100dvh;
+  pointer-events: none; visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .xh-reveal { opacity: 1; transform: none; }
+  .xh-skip { transition: none; }
+  .xh-skeleton-tile, .xh-skeleton-row { animation: none; }
+}
+
+/* --------------------------------------------------------------------------
+   9. 兜底与最后的统一
+   -------------------------------------------------------------------------- */
+#loading-spinner { max-width: var(--xh-content-max); margin: 0 auto; width: 100%; }
+.font-bold { font-weight: 700; }
+/* 移动侧栏沿用基础缓动，不再用 Tailwind 默认 ease-in-out / ease-linear */
+#off-canvas-backdrop, #off-canvas-content { transition-timing-function: var(--xh-ease); }
+/* 卡片按压反馈 */
+#bookmarks a:active { transform: scale(.98); }
