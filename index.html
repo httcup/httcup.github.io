@@ -17,13 +17,29 @@
 		</script>
 		<script>
 			/* 提前发起书签数据请求：与样式/HTML 解析并行，减少首屏等待
-			   cache: no-cache → 带 If-None-Match/If-Modified-Since 校验，数据没变只回 304 */
-			window.__xhData = fetch('json/pintree.json', { cache: 'no-cache' }).then(function (r) {
-				if (!r.ok) throw new Error('HTTP ' + r.status);
-				var lm = r.headers.get('last-modified');
-				if (lm) document.documentElement.dataset.dataUpdated = lm;
-				return r.json();
-			});
+			   cache: no-cache → 带 If-None-Match/If-Modified-Since 校验，数据没变只回 304
+			   移动网络偶发抖动时自动重试（最多 3 次，间隔 0.5s / 1s），避免整页报「加载失败」 */
+			window.__xhLoadData = function () {
+				function once(force) {
+					return fetch('json/pintree.json', { cache: force ? 'reload' : 'no-cache' }).then(function (r) {
+						// 极少数移动端浏览器会把 304 直接暴露给 fetch：强制回源取完整数据
+						if (r.status === 304 && !force) return once(true);
+						if (!r.ok) throw new Error('HTTP ' + r.status);
+						var lm = r.headers.get('last-modified');
+						if (lm) document.documentElement.dataset.dataUpdated = lm;
+						return r.json();
+					});
+				}
+				function attempt(left, delay) {
+					return once(false).catch(function (err) {
+						if (left <= 0) throw err;
+						return new Promise(function (resolve) { setTimeout(resolve, delay); })
+							.then(function () { return attempt(left - 1, delay * 2); });
+					});
+				}
+				return attempt(2, 500);
+			};
+			window.__xhData = window.__xhLoadData();
 		</script>
 		<title>小胡小胡的书签收藏 | 小胡的工具站</title>
 		<meta name="description"
@@ -295,13 +311,15 @@
 			function loadBookmarks() {
 				if (!_pintreePromise) {
 					// 复用 head 里提前发起的请求（没有则现发一次）
-					_pintreePromise = window.__xhData || fetch('json/pintree.json', { cache: 'no-cache' })
-						.then(response => {
-							if (!response.ok) throw new Error('HTTP ' + response.status);
-							const lm = response.headers.get('last-modified');
-							if (lm) document.documentElement.dataset.dataUpdated = lm;
-							return response.json();
-						});
+					const pending = window.__xhData || (window.__xhLoadData
+						? window.__xhLoadData()
+						: fetch('json/pintree.json', { cache: 'no-cache' }).then(r => r.json()));
+					_pintreePromise = pending.catch(function (err) {
+						// 失败后清空缓存的 Promise，避免一次失败导致本次访问永久卡死
+						_pintreePromise = null;
+						window.__xhData = null;
+						throw err;
+					});
 				}
 				return _pintreePromise;
 			}
@@ -651,13 +669,21 @@
 				h.textContent = heading || '书签数据加载失败';
 				const p = document.createElement('p');
 				p.textContent = '没能读取书签数据，请检查网络连接后重试。';
+				const detail = document.createElement('small');
+				detail.className = 'xh-error-detail';
+				detail.textContent = error && error.message ? '原因：' + error.message : '';
 				const btn = document.createElement('button');
 				btn.type = 'button';
 				btn.className = 'xh-error-btn';
 				btn.textContent = '重新加载';
-				btn.addEventListener('click', () => location.reload());
+				btn.addEventListener('click', () => {
+					_pintreePromise = null;
+					window.__xhData = null;
+					location.reload();
+				});
 				wrap.appendChild(h);
 				wrap.appendChild(p);
+				if (detail.textContent) wrap.appendChild(detail);
 				wrap.appendChild(btn);
 				box.appendChild(wrap);
 			}

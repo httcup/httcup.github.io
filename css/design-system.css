@@ -290,6 +290,10 @@ html.dark .site-tile { background: var(--xh-surface-2); color: var(--xh-text); }
 }
 .xh-error-title { margin: 0 0 var(--xh-s2); font-size: var(--xh-text-lg); font-weight: 600; }
 .xh-error p { margin: 0 0 var(--xh-s4); font-size: var(--xh-text-sm); color: var(--xh-muted); }
+.xh-error-detail {
+  display: block; margin: 0 0 var(--xh-s4);
+  font-size: var(--xh-text-xs); color: var(--xh-muted); opacity: .7; word-break: break-all;
+}
 .xh-error-btn {
   padding: var(--xh-s2) var(--xh-s4);
   border: 0; border-radius: var(--xh-r-lg);
