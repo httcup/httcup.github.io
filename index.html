@@ -221,6 +221,7 @@
 
 							<div id="options-container">
 								<button type="button" class="option" data-value="local" aria-pressed="true">本站</button>
+								<button type="button" class="option" data-value="https://chat.deepseek.com/?q=" data-copy-query="1" aria-pressed="false">DeepSeek</button>
 								<button type="button" class="option" data-value="https://so.qq.com/isearch?query=" aria-pressed="false">元宝</button>
 								<button type="button" class="option" data-value="https://metaso.cn/?q=" aria-pressed="false">秘塔</button>
 								<button type="button" class="option" data-value="https://www.baidu.com/s?wd=" aria-pressed="false">百度</button>
@@ -936,6 +937,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const doSearch = () => {
         const query = searchInput.value.trim();
         if (!query) return;
+        // DeepSeek 等 AI 对话页不解析 URL 里的关键词：顺手把关键词放进剪贴板，
+        // 打开页面后直接粘贴即可提问（装了自动填表脚本的用户则会直接出结果）
+        const selectedOpt = document.querySelector('#options-container .option.selected');
+        if (selectedOpt && selectedOpt.dataset.copyQuery === '1' && navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(query).then(() => {
+                const old = searchInput.placeholder;
+                searchInput.placeholder = '关键词已复制，到 DeepSeek 粘贴即可';
+                setTimeout(() => { searchInput.placeholder = old; }, 3000);
+            }).catch(() => {});
+        }
         if (currentEngine && currentEngine !== 'local') {
             window.open(currentEngine + encodeURIComponent(query), '_blank');
         } else {
