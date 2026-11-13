@@ -909,8 +909,6 @@
 
     renderNav($('#navigation'));
     drawerNav = $('#navigation-drawer');
-    var total = $('#totalLinks');
-    if (total) total.textContent = fmt(state.flatLinks.length) + ' 个站点';
 
     // 首屏：先看 URL 有没有 ?q= / ?p=，没有就落到书签栏
     var initial = readUrl();
