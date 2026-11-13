@@ -114,9 +114,12 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-touch-180.png">
 	<link rel="manifest" href="manifest.json">
 
-	<!-- Stylesheet（不再依赖 tailwind.css） -->
-	<link rel="stylesheet" href="css/fab.css">
-	<link rel="stylesheet" href="css/xh-home.css">
+	<!-- Stylesheet（不再依赖 tailwind.css）
+	     css/js 带 ?v= 是必须的：GitHub Pages 给静态资源配置 max-age=14400（4 小时），
+	     没有版本号时手机浏览器会一直用旧文件、刷新也不一定生效。
+	     每次改动 css/js 都要把下面 5 处的 v 一起改（当前 20261113c）。 -->
+	<link rel="stylesheet" href="css/fab.css?v=20261113c">
+	<link rel="stylesheet" href="css/xh-home.css?v=20261113c">
 </head>
 
 <body>
@@ -246,9 +249,9 @@
 		</footer>
 	</div>
 
-	<script src="js/xh-py.js"></script>
-	<script src="js/xh-home.js"></script>
-	<script src="js/fab.js"></script>
+	<script src="js/xh-py.js?v=20261113c"></script>
+	<script src="js/xh-home.js?v=20261113c"></script>
+	<script src="js/fab.js?v=20261113c"></script>
 </body>
 
 </html>
