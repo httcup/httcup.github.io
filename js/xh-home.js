@@ -18,7 +18,8 @@
      需要补表时重新跑一遍生成脚本即可，表只有 20KB。
      ========================================================================== */
   /* 拼音首字母表在 js/xh-py.js（约 20KB 的生成数据）。没加载成功就退化为不支持拼音搜索。 */
-  var PY = window.__XH_PY || {};
+  /* 拼音数据在 js/xh-py.js（音节表 + 6813 字索引，约 37KB）。没加载成功就不支持拼音搜索。 */
+  var PY = window.__XH_PY || null;
 
   var ICON = {
     folder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4.2l1.8 2H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>',
@@ -51,32 +52,44 @@
     if (i < 0) return esc(s);
     return esc(s.slice(0, i)) + '<mark>' + esc(s.slice(i, i + q.length)) + '</mark>' + esc(s.slice(i + q.length));
   }
-  // ---------- 拼音首字母 ----------
-  var _pyMap = null;
-  function pyMap() {
-    if (!_pyMap) {
-      _pyMap = Object.create(null);
-      for (var k in PY) {
-        var bucket = PY[k];
-        for (var i = 0; i < bucket.length; i++) _pyMap[bucket.charAt(i)] = k;
-      }
+  // ---------- 拼音（首字母 + 全拼共用一份表） ----------
+  var _pyChar = null;   // 汉字 → 音节
+  function pyChar() {
+    if (_pyChar) return _pyChar;
+    _pyChar = Object.create(null);
+    if (!PY || !PY.chars || !PY.idx || !PY.syl) return _pyChar;
+    for (var i = 0, n = PY.chars.length; i < n; i++) {
+      var syl = PY.syl[parseInt(PY.idx.substr(i * 2, 2), 36)];
+      if (syl) _pyChar[PY.chars.charAt(i)] = syl;
     }
-    return _pyMap;
+    return _pyChar;
   }
-  /* 把标题转成拼音首字母串：「百度网盘」→ bdwp，「网盘 + 在线影视」→ wzys。
+
+  /* 标题 → { init: 'bdwp', full: 'baiduwangpan' }
      只取汉字，西文/数字/符号一律跳过 —— 否则输入 bd 会被「…HubDaily」这类
-     网址和英文词顶掉，百度反而排到后面；英文站直接打名字走标题匹配就行。 */
-  function initials(str) {
-    if (!str) return '';
-    var m = pyMap(), out = '';
-    for (var i = 0; i < str.length; i++) {
-      var ch = str.charAt(i), code = ch.charCodeAt(0);
-      if (code >= 0x4e00 && code <= 0x9fa5) {
-        var letter = m[ch];
-        if (letter) out += letter;
-      }
+     网址和英文词顶掉；英文站直接打名字走标题匹配就行。 */
+  function pinyinOf(str) {
+    if (!str) return { init: '', full: '' };
+    var m = pyChar(), init = '', full = '';
+    for (var i = 0, n = str.length; i < n; i++) {
+      var syl = m[str.charAt(i)];
+      if (syl) { init += syl.charAt(0); full += syl; }
     }
-    return out;
+    return { init: init, full: full };
+  }
+
+  /* 查询串是否作为「完整单词」出现在标题里：
+     ai 命中「AI提示词」算，命中「Baidugle」里的 baidu 不算（后面还连着字母）。
+     靠它把「AI 提示词」排到「爱PPT」前面，同时不让 Baidugle 压过百度。 */
+  function wordHit(title, q) {
+    var i = title.indexOf(q);
+    while (i > -1) {
+      var before = i === 0 ? '' : title.charAt(i - 1);
+      var after = title.charAt(i + q.length);
+      if (!/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after)) return true;
+      i = title.indexOf(q, i + 1);
+    }
+    return false;
   }
 
   /* 标题里命中位置的「词首程度」：0 = 开头，1 = 跟在标点/空格/汉字后，2 = 夹在英文单词里 */
@@ -119,6 +132,9 @@
         return encodeURIComponent(x.title);
       }).join('/'));
     }
+    /* 已加载条数也写进地址：刷新后按这个数补足批次，
+       不然长列表刷新一下就回到前 96 条，等于前面白翻。只在超过一批时才写，保持地址干净 */
+    if (state.shown > CHUNK) parts.push('n=' + state.shown);
     return location.pathname + (parts.length ? '?' + parts.join('&') : '') + location.hash;
   }
 
@@ -133,7 +149,7 @@
   }
 
   function readUrl() {
-    var out = { q: '', p: [] };
+    var out = { q: '', p: [], n: 0 };
     try {
       var mq = location.search.match(/[?&]q=([^&]*)/);
       if (mq) out.q = decodeURIComponent(mq[1].replace(/\+/g, ' '));
@@ -143,6 +159,8 @@
           try { return decodeURIComponent(seg); } catch (e) { return seg; }
         }).filter(Boolean);
       }
+      var mn = location.search.match(/[?&]n=(\d+)/);
+      if (mn) out.n = Math.min(parseInt(mn[1], 10) || 0, 5000);
     } catch (e) {}
     return out;
   }
@@ -157,6 +175,7 @@
     engine: 'local',
     engineEl: null,
     view: 'grid',
+    shown: 0,          // 当前已渲染的站点卡数量（写进 URL 的 n）
     flatLinks: [],     // 全站扁平站点索引，用于搜索
     flatFolders: []    // 全站扁平分类索引，用于搜索
   };
@@ -181,11 +200,13 @@
         folders.push({ title: it.title, node: it, path: pathTitles.join(' / ') });
         indexAll(it, pathTitles.concat(it.title), out, folders);
       } else if (it.url) {
+        var py = pinyinOf(it.title || '');
         out.push({
           title: it.title || '',
           url: it.url,
           path: pathTitles.join(' / '),
-          init: initials(it.title || ''),
+          init: py.init,
+          full: py.full,
           hay: (it.title || '').toLowerCase() + ' ' + it.url.toLowerCase()
         });
       }
@@ -210,50 +231,126 @@
     b.appendChild(el('span', 'n', opts.title));
     b.appendChild(el('span', 'c', fmt(opts.count)));
     b.setAttribute('data-id', String(opts.id));
+    b.setAttribute('data-path', opts.path || '');
     b.title = opts.title;
     b.addEventListener('click', opts.onClick);
     return b;
+  }
+
+  /* 展开状态：按一级分类标题记，存 localStorage。只做两层，
+     （原站递归整棵树，321 个分类全铺开会把侧栏拉成一条长龙） */
+  var navOpen = null;
+  function loadNavOpen() {
+    if (navOpen) return navOpen;
+    navOpen = {};
+    try {
+      var raw = localStorage.getItem('xh-nav');
+      if (raw) JSON.parse(raw).forEach(function (t) { navOpen[t] = true; });
+    } catch (e) {}
+    return navOpen;
+  }
+  function saveNavOpen() {
+    if (!navOpen) return;
+    try {
+      var keys = [];
+      for (var k in navOpen) if (navOpen[k]) keys.push(k);
+      localStorage.setItem('xh-nav', JSON.stringify(keys));
+    } catch (e) {}
   }
 
   function renderNav(container) {
     if (!container) return;
     container.innerHTML = '';
     var root = state.root;
+    var open = loadNavOpen();
+    var homePath = [{ title: '书签', children: root.children }, root];
 
-    var home = navItem({
+    container.appendChild(navItem({
       id: 'home',
+      path: '',
       title: root.title || '书签栏',
       count: countLinks(root),
-      onClick: function () { go([{ title: '书签', children: state.root.children }, root], true); closeDrawer(); }
-    });
-    container.appendChild(home);
+      onClick: function () { go(homePath, true); closeDrawer(); }
+    }));
 
     container.appendChild(el('div', 'nav-label', '分类'));
     var kids = (root.children || []).filter(function (c) { return c.type === 'folder'; });
+
     kids.forEach(function (f, i) {
-      container.appendChild(navItem({
+      var subs = (f.children || []).filter(function (c) { return c.type === 'folder'; });
+      var item = navItem({
         id: 'f' + i,
+        path: f.title,
         title: f.title,
         count: countLinks(f),
-        onClick: function () {
-          openFolder([{ title: '书签', children: state.root.children }, state.root], f);
-          closeDrawer();
-        }
-      }));
+        onClick: function () { openFolder(homePath, f); closeDrawer(); }
+      });
+
+      if (!subs.length) { container.appendChild(item); return; }
+
+      var row = el('div', 'nav-row');
+      row.appendChild(item);
+
+      var tog = el('button', 'nav-tog');
+      tog.type = 'button';
+      tog.innerHTML = ICON.chev;
+      tog.setAttribute('aria-expanded', open[f.title] ? 'true' : 'false');
+      tog.setAttribute('aria-label', (open[f.title] ? '收起' : '展开') + f.title + '的子分类');
+      row.appendChild(tog);
+      container.appendChild(row);
+
+      var box = el('div', 'nav-sub');
+      box.hidden = !open[f.title];
+      container.appendChild(box);
+
+      function buildSub() {
+        if (box.childNodes.length) return;
+        var deep = homePath.concat({ title: f.title, children: f.children });
+        subs.forEach(function (sf, j) {
+          box.appendChild(navItem({
+            id: 'f' + i + '-' + j,
+            path: f.title + '/' + sf.title,
+            title: sf.title,
+            count: countLinks(sf),
+            onClick: function () { openFolder(deep, sf); closeDrawer(); }
+          }));
+        });
+      }
+      if (open[f.title]) buildSub();
+
+      tog.addEventListener('click', function () {
+        var on = !open[f.title];
+        open[f.title] = on;
+        if (on) buildSub();
+        box.hidden = !on;
+        tog.setAttribute('aria-expanded', on ? 'true' : 'false');
+        tog.setAttribute('aria-label', (on ? '收起' : '展开') + f.title + '的子分类');
+        saveNavOpen();
+      });
     });
+  }
+
+  /* 当前路径在二级里时，自动把所属一级展开 */
+  function expandForPath() {
+    if (!state.path.length || state.path.length < 3) return;
+    var open = loadNavOpen();
+    var top = state.path[2].title;
+    if (open[top]) return;
+    open[top] = true;
+    saveNavOpen();
+    renderNav($('#navigation'));
+    if (drawerNav && !drawer.hidden) renderNav(drawerNav);
   }
 
   function syncNavActive() {
     if (!state.path.length) return;
-    var last = state.path[state.path.length - 1];
-    var isHome = state.path.length === 2;
+    var cur = state.path.length === 2
+      ? ''
+      : state.path.slice(2).map(function (x) { return x.title; }).join('/');
     var nodes = document.querySelectorAll('.nav-item');
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
-      var on = isHome
-        ? n.getAttribute('data-id') === 'home'
-        : n.querySelector('.n').textContent === last.title && n.getAttribute('data-id') !== 'home';
-      n.classList.toggle('is-active', on);
+      n.classList.toggle('is-active', n.getAttribute('data-path') === cur);
     }
   }
 
@@ -372,6 +469,7 @@
     more = st;
 
     st.shown = Math.min(CHUNK, items.length);
+    state.shown = st.shown;
     appendBatch(st, 0, st.shown);
 
     if (items.length > st.shown) {
@@ -409,7 +507,9 @@
     var to = Math.min(st.items.length, from + CHUNK);
     appendBatch(st, from, to);
     st.shown = to;
+    state.shown = to;
     if (st.shown >= st.items.length) finishMore(st); else updateFoot(st);
+    if (!state.preloading) syncUrlSoon();
   }
 
   function updateFoot(st) {
@@ -431,6 +531,42 @@
   function resetMore() {
     if (more && more.obs) more.obs.disconnect();
     more = null;
+    state.shown = 0;
+  }
+
+  /* ---------- 滚动位置 ----------
+     浏览器自己的滚动恢复对「加载后才长高的页面」基本无效，
+     所以位置自己记：key 只用分类/搜索词（不含 n），这样翻多少批都指向同一条记录。 */
+  function scrollKey() {
+    var k = state.query
+      ? 'q:' + state.query
+      : 'p:' + state.path.slice(2).map(function (x) { return x.title; }).join('/');
+    return 'xh-y:' + k;
+  }
+
+  /* 按地址里的 n 补足批次（补完把 n 写回去），再把滚动位置放回去 */
+  function preloadAndRestore(n) {
+    if (n > (more ? more.shown : 0)) {
+      state.preloading = true;
+      var guard = 0;
+      while (more && more.shown < n && guard++ < 200) loadMore();
+      state.preloading = false;
+      syncUrl('replace');
+    }
+    restoreScroll();
+  }
+
+  function restoreScroll() {
+    var y = 0;
+    try { y = parseInt(sessionStorage.getItem(scrollKey()), 10) || 0; } catch (e) {}
+    if (!y) return;
+    requestAnimationFrame(function () { window.scrollTo(0, y); });
+  }
+
+  var _urlTimer = null;
+  function syncUrlSoon() {
+    clearTimeout(_urlTimer);
+    _urlTimer = setTimeout(function () { syncUrl('replace'); }, 250);
   }
 
   function renderCrumbs() {
@@ -497,6 +633,7 @@
 
     if (!folders.length && !links.length) renderEmpty('这个文件夹还没有内容', '换一个分类看看，或者用上面的搜索框直接找站点。');
     syncNavActive();
+    expandForPath();
   }
 
   function renderSearchView() {
@@ -506,7 +643,7 @@
     document.title = state.query + ' · 搜索结果';
 
     if (!r.total) {
-      renderEmpty('没有找到匹配的书签', '换个关键词试试——中文、网址、拼音首字母都能搜，比如 bd。', true);
+      renderEmpty('没有找到匹配的书签', '换个关键词试试——中文、网址、拼音首字母（bd）或全拼（baidu）都能搜。', true);
       return;
     }
 
@@ -621,21 +758,27 @@
       var it = all[i];
       var title = it.title.toLowerCase();
       var init = it.init || '';
+      var full = it.full || '';
       var score = 99;   /* 99 = 没命中；不能再用 -1 当哨兵，标题完全相等的得分就是 -1 */
 
       /* 排序意图（越小越前）：
-         标题完全相等 > 首字母完全相等 > 首字母开头 > 标题含关键词 > 首字母含 > 网址含。
-         字母查询下「首字母相等」排最前，输入 bd 第一个就是百度；
-         标题命中再按「是否词首」细分，避免输入 ai 时 Napkin.ai 之类挤掉 AI 集合。 */
+         标题完全相等 > 首字母完全相等 > 首字母开头 > 标题整词命中
+         > 全拼完全相等 > 标题含关键词 > 全拼开头 > 首字母含 > 全拼含 > 网址含。
+         ai 时「AI 提示词」整词命中排最前，爱PPT（拼音 ai）在后；
+         baidu 时「百度」全拼相等排最前，Baidugle 只是子串，靠后。 */
       if (title === lower) score = -1;
       else if (letters && init === lower) score = 0;
       else if (letters && init.indexOf(lower) === 0) score = 1;
-      else if (title.indexOf(lower) > -1) score = 2;
-      else if (letters && init.indexOf(lower) > -1) score = 3;
-      else if (it.hay.indexOf(lower) > -1) score = 4;
+      else if (wordHit(title, lower)) score = 2;
+      else if (letters && full === lower) score = 3;
+      else if (title.indexOf(lower) > -1) score = 4;
+      else if (letters && full.indexOf(lower) === 0) score = 5;
+      else if (letters && init.indexOf(lower) > -1) score = 6;
+      else if (letters && full.indexOf(lower) > -1) score = 7;
+      else if (it.hay.indexOf(lower) > -1) score = 8;
       if (score < 99) {
         it.score = score;
-        it.rank = score === 2 ? wordRank(title, lower) : 0;
+        it.rank = (score === 2 || score === 4) ? wordRank(title, lower) : 0;
         links.push(it);
       }
     }
@@ -645,7 +788,9 @@
     // 分类名命中（全量索引）
     for (var j = 0; j < state.flatFolders.length; j++) {
       var f = state.flatFolders[j];
-      if (f.title.toLowerCase().indexOf(lower) > -1 || (letters && initials(f.title).indexOf(lower) > -1)) {
+      var fpy = letters ? pinyinOf(f.title) : null;
+      if (f.title.toLowerCase().indexOf(lower) > -1
+        || (letters && (fpy.init.indexOf(lower) > -1 || fpy.full.indexOf(lower) > -1))) {
         folders.push(f);
       }
     }
@@ -778,10 +923,23 @@
     } else {
       go(basePath, false, 'replace');
     }
+
+    /* 刷新后按 ?n= 补足批次，再把滚动位置放回去 */
+    preloadAndRestore(initial.n);
     syncNavActive();
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    // 滚动位置自己记，浏览器原生恢复对「加载后才长高」的页面无效
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+    var scrollTimer = null;
+    window.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        try { sessionStorage.setItem(scrollKey(), String(Math.round(window.scrollY))); } catch (e) {}
+      }, 200);
+    }, { passive: true });
+
     // 视图偏好
     try { state.view = localStorage.getItem('xh-view') === 'list' ? 'list' : 'grid'; } catch (e) {}
     document.body.setAttribute('data-view', state.view);
@@ -855,6 +1013,7 @@
         if (input2) input2.value = '';
         go(resolvePath(s.p), false, 'none');
       }
+      preloadAndRestore(s.n);
     });
 
     // 顶栏滚动分隔线

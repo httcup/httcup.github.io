@@ -180,7 +180,7 @@ mark { background: var(--xh-mark); color: inherit; font-weight: 600; border-radi
   transition: background var(--xh-dur-color) var(--xh-ease), color var(--xh-dur-color) var(--xh-ease);
 }
 .nav-item > svg { width: 15px; height: 15px; flex: 0 0 auto; color: var(--xh-muted); }
-.nav-item .n { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nav-item .n { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
 .nav-item .c { font-size: 11px; color: var(--xh-muted); font-variant-numeric: tabular-nums; }
 .nav-item:hover { background: var(--xh-surface); color: var(--xh-text); }
 .nav-item:hover > svg { color: var(--xh-text-2); }
@@ -191,8 +191,30 @@ mark { background: var(--xh-mark); color: inherit; font-weight: 600; border-radi
 .nav-item.is-active > svg { color: var(--xh-accent-ink); }
 .nav-item.is-active .c { color: var(--xh-accent-ink); }
 
-.nav-sub { padding-left: 14px; }
-.nav-sub .nav-item { height: 30px; font-size: 12.5px; }
+/* 一级分类 + 右侧展开箭头（两层树；更深层级走面包屑） */
+.nav-row { display: flex; align-items: center; gap: 2px; }
+.nav-row .nav-item { flex: 1 1 auto; min-width: 0; }
+.nav-tog {
+  width: 22px; height: 22px; flex: 0 0 auto;
+  display: grid; place-items: center;
+  border-radius: var(--xh-r-sm);
+  color: var(--xh-border-strong);
+  transition: color var(--xh-dur-color) var(--xh-ease), background var(--xh-dur-color) var(--xh-ease);
+}
+.nav-tog:hover { color: var(--xh-text-2); background: var(--xh-surface); }
+.nav-tog svg { width: 11px; height: 11px; transition: transform 180ms var(--xh-ease); }
+.nav-tog[aria-expanded="true"] { color: var(--xh-accent-ink); }
+.nav-tog[aria-expanded="true"] svg { transform: rotate(90deg); }
+
+.nav-sub {
+  padding-left: 12px;
+  margin: 1px 0 4px 9px;
+  border-left: 1px solid var(--xh-border);
+}
+.nav-sub[hidden] { display: none; }
+.nav-sub .nav-item { height: 28px; font-size: 12.5px; padding: 0 6px; }
+.nav-sub .nav-item > svg { width: 13px; height: 13px; }
+.nav-sub .nav-item .c { font-size: 10.5px; }
 
 .side-foot {
   flex: 0 0 auto; display: flex; align-items: center; gap: 8px;
