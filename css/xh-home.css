@@ -48,7 +48,9 @@
   --xh-dur-move: 240ms;
   --xh-dur-color: 160ms;
 
-  --xh-content-max: 1104px;
+  /* 内容区自适应：内侧留白随视口增长（20→40px），最大宽度封顶 1680，
+     超宽屏（2K/4K）不再出现两侧各 600px 的空地 */
+  --xh-content-max: 1680px;
   --xh-sidebar: 236px;
 
   /* 图标底色（monogram 六档，低饱和，不与品牌绿抢） */
@@ -143,7 +145,8 @@ mark { background: var(--xh-mark); color: inherit; font-weight: 600; border-radi
 .skip:focus { transform: none; }
 .wrap {
   width: 100%; max-width: var(--xh-content-max);
-  margin: 0 auto; padding: 0 var(--xh-s7);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 2.4vw, 40px);
 }
 
 /* --------------------------------------------------------------------------
@@ -381,8 +384,8 @@ main { flex: 1 1 auto; padding-bottom: 40px; }
    -------------------------------------------------------------------------- */
 .folders {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: clamp(10px, .5vw, 13px);
 }
 .folder {
   display: flex; align-items: center; gap: 10px;
@@ -425,8 +428,8 @@ main { flex: 1 1 auto; padding-bottom: 40px; }
    -------------------------------------------------------------------------- */
 .links {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
+  gap: clamp(10px, .5vw, 13px);
 }
 .link {
   display: flex; align-items: center; gap: 10px; min-width: 0;
@@ -690,6 +693,9 @@ html.dark .xh-pw-ok:hover { background: var(--xh-accent); color: #08211a; }
 
 /* 桌面：给悬浮按钮留出呼吸空间，避免压住最后一列卡片 */
 @media (min-width: 1025px) {
+  /* 内容区右侧留一条通道给悬浮按钮（36px 按钮 + 14px 边距 + 间隙），
+     自适应宽度后卡片会抵到视口右缘，不留这条通道就会被按钮压住 */
+  .shell .wrap { padding-right: max(clamp(20px, 2.4vw, 40px), 62px); }
   #xh-fab { right: 14px; bottom: 14px; gap: 6px; }
   #xh-fab .xh-fab-btn { width: 36px; height: 36px; border-radius: 10px; opacity: .85; }
   #xh-fab .xh-fab-btn:hover { opacity: 1; }
