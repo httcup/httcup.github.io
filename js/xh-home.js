@@ -854,6 +854,30 @@
     sync();
   }
 
+  /* 搜索框宽度对齐下方引擎行：引擎有几个、多长，搜索框就多长。
+     引擎行是横向滚动容器，scrollWidth 就是内容自然宽度（含被裁掉的部分），
+     所以以后增删引擎不用改这里。手机上保持满宽（CSS 断点里已处理）。 */
+  function fitSearchWidth() {
+    var form = $('#searchForm'), eng = $('#engines');
+    if (!form || !eng) return;
+    if (window.matchMedia('(max-width: 1024px)').matches) {
+      form.style.maxWidth = '';
+      return;
+    }
+    var host = form.parentElement;                       // .topbar .wrap
+    var cs = getComputedStyle(host);
+    var avail = host.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    /* 不能用 eng.scrollWidth：引擎行是块级 flex，内容放得下时它自己就被撑满了，
+       scrollWidth 等于容器宽，量不出「标签本身有多长」。改成首尾标签的跨距。 */
+    var opts = eng.children, need = 0;
+    if (opts.length) {
+      var first = opts[0].getBoundingClientRect();
+      var last = opts[opts.length - 1].getBoundingClientRect();
+      need = Math.ceil(last.right - first.left);
+    }
+    form.style.maxWidth = (need > 0 ? Math.min(need, avail) : avail) + 'px';
+  }
+
   function submitSearch() {
     var input = $('#searchInput');
     var q = input ? input.value.trim() : '';
@@ -925,6 +949,15 @@
     /* 刷新后按 ?n= 补足批次，再把滚动位置放回去 */
     preloadAndRestore(initial.n);
     syncNavActive();
+
+    /* 搜索框宽度对齐引擎行（引擎标签是静态 HTML，但字体加载完宽度才算准） */
+    fitSearchWidth();
+    var fitTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(fitTimer);
+      fitTimer = setTimeout(fitSearchWidth, 120);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitSearchWidth);
   }
 
   document.addEventListener('DOMContentLoaded', function () {

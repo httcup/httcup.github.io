@@ -51,7 +51,9 @@
   /* 内容区自适应：内侧留白随视口增长（20→40px），最大宽度封顶 1680，
      超宽屏（2K/4K）不再出现两侧各 600px 的空地 */
   --xh-content-max: 1680px;
-  --xh-sidebar: 236px;
+  /* 侧栏随视口微增：1685px 以下保持 236，之后按 14vw 长到 276 封顶，
+     避免 1920/2560 上侧栏只占 9~12% 显得又窄又空 */
+  --xh-sidebar: clamp(236px, 14vw, 276px);
 
   /* 图标底色（monogram 六档，低饱和，不与品牌绿抢） */
   --xh-t0-bg: #edf2f7; --xh-t0-fg: #3a5a78;
@@ -161,7 +163,7 @@ mark { background: var(--xh-mark); color: inherit; font-weight: 600; border-radi
 }
 .brand {
   display: flex; align-items: center; gap: 10px;
-  height: 64px; flex: 0 0 auto; padding: 0 var(--xh-s4);
+  height: 64px; flex: 0 0 auto; padding: 0 clamp(16px, 1.1vw, 20px);
 }
 .brand img { width: 26px; height: 26px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 0 1px var(--xh-border); }
 .brand-name { font-size: 13px; font-weight: 600; letter-spacing: .01em; }
@@ -176,8 +178,8 @@ mark { background: var(--xh-mark); color: inherit; font-weight: 600; border-radi
 .nav-label .n { margin-left: auto; font-variant-numeric: tabular-nums; opacity: .8; }
 
 .nav-item {
-  display: flex; align-items: center; gap: 9px;
-  height: 34px; padding: 0 var(--xh-s2); margin-bottom: 1px;
+  display: flex; align-items: center; gap: clamp(9px, .7vw, 12px);
+  height: 34px; padding: 0 clamp(8px, .75vw, 12px); margin-bottom: 1px;
   border-radius: var(--xh-r-lg);
   font-size: 13px; color: var(--xh-text-2);
   transition: background var(--xh-dur-color) var(--xh-ease), color var(--xh-dur-color) var(--xh-ease);
@@ -678,9 +680,15 @@ html.dark .xh-pw-ok:hover { background: var(--xh-accent); color: #08211a; }
   .view-switch { display: none; }
   .folders { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .folder { height: 62px; padding: 0 10px; gap: 9px; }
+  /* 手机上也用两列分布，不再一行一个：390 下每张卡 175px，
+     图标缩到 24、标题 12.5px、网址 10.5px，长网址照旧省略号收尾 */
+  .links { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   /* minmax(0,1fr) 而不是 1fr：1fr 的最小值是 auto，会被卡片内容撑破视口 */
-  .links { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .link { height: 56px; }
+  body[data-view="list"] .links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .link { height: 56px; padding: 0 10px; gap: 8px; }
+  .link .mono { width: 24px; height: 24px; border-radius: 6px; font-size: 11px; }
+  .link-name { font-size: 12.5px; }
+  .link-url { font-size: 10.5px; }
   .sect { margin-bottom: 22px; }
   .foot .wrap { padding-top: 14px; padding-bottom: 18px; }
   .foot-links { margin-left: 0; }
